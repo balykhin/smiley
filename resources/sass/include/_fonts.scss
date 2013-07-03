@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'din light';
+  src: url(../fonts/DIN_LIGHT.TTF);
+}
+
+@font-face {
+  font-family: 'din medium';
+  src: url(../fonts/DIN_Medium.TTF);
+}
+
+@font-face {
+  font-family: 'din bold';
+  src: url(../fonts/DIN_BOLD.TTF);
+}
+
+@font-face {
+  font-family: 'franklin';
+  src: url(../fonts/Franklin_Gothic_Book.TTF);
+}
+
+
+input{
+	font-family: 'din light';
+}

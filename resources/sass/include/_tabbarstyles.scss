@@ -1,0 +1,62 @@
+.x-toolbar-dark.x-docked-bottom, .x-tabbar-dark.x-docked-bottom{
+   background: #231f20;
+   height:50px;
+   border:none !important;
+  
+  .x-tab#ext-tab-3{
+        background-image: linear-gradient(bottom, rgb(0,146,204) 40%, rgb(0,118,165) 75%) !important;
+        background-image: -webkit-linear-gradient(bottom, rgb(0,146,204) 40%, rgb(0,118,165) 75%) !important;
+        top: -5px;
+        padding-bottom: 7px;
+        -webkit-border-radius: 0.25em 0.25em 0 0;
+        border-radius: 0.25em 0.25em 0 0;
+        -webkit-box-shadow: 0 -2px 2px rgba(0,0,0,0.2);
+        box-shadow:  0 -2px 2px rgba(0,0,0,0.2);
+        border: none;
+
+        span.x-button-label{
+          color: #FFF;
+          margin-top: 4px;
+        }
+  }
+  .x-tab{
+     min-width: 3.5em;
+     
+     span.x-button-icon{
+      background-image: none !important;
+      background-color: #918f90;
+    }
+   
+   span.chat_request, span.my_favourites, span.my_matches, span.user_online{
+    /*@include background-gradient(#ffffff, #ffffff);*/
+   }
+   .x-button-label{
+    font-family: din bold;
+    color:#918f90;
+    text-shadow:none;
+   }
+  }
+
+  .x-tab-active{
+   /*@include background-gradient(#ffffff, 'bevel');*/
+   background-image: radial-gradient(rgba(255,225,255,0.3),rgba(255,225,255,0) 35px) !important;
+   background-image: -webkit-radial-gradient(rgba(255,225,255,0.3),rgba(255,225,255,0) 35px) !important;
+   background-color: transparent;
+   border: none !important;
+   box-shadow: none;
+   -webkit-box-shadow: none;
+
+    span.x-button-icon{
+      background-color: #fff;
+    }
+   span.chat_request, span.my_favourites, span.my_matches, span.user_online{
+    /*@include background-gradient(#ee0000, 'bevel');*/
+   }
+   
+   .x-button-label{
+    font-family: din bold;
+    color:#FFF;
+    text-shadow: none;
+   }
+  }
+ }

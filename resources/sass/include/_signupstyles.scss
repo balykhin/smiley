@@ -1,0 +1,44 @@
+@import 'custom-iconmask';
+
+//@include custom-iconmask('back-btn');
+.x-form .x-scroll-container>.x-inner {
+padding: 0.5em;
+}
+.x-container.x-form.signup-bg .x-scroll-container{
+	background: #363639;
+}
+.x-spinner .x-input-el, .x-field-select .x-input-el {
+-webkit-text-fill-color: initial;
+}
+.x-label.simple-text{
+	font-family: franklin !important;
+	font-size: .80em;
+	color: #414042;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.x-title{
+	font-family: 'din bold';
+}
+
+.cont-signup,
+{
+  	position:relative;
+  	background:  #f0eceb url('../images/big-smiley.png') no-repeat center 30px;
+}
+.cont-signup:after
+{
+	content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.5);
+    		box-shadow:0 0 10px rgba(0,0,0,0.5);
+    bottom:0px;
+	width:60%;
+	height:10px;
+    -moz-border-radius:100%;
+    border-radius:100%;
+	left:20%;
+	right:20%;
+}

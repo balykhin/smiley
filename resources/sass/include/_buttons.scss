@@ -1,0 +1,73 @@
+/*
+.x-button-label{
+  font-family: din bold;
+  background-color: #414042;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255,255,255,0.1);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}
+*/
+
+.cust-btn {
+  font-family: din bold;
+  font-size: 0.8em;
+  width: 239px;
+ /* height: 37px; */
+  background-size: 100% 100%;
+  border: none;
+  margin: 0 auto;
+  .x-button-label, .x-badge, .x-hasbadge .x-badge{
+    padding: 5px;
+  }
+}
+
+.login-btn{
+    background: url(../images/login-btn.png) 0 0 no-repeat !important;
+    color: #414042;
+    text-shadow: 0px 1px 3px rgba(255,255,255,0.5);
+}
+.signup-btn{
+    background: url(../images/signup-btn.png) 0 0 no-repeat !important;
+    color: #FFF;
+    text-shadow: 0px 1px 3px rgba(23,23,23,0.5);
+}
+.fb-login-btn{
+  background: url(../images/fb-login-btn.png) 0 0 no-repeat !important;
+  color: #FFFFFF;
+  text-shadow: 0px 1px 3px rgba(23,23,23,0.5);
+}
+.twitter-top{
+    background: url(../images/login-btn.png) 0 0 no-repeat !important;
+    color: #414042;
+    text-shadow: 0px 1px 3px rgba(255,255,255,0.5);
+}
+/*
+.white .x-button-label{
+  background-color: #FFFFFF;
+}
+*/
+@include sencha-button-ui('simple', #f8c063, 10%);
+
+/* back button background */
+/*
+.x-button-icon.x-shown.cust-back {
+  background-image: url(../images/back-btn@2x.png);
+  background-size: 100% 100%;
+}
+
+.x-button-icon.x-shown.cust-menu {
+  background-image: url(../images/menu-btn@2x.png);
+  background-size: 100% 100%;
+}
+*/
+
+
+@include pictos-iconmask('menu-btn');
+@include pictos-iconmask('back-btn');
+
+.x-button .x-button-icon.x-icon-mask, .x-toolbar .x-button .x-button-icon.x-icon-mask {
+  background-color: #a6def5 !important;
+  background-image: -webkit-linear-gradient(top, #a6def5,#a6def5 3%,#a6def5);
+}
