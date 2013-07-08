@@ -34,6 +34,10 @@ Ext.application({
         'ForgetPassword',
         'ShareToFacebook',
         'ShareToTwitter',
+        'EditProfile',
+        'Survey',
+        'Missions',
+        'MissionList',
     ],
 
     icon: {
@@ -69,13 +73,26 @@ Ext.application({
         var homeView = {
             xtype: 'homeview'
         }
+        var missionsView = {
+            xtype: 'missionsview'
+        }
+        var missionlistView = {
+            xtype: 'missionlistview'
+        }
 
         var signupView = {
             xtype: 'signupview'
         }
 
+        var editprView = {
+            xtype: 'editprofileview'
+        }
+
+        var surveyView = {
+            xtype: 'surveyview'
+        }
         // Initialize the main view
-        Ext.Viewport.add([loginView, homeView, signupView]);
+        Ext.Viewport.add([loginView, homeView, signupView, editprView, surveyView, missionsView, missionlistView]);
     },
 
     onUpdated: function () {

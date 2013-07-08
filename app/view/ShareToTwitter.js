@@ -1,4 +1,6 @@
-﻿Ext.define('smiley360.view.ShareToTwitter', {
+﻿var image_1, image_2, image_3, image_4, image_5, t_field;
+
+Ext.define('smiley360.view.ShareToTwitter', {
     extend: 'Ext.form.Panel',
     alias: 'widget.sharetotwitterview',
     config: {
@@ -8,92 +10,44 @@
         hideOnMaskTap: true,
         cls: 'popup-panel',
         layout: 'fit',
+        height: 410,
         items: [
+            {
+                xtype: 'image',
+                cls: 'popup-close-button',
+                dock: 'top',
+                style: 'background-size: contain;',
+                itemId: 'doClose',
+                tap: 'onCloseTap',
+            },
             {
                 xtype: 'panel',
                 layout: 'hbox',
-                cls: 'popup-top-panel',
+                height: 50,
+                cls: 'popup-top-twitter-panel',
                 items: [
                     {
                         xtype: 'label',
                         cls: 'popup-top-title',
-                        html: 'Earn 5 Smiles Sharing on Facebook',
+                        html: 'Earn 5 Smiles Sharing on Twitter',
                     },
                     {
                         xtype: 'image',
                         dock: 'right',
-                        width: 20,
-                        height: 20,
-                        src: 'resources/images/fb.png',
+                        width: 30,
+                        height: 30,
+                        margin: -5,
+                        style: 'background-size: contain;',
+                        src: 'resources/images/tw-1.png',
                     },
                 ],
             },
             {
                 xtype: 'panel',
+                height: 200,
                 cls: 'popup-middle-panel',
                 items: [
-                    {
-                        xtype: 'panel',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'label',
-                                margin: '5 5 5 0',
-                                cls: 'popup-rate-text',
-                                html: 'Rate the product:',
-                            },
-                            {
-                                xtype: 'image',
-                                margin: 15,
-                                src: 'resources/images/smile-bullet.png',
-                                listeners: {
-                                    tap: function () {
-                                        this.setSrc('resources/images/fb.png');
-                                    }
-                                }
-                            },
-                            {
-                                xtype: 'image',
-                                padding: 15,
-                                src: 'resources/images/smile-bullet.png',
-                                listeners: {
-                                    tap: function () {
-                                        this.setSrc('resources/images/fb.png');
-                                    }
-                                }
-                            },
-                            {
-                                xtype: 'image',
-                                padding: 15,
-                                src: 'resources/images/smile-bullet.png',
-                                listeners: {
-                                    tap: function () {
-                                        this.setSrc('resources/images/fb.png');
-                                    }
-                                }
-                            },
-                            {
-                                xtype: 'image',
-                                padding: 15,
-                                src: 'resources/images/smile-bullet.png',
-                                listeners: {
-                                    tap: function () {
-                                        this.setSrc('resources/images/fb.png');
-                                    }
-                                }
-                            },
-                            {
-                                xtype: 'image',
-                                padding: 15,
-                                src: 'resources/images/smile-bullet.png',
-                                listeners: {
-                                    tap: function () {
-                                        this.setSrc('resources/images/fb.png');
-                                    }
-                                }
-                            },
-                        ],
-                    },
+
                     {
                         xtype: 'textareafield',
                         cls: 'popup-post-textarea',
@@ -101,6 +55,13 @@
                         minLength: 70,
                         border: 1,
                         renderTo: 'output',
+                        listeners: {
+                            keyup: function () {
+                                var postLenght = this.getValue().length;
+
+                                t_field.setHtml(postLenght.toString());
+                            }
+                        }
                     },
                     {
                         xtype: 'panel',
@@ -108,15 +69,20 @@
                         items: [
                             {
                                 xtype: 'label',
-                                cls: 'popup-post-buttom-text',
+                                cls: 'popup-post-bottom-text',
                                 style: 'color: #878789;',
-                                html: 'Post must contain at least 70 characters.',
+                                html: 'Tweet must contain a maximum of 84 characters.',
                             },
                             {
                                 xtype: 'label',
                                 dock: 'right',
-                                cls: 'popup-post-buttom-text',
-                                html: '34',
+                                cls: 'popup-post-bottom-text',
+                                html: '0',
+                                listeners: {
+                                    painted: function () {
+                                        t_field = this;
+                                    },
+                                },
                             },
                         ],
                     },
@@ -124,28 +90,10 @@
             },
             {
                 xtype: 'panel',
-                cls: 'popup-buttom-panel',
+                height: 160,
+                cls: 'popup-bottom-panel',
                 items: [
-                    {
-                        xtype: 'panel',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                width: '50%',
-                                checked: false,
-                                label: 'Post to Profile Wall.',
-                                labelAlign: 'right',
-                            },
-                            {
-                                xtype: 'checkboxfield',
-                                width: '50%',
-                                checked: false,
-                                label: 'Post to Profile Wall.',
-                                labelAlign: 'right',
-                            },
-                        ],
-                    },
+
                     {
                         xtype: 'label',
                         cls: 'popup-post-comment',
@@ -158,18 +106,26 @@
                     },
                     {
                         xtype: 'button',
+                        margin: '30 0 0 0',
                         itemId: 'doShare',
                         cls: 'popup-post-button',
                         html: 'POST',
+                        tap: 'onCloseTap',
                     },
                 ],
             },
         ],
         listeners: [
             {
-                delegate: "#doShare",
-                event: "tap",
-                fn: "onShareTap"
-            }],
-    }
+                delegate: '#doClose',
+                event: 'tap',
+                fn: 'onCloseTap'
+            },
+        ],
+    },
+
+    onCloseTap: function () {
+        this.hide();
+        this.destroy();
+    },
 });

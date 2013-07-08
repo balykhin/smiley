@@ -2,38 +2,123 @@ Ext.define('smiley360.controller.Index', {
     extend: 'Ext.app.Controller',
     config: {
         refs: {
+            homeView: 'homeview',
             loginView: 'loginview',
             signupView: 'signupview',
-            homeView: 'homeview',
+            editProfileView: 'editprofileview',
+            forgetPasswordView: 'forgetpasswordview',
             shareToFacebookView: 'sharetofacebookview',
             shareToTwitterView: 'sharetotwitterview',
+            surveyView: 'surveyview',
+            missionsView: 'missionsview',
+            missionlistView: 'missionlistview',
         },
         control: {
             loginView: {
-                loginCommand: 'loginCommand',
-                fbShareCommand: 'fbShareCommand',
-                shareCommand: 'shareCommand',
-                signupPageCommand: 'signupPageCommand'
+                ShowLoginViewCommand: 'ShowLoginViewCommand',
+                ShowSignupViewCommand: 'ShowSignupViewCommand',
+                ShowEditProfileViewCommand: 'ShowEditProfileViewCommand',
+                ShowSurveyViewCommand: 'ShowSurveyViewCommand',
+                onMissionListTapCommand: 'onMissionListTapCommand',
+                onMissionTapCommand: 'onMissionTapCommand',
             },
             signupView: {
                 // The commands fired by the signup view.
                 signupCommand: 'signupCommand',
-                backButtonCommandSignup: 'backButtonCommandSignup'
+                backButtonCommandSignup: 'backButtonCommandSignup',
             },
             homeView: {
-                backButtonCommandHome: 'backButtonCommandHome'
+                backButtonCommandHome: 'backButtonCommandHome',
+                oneditLabelCommand: 'oneditLabelCommand',
+                GoToProfileCommand: 'GoToProfileCommand',
             },
             sharetofacebookview: {
             },
             sharetotwitterview: {
             },
+            editProfileView: {
+                backButtonCommandProfile: 'backButtonCommandProfile'
+            },
+            surveyView: {
+                SurveyBackButtonCommand: 'SurveyBackButtonCommand'
+            },
+            missionsView:
+            {
+                backButtonCommandMissions: 'backButtonCommandMissions'
+            },
+           
         }
     },
-
+    
     // Tansitions
     slideLeftTransition: { type: 'slide', direction: 'left' },
     slideRightTransition: { type: 'slide', direction: 'right' },
+    // Commands
+    backButtonCommandMissions: function () {
+        //================================
+        console.log("");
+        //================================
+        Ext.Viewport.animateActiveItem(this.getHomeView(), this.slideLeftTransition);
 
+        //this.activateForgetPassword();
+    },
+
+    GoToProfileCommand: function () {
+        //================================
+        console.log('GoToProfileCommand');
+        //================================
+        Ext.Viewport.animateActiveItem(this.getEditProfileView(), this.slideLeftTransition);
+    },
+    onMissionListTapCommand: function() {
+        Ext.Viewport.animateActiveItem(this.getMissionListView(), this.slideLeftTransition);
+        //Ext.getCmp('missionlist_menu').hide();
+        //Ext.getCmp('missions_menu').hide();
+        Ext.Msg.alert('Mis!');
+    },
+    onMissionTapCommand: function() {
+        Ext.Viewport.animateActiveItem(this.getMissionsView(), this.slideLeftTransition);
+    },
+    oneditLabelCommand: function () {
+        console.log("oneditLabelCommand");
+        Ext.Viewport.animateActiveItem(this.getEditProfileView(), this.slideLeftTransition);
+
+    },
+    ShowLoginViewCommand: function () {
+        //================================
+        console.log("ShowLoginViewCommand");
+        //================================
+        Ext.Viewport.animateActiveItem(this.getHomeView(), this.slideLeftTransition);
+
+        //this.activateForgetPassword();
+    },
+
+    ShowSignupViewCommand: function () {
+        //================================
+        console.log('ShowSignupViewCommand');
+        //================================
+        Ext.Viewport.animateActiveItem(this.getSignupView(), this.slideLeftTransition);
+    },
+
+    ShowEditProfileViewCommand: function () {
+        //================================
+        console.log('ShowEditProfileViewCommand');
+        //================================
+        Ext.Viewport.animateActiveItem(this.getEditProfileView(), this.slideLeftTransition);
+    },
+
+    ShowSurveyViewCommand: function () {
+        //================================
+        console.log('ShowSurveyViewCommand');
+        //================================
+        Ext.Viewport.animateActiveItem(this.getSurveyView(), this.slideLeftTransition);
+    },
+
+    SurveyBackButtonCommand: function () {
+        //================================
+        console.log('SurveyBackButtonCommand');
+        //================================
+        Ext.Viewport.animateActiveItem(this.getLoginView(), this.slideLeftTransition);
+    },
 
     //	Commands
     signupCommand: function () {
@@ -41,64 +126,35 @@ Ext.define('smiley360.controller.Index', {
         //Ext.Viewport.animateActiveItem(this.getHomeView(), this.slideLeftTransition);
 
     },
-    signupPageCommand: function () {
-        console.log('Signup Page Command');
-        Ext.Viewport.animateActiveItem(this.getSignupView(), this.slideLeftTransition);
-    },
+
     backButtonCommandHome: function () {
         console.log('Back button command signup');
         Ext.Viewport.animateActiveItem(this.getLoginView(), this.slideRightTransition);
     },
+
+    backButtonCommandProfile: function () {
+        console.log('Back button command signup');
+        Ext.Viewport.animateActiveItem(this.getLoginView(), this.slideRightTransition);
+    },
+
     backButtonCommandSignup: function () {
         console.log('Back button command signup');
         Ext.Viewport.animateActiveItem(this.getLoginView(), this.slideRightTransition);
     },
-    loginCommand: function () {
-        console.log("LoginCommand");
-        Ext.Viewport.animateActiveItem(this.getHomeView(), this.slideLeftTransition);
-
-        //this.activateForgetPassword();
-    },
-
-    shareCommand: function () {
-        console.log("shareCommand");
-
-        var shareForm = Ext.Viewport.down('sharetotwitterview');
-        //create the form if it doesn't exists
-        if (!shareForm) {
-            shareForm = Ext.widget('sharetotwitterview');
-        }
-        shareForm.reset();
-        shareForm.show();
-    },
-
-    fbShareCommand: function () {
-        console.log('fbShareCommand Click');
-
-        var shareForm = Ext.Viewport.down('sharetofacebookview');
-        //create the form if it doesn't exists
-        if (!shareForm) {
-            shareForm = Ext.widget('sharetofacebookview');
-        }
-        shareForm.reset();
-        shareForm.show();
-    },
-
-    //onHideForm: function (button) {
-    //    console.log('Button Click for Save');
-    //    var form = button.up('panel');
-    //    //do your processing here
-    //    form.hide();
-    //},
 
     //	Base Class functions.
     init: function () {
-        this.callParent(arguments);
+        //================================
         console.log("init");
+        //================================
+        this.callParent(arguments);
     },
+
     launch: function () {
+        //================================
+        console.log('launch');
+        //================================
         this.callParent(arguments);
         // Ext.getStore('Notes').load();
-        console.log('launch');
     }
 });

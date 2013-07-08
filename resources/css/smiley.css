@@ -1,0 +1,311 @@
+.popup-panel {
+    width: 90%;
+    margin: 30px 0px;
+}
+
+.popup-top-twitter-panel {
+    background: -webkit-linear-gradient(top, #33b5d7 0%, #1f7085 100%);
+    border-radius: 4px 4px 0px 0px;
+    padding: 15px;
+}
+
+    .popup-top-twitter-panel .x-panel-inner {
+        background-color: transparent !important;
+    }
+
+.popup-top-facebook-panel {
+    background: -webkit-linear-gradient(top, #395693 0%, #24365d 100%);
+    border-radius: 4px 4px 0px 0px;
+    padding: 15px;
+}
+
+    .popup-top-facebook-panel .x-panel-inner {
+        background-color: transparent !important;
+    }
+
+.popup-top-forgetpwd-panel {
+    background: -webkit-linear-gradient(top, #0090cc 0%, #00587c 100%);
+    border-radius: 4px 4px 0px 0px;
+    padding: 15px;
+}
+
+    .popup-top-forgetpwd-panel .x-panel-inner {
+        background-color: transparent !important;
+    }
+
+.popup-middle-panel {
+    background-color: #E2DDDA !important;
+    border-radius: 0px 0px 0px 0px !important;
+    padding: 15px;
+}
+
+    .popup-middle-panel .x-panel-inner {
+        background-color: transparent !important;
+    }
+
+.popup-bottom-panel {
+    background-color: #D7CFCD !important;
+    border-radius: 0px 0px 4px 4px !important;
+    padding: 15px;
+}
+
+    .popup-bottom-panel .x-panel-inner {
+        background-color: transparent !important;
+    }
+
+.popup-title-text {
+    font-size: 12pt;
+    font-family: din medium;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.popup-title-image {
+    min-width: 50px;
+    background-size: contain !important;
+    background-position: right !important;
+}
+
+.popup-rate-text {
+    font-size: 11pt;
+    font-family: din medium;
+}
+
+.popup-post-textarea {
+    margin: 5px 0px 5px 0px;
+    color: black;
+    border-radius: 8px;
+    border-style: inset;
+    font-size: 11pt;
+    font-family: din bold;
+    resize: none;
+}
+
+.popup-post-bottom-text {
+    font-size: 8pt;
+    font-family: din bold;
+}
+
+.popup-checkbox-text {
+    font-size: 10pt;
+    font-family: din bold;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.popup-post-comment {
+    font-size: 8pt;
+    font-family: din bold;
+    margin-top: 5px;
+}
+
+.popup-post-comment-text {
+    font-size: 8pt;
+    font-family: franklin;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+.popup-message-text {
+    font-size: 10pt;
+    font-family: din bold;
+    word-wrap: break-word;
+    color: #58595b;
+}
+
+.popup-close-button {
+    width: 25px;
+    height: 25px;
+    margin: -23px 0px 0px 15px;
+    background-image: url(../images/close.png);
+}
+
+.popup-post-button {
+    background: url(../images/post.png) no-repeat 98% center, -webkit-linear-gradient(top, #6c6261 0%, #564c4a 100%);
+    margin: -10px;
+    font-size: 14pt;
+    font-family: din medium;
+    color: white;
+}
+
+.popup-submit-button {
+    background: -webkit-linear-gradient(top, #6c6261 0%, #564c4a 100%);
+    margin: 15px -10px -10px -10px;
+    font-size: 14pt;
+    font-family: din medium;
+    color: white;
+}
+
+.popup-survey-innerpanel {
+    height: 90%;
+    padding: 15px;
+    margin: 25px 35px;
+    position: relative;
+    background-color: white;
+    border-radius: 4px;
+}
+    .popup-survey-innerpanel .x-innerhtml {
+        height: 100%;
+    }
+
+.popup-survey-iframe {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -ms-overflow: hidden;
+}
+/********************************************************************************************/
+.cust-btn {
+    font-family: din bold;
+    font-size: 0.8em;
+    background-size: 100% 100%;
+    border: 1px;
+    margin: 0 auto;
+}
+
+    .cust-btn .x-button-label, .cust-btn .x-hasbadge .x-badge, .x-hasbadge .cust-btn .x-badge, .cust-btn .x-badge, .cust-btn .x-hasbadge .x-badge {
+        padding: 5px;
+    }
+
+.login-btn {
+    background: -webkit-linear-gradient(top, #F8C168 0%, #F3A21B 100%);
+    color: #414042;
+    text-shadow: 0px 1px 3px rgba(255,255,255,0.5);
+}
+
+.signup-btn {
+    background: -webkit-linear-gradient(top, #454241 0%, #353231 100%);
+    color: #FFF;
+    text-shadow: 0px 1px 3px rgba(23,23,23,0.5);
+    margin: 0px 15px;
+}
+
+.fb-login-btn {
+    background: url(../images/fb-login-btn.png) 0 0 no-repeat !important;
+    color: #FFFFFF;
+    text-shadow: 0px 1px 3px rgba(23,23,23,0.5);
+}
+
+.profile-top {
+    background: #e2ddda;
+}
+
+.x-layout-card-item {
+    background: #0090cc;
+}
+
+.my-checkbox-label {
+    padding-left: 10px;
+    font-family: din light;
+    color: #a0a0a0;
+    background-color: white;
+}
+
+.text-hide {
+    background-color: transparent;
+}
+
+.text-show {
+    background-color: black;
+}
+
+.save-changes-btn {
+    font-family: 'din medium' !important;
+    font-size: 1.55em;
+}
+
+.edit-profile-title {
+    font-family: 'franklin' !important;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+
+.inner_shadow {
+    color: transparent;
+    background-color: white;
+    text-shadow: 0 0 30px rgba(198,28,39,0.8), 0 0 0 black;
+}
+
+.headings-home {
+    font-family: 'din medium';
+    color: #231f20;
+}
+
+.my-ddl-color {
+    color: #939498;
+}
+
+.listmenuitem .x-button-label {
+    font-weight: normal;
+    text-align: right;
+}
+
+.x-label.missions-text {
+    font-family: 'din bold' !important;
+    font-size: .80em;
+    color: #414042;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.menu-list-btn-recieve {
+    background: url(../images/missions-box.png) no-repeat 98% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
+    height: 50px;
+    margin: -10px;
+    font-size: 14pt;
+    font-family: din medium;
+    color: white;
+}
+.menu-list-btn-new {
+    background: url(../images/code.png) no-repeat 97.2% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39  100%);
+    height: 50px;
+    margin: -10px;
+    font-size: 14pt;
+    font-family: din medium;
+    color: white;
+}
+.menu-list-btn-smiles {
+    background: url(../images/bookmark-missions.png) no-repeat 96.8% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39  100%);
+    height: 50px;
+    margin: -10px;
+    font-size: 14pt;
+    font-family: din medium;
+    color: white;
+}
+.x-label.mission-t .x-innerhtml:before {
+            content: url("../images/bullet-13.png");
+            position: absolute;
+            left: 18px;
+        }
+.x-label.mission-t .x-innerhtml {
+        padding-left: 20px;
+        text-align: justify;
+    }
+	.left-btn-mission{
+	width: 40px;
+	height: 100px;
+	float: left;
+	top: -92px;
+	position: relative;
+	background-image: url('../images/left-btn.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.right-btn-mission{
+	width: 40px;
+	height: 100px;
+	float: right;
+	top: -92px;
+	position: relative;
+	background-image: url('../images/right-btn.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.after-menu-list-btn-recieve   { background: url(../images/missions-box.png) no-repeat 98% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
+    height: 50px;
+    margin: -10px;
+    font-size: 14pt;
+    font-family: din medium;
+    color: white;
+	border-radius: 5px 5px 0px 0px;
+}

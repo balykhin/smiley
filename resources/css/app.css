@@ -142,7 +142,7 @@ input, textarea {
     box-align: center;
     -webkit-box-pack: center;
     box-pack: center;
-    background: rgba(0,0,0,0.3) center center no-repeat;
+    background: rgba(0,0,0,0.8) center center no-repeat;
 }
 
     .x-mask.x-mask-gray {
@@ -480,7 +480,7 @@ input, textarea {
 .x-img.x-img-background {
     background-repeat: no-repeat;
     background-position: center;
-    background-size: auto 100%;
+    background-size: auto;
 }
 
 .x-video {
@@ -2725,6 +2725,7 @@ html, body {
     position: absolute;
     width: 100%;
     height: 100%;
+    border: 4px;
 }
 
 .x-scroll-scroller {
@@ -2998,7 +2999,7 @@ html, body {
     }
 
 .x-form .x-scroll-container {
-    background-color: #eee;
+    background-color: transparent !important;
 }
 
     .x-form .x-scroll-container > .x-inner {
@@ -3028,13 +3029,16 @@ html, body {
 .x-field {
     display: -webkit-box;
     display: box;
-    min-height: 2.5em;
+    min-height: 1em;
     background: #fff;
+    border: 1px;
+    border-radius: 2px;
+    border-style: inset;
 }
 
     .x-field .x-field-input {
         position: relative;
-        min-width: 3.7em;
+        min-width: 1.3em;
     }
 
     .x-field .x-field-input, .x-field .x-input-el {
@@ -3118,7 +3122,7 @@ html, body {
 
 .x-input-el {
     padding: .4em;
-    min-height: 2.5em;
+    min-height: 1.3em;
     display: block;
     border-width: 0;
     background: transparent;
@@ -3150,14 +3154,15 @@ html, body {
 .x-checkmark-base, .x-field-checkbox .x-input-el:after, .x-field-checkbox .x-input-el:checked:after, .x-select-overlay .x-item-selected .x-list-item-inner:before, .x-select-overlay .x-item-selected .x-list-item-inner:after {
     content: "";
     position: absolute;
-    width: 1.4em;
-    height: 1.4em;
-    top: 50%;
-    left: auto;
+    width: 1em;
+    height: 1em;
+    top: 40%;
+    left: 0;
     right: 1.1em;
-    -webkit-mask-size: 1.4em;
+    -webkit-mask-size: 1em;
     -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAE+klEQVRoBe2aS28URxRGsY0h2FmwCQuEWLHjvUNgZAQ4PMwrEkIRIGEgySKwB8QvYIvEP+ANO0CwsJAA88wGBEKBZJUVQkJCQrwJ5nxN31Z5pnpc7e4ZT9vT0peqqanquqfurVvlIW3Dw8NTJtPTPplgxdoCnugeb3m45eEJtgJTJwJPGw8cP8V6TfmC4/Z/H9uEAAZsIdqHZiMBn2UNbvigSw8M2AIAD6PtqBPpmYe+8t1NoL9GLfYf3bTKKhiWo9PoA9KV0dUgn/tRh8tXWg/Hnj0KUB8yz1JNnjXUuhFd264A/f0O7dKXpQ7EIiTPfkKuVyvrSlx3US+KPF26cMbwxeg8Gg3W4LWHFd6rUUepQprQnI/Rh9A25AtjmqseHVkK7w59UxpgYFdg7wH0CwqFpWvyrKI23GZ7OWluwgqwOnqOobVoWh4Tm97DwCpBHUFp2TiUX3v5QVMnLQzMmqAsUVWWyta3UX/TAmOcwjjk6KmE830W7GbU0ZTAGKYEJdj3yAcQ2qYw1jmsG9e0KF8122UDw/SHwFX0EYWC+fpZGG/hPcn1sqk8jGHas+dQ6KXCB6o2g91IPfKsObZpgDGsqAT1hXdpz25A7QZqZU1gBsxFSh5zbEA9yniOU5R5PSvvCnYTSsLYtdkLTGf9uKdD/gS6gI6jPndgUXXe24OKSFAK4zsoSVA+G6uAGaC758/oBrIs+Zb6rbg9up35Xpa1jffpUqEEldezysbJ0VPLjhHADOpEfUiw2gtuUtAKDiGtYNXeqDWJ7zveYQnqM3V3nqx1s2s97xmRoLzzWqMgkLLaTVQJa0ZoJe+hXjRmaMYKVlslr2dlp5wgu4PsiTyszmg5qgVr0CqvoZW2WFlKxhV5gxJsdIMKtYH+Eew6yksoNLy0soJeFzqR+vEI9gx6h9wFzFoPSlA+25g3SlChnnUNU3grkWmxRg0n+ihBnUR5w9j2bCbPGjzzR3sgbc+6gL66TV4zkTHHEqSfZSzr+94V0mbzKUF1GkSWknG5QktGyoj7qBdVeZo2S1Ch2yUNXOMVUcEJyrcQjOeP4vzQCu9BpBtOck5T70HybN4w1iJcR7ouem9QPjhfG+On7EBPUNrKhrYLWp7+FS1FCjtdKvJ6VvM/Q9o2uWC1AHq60QB6hELh0voJ+im6iHReF+FZwe5HP/g8lrXNzuEfeeFu9C9Kg8nSrr9lBZ9ljK/v37xjL5qRFSytf3K15KXy9EH0D/JN3ui2Qj1rC5AAq4FnJvoDPUSNBnTnUy4YQF1maFHlCOAYuouJFN6PkWtEo+ryrH5sL2TPVi5UFXAMrfDegxrtae3ZfWh6paFFffYCx9BKZLtQo/a0YLXIhSUo3yKlAsfQ8vSBBkALtrCjxwdqbTWBY2glst9REee0Lw/ULUEZpFuOChxD1yuRybNbUV0SlAtq9SDgGFp7ushEJlhdKuqWoAzSLYOBHeidGPkc+cIztE2wA6iuCcoFtXom4Bha4f0nGmv2FqyOnoaFscFG9rsfQusYq0T2G8qayASrbdEdOlfR/TJ72AzAaHla5/QD9BnVCucvfK/fjZXtx8WzZneu/+WBf53XOb0G6XetHjQXyfv2vKLyH7qLLqMhJn5DOW5PLmBZDfRUilloGUoD/ovvXgIrT4/rkxt4XK0fw+TtYxhT6iEt4FK7L8D4locDFqnUXSadh78Bx5bEl2CLG+8AAAAASUVORK5CYII=');
-    margin-top: -0.7em;
+    margin-top: -0.5em;
+    margin-left: 0.2em;
 }
 
 .x-radiomark-base, .x-field-radio .x-input-el:before, .x-field-radio .x-input-el:after {
@@ -3175,6 +3180,7 @@ html, body {
 
 .x-field-checkbox .x-input-el {
     position: relative;
+    background-color: transparent;
 }
 
     .x-field-checkbox .x-input-el:after {
@@ -3763,37 +3769,6 @@ input[type="search"]::-webkit-search-cancel-button {
     border: 0.1em solid rgba(25,133,208,0.9);
 }
 
-.cust-btn {
-    font-family: din bold;
-    font-size: 0.8em;
-    width: 239px;
-    background-size: 100% 100%;
-    border: none;
-    margin: 0 auto;
-}
-
-    .cust-btn .x-button-label, .cust-btn .x-hasbadge .x-badge, .x-hasbadge .cust-btn .x-badge, .cust-btn .x-badge, .cust-btn .x-hasbadge .x-badge {
-        padding: 5px;
-    }
-
-.login-btn {
-    background: url(../images/login-btn.png) 0 0 no-repeat !important;
-    color: #414042;
-    text-shadow: 0px 1px 3px rgba(255,255,255,0.5);
-}
-
-.signup-btn {
-    background: url(../images/signup-btn.png) 0 0 no-repeat !important;
-    color: #FFF;
-    text-shadow: 0px 1px 3px rgba(23,23,23,0.5);
-}
-
-.fb-login-btn {
-    background: url(../images/fb-login-btn.png) 0 0 no-repeat !important;
-    color: #FFFFFF;
-    text-shadow: 0px 1px 3px rgba(23,23,23,0.5);
-}
-
 .x-button.x-button-simple, .x-toolbar .x-button.x-button-simple, .x-button.x-button-simple-round, .x-toolbar .x-button.x-button-simple-round, .x-button.x-button-simple-small, .x-toolbar .x-button.x-button-simple-small {
     border: 1px solid #ea960b;
     border-top-color: #f5a21a;
@@ -3914,37 +3889,6 @@ input[type="search"]::-webkit-search-cancel-button {
     clear: both;
 }
 
-.cust-btn {
-    font-family: din bold;
-    font-size: 0.8em;
-    width: 239px;
-    background-size: 100% 100%;
-    border: none;
-    margin: 0 auto;
-}
-
-    .cust-btn .x-button-label, .cust-btn .x-hasbadge .x-badge, .x-hasbadge .cust-btn .x-badge, .cust-btn .x-badge, .cust-btn .x-hasbadge .x-badge {
-        padding: 5px;
-    }
-
-.login-btn {
-    background: url(../images/login-btn.png) 0 0 no-repeat !important;
-    color: #414042;
-    text-shadow: 0px 1px 3px rgba(255,255,255,0.5);
-}
-
-.signup-btn {
-    background: url(../images/signup-btn.png) 0 0 no-repeat !important;
-    color: #FFF;
-    text-shadow: 0px 1px 3px rgba(23,23,23,0.5);
-}
-
-.fb-login-btn {
-    background: url(../images/fb-login-btn.png) 0 0 no-repeat !important;
-    color: #FFFFFF;
-    text-shadow: 0px 1px 3px rgba(23,23,23,0.5);
-}
-
 .x-button.x-button-simple, .x-toolbar .x-button.x-button-simple, .x-button.x-button-simple-round, .x-toolbar .x-button.x-button-simple-round, .x-button.x-button-simple-small, .x-toolbar .x-button.x-button-simple-small {
     border: 1px solid #ea960b;
     border-top-color: #f5a21a;
@@ -4039,7 +3983,7 @@ input {
 
 .cont-signup {
     position: relative;
-    background: #f0eceb url("../images/big-smiley.png") no-repeat center 30px;
+    background: #F4F3F1 url("../images/big-smiley.png") no-repeat center 30px;
 }
 
     .cont-signup:after {
@@ -4278,90 +4222,3 @@ input {
             color: #FFF;
             text-shadow: none;
         }
-
-.popup-panel {
-    width: 90%;
-    height: 90%;
-}
-
-.popup-top-panel {
-    background: -webkit-linear-gradient(top, #395693 0%, #24365d 100%);
-    border-radius: 4px 4px 0px 0px;
-    padding: 15px;
-    height: 50px;
-}
-
-    .popup-top-panel .x-panel-inner {
-        background-color: transparent !important;
-    }
-
-.popup-middle-panel {
-    background-color: #E2DDDA !important;
-    border-radius: 0px 0px 0px 0px !important;
-    padding: 15px;
-}
-
-    .popup-middle-panel .x-panel-inner {
-        background-color: transparent !important;
-    }
-
-.popup-buttom-panel {
-    background-color: #D7CFCD !important;
-    border-radius: 0px 0px 4px 4px !important;
-    padding: 15px;
-}
-
-    .popup-buttom-panel .x-panel-inner {
-        background-color: transparent !important;
-    }
-
-.popup-top-title {
-    font-size: 12pt;
-    font-family: din medium;
-    letter-spacing: 1px;
-    color: white;
-}
-
-.popup-rate-text {
-    font-size: 11pt;
-    font-family: din medium;
-}
-
-.popup-post-textarea {
-    margin: 5px 0px 5px 0px;
-    color: black;
-    border-radius: 8px;
-    border-style: inset;
-    font-size: 11pt;
-    font-family: din bold;
-    resize: none;
-}
-
-.popup-post-buttom-text {
-    font-size: 8pt;
-    font-family: din bold;
-}
-
-.popup-post-comment {
-    font-size: 8pt;
-    font-family: din bold;
-    margin-top: 5px;
-}
-
-.popup-post-comment-text {
-    font-size: 8pt;
-    font-family: franklin;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    word-wrap: break-word;
-}
-
-.popup-post-button {
-    background: url(../images/post.png) no-repeat 98% center;
-    background-color: #5D5351;
-    height: 50px;
-    margin: -10px;
-    font-size: 14pt;
-    font-family: din medium;
-    color: white;
-}
