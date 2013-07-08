@@ -116,15 +116,15 @@ Ext.define('smiley360.view.Login', {
                                 ui: 'action',
                                 tap: 'onMission'
                             },
-                            {
-                                xtype: 'button',
-                                style: 'background-color: #3f4b4e !important;',
-                                itemId: 'xMissionList',
-                                text: 'M_L',
-                                width: '50px',
-                                ui: 'action',
-                                tap: 'onMission_List'
-                            },
+                            //{
+                            //    xtype: 'button',
+                            //    style: 'background-color: #3f4b4e !important;',
+                            //    itemId: 'xMissionList',
+                            //    text: 'M_L',
+                            //    width: '50px',
+                            //    ui: 'action',
+                            //    tap: 'onMission_List'
+                            //},
                     ],
                 },
 		    ]
