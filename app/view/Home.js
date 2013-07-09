@@ -120,27 +120,37 @@ Ext.define('smiley360.view.Home', {
                                                     {
                                                         xtype: 'image',
                                                         src: 'resources/images/bullet.png',
-                                                        style: 'padding-left: 10px',
+                                                        style: 'padding-left: 10px;margin-top: 7px;',
+                                                        width: 15,
+                                                        height: 15,
                                                     },
 											        {
                                                         xtype: 'image',
                                                         src: 'resources/images/bullet.png',
-                                                        style: 'padding-left: 10px',
+                                                        style: 'padding-left: 10px;margin-top: 7px;',
+                                                        width: 15,
+                                                        height: 15,
 											},
                                             {
                                                 xtype: 'image',
                                                 src: 'resources/images/bullet-12.png',
-                                                style: 'padding-left: 10px;margin-top: -1px;',
+                                                style: 'padding-left: 10px;margin-top: 6px;',
+                                                width: 15,
+                                                height: 15,
                                             },
                                             {
                                                 xtype: 'image',
                                                 src: 'resources/images/bullet-12.png',
-                                                style: 'padding-left: 10px;margin-top: -1px;',
+                                                style: 'padding-left: 10px;margin-top: 6px;',
+                                                width: 15,
+                                                height: 15,
                                             },
                                             {
                                                 xtype: 'image',
                                                 src: 'resources/images/bullet-12.png',
-                                                style: 'padding-left: 10px;margin-top: -1px;',
+                                                style: 'padding-left: 10px;margin-top: 6px;',
+                                                width: 15,
+                                                height: 15,
                                             },
                                             ],
 											    
@@ -327,12 +337,12 @@ Ext.define('smiley360.view.Home', {
                     {
                         xtype: 'panel',
                         layout: 'vbox',
-                        flex:0.3,
+                        flex:0.45,
                         items:
                             [
                                 {
                                     xtype: 'container', layout: 'vbox',
-                                    style: 'font-family: franklin; text-align: right;',
+                                    style: 'font-family: franklin; text-align: right;',                                    
                                     items:
                                         [
                                             {
@@ -341,7 +351,7 @@ Ext.define('smiley360.view.Home', {
                                                 style: 'color: #333132; text-align: right; min-height: 60px; background-color:white;border-style: solid; border-color: white; border-radius: 3px; border-width: 2px;',
                                                 margin: '0px 20px 0px 20px',
                                                 cls: 'has-shadow',
-                                                dock: 'top',
+                                                docked: 'top',
                                                 items:
                                                     [
                                                             {
@@ -370,7 +380,7 @@ Ext.define('smiley360.view.Home', {
                                             {
                                                 xtype: 'container', layout: 'vbox',
                                                 //padding: '0px 20px',
-                                                dock: 'right',
+                                                docked: 'right',
                                                 style: 'color: white; font-family: franklin; font-size:1.4em; text-align: right;',
                                                 padding: '30px 10px',
                                                 items:
@@ -564,7 +574,7 @@ Ext.define('smiley360.view.Home', {
                                         style: 'background-color: #efecea; ',
 
                                         items: [
-											{
+                                            {
 											    xtype: 'carousel',
 											    direction: 'horizontal',
 											    style: 'background-color: #efecea;',
@@ -573,18 +583,18 @@ Ext.define('smiley360.view.Home', {
 
 											    defaults: {
 											        styleHtmlContent: true
-											    },
+                                                },
 											    width: '100%',
 											    height: 160,
-                                                
-											    items: [
-													{
-													    xtype: 'container',
+                                            
+                                            items: [
+                                                    {
+                                                xtype: 'container',
 													    layout: 'hbox',
 													    cls: 'cont-pad',
-													    items: [
-															
-															{
+                                                items: [
+                                                        
+									                {
 															    xtype: 'image',
 															    cls: 'item-img',
 															    margin: '0px -20px 0px -50px',
@@ -595,26 +605,26 @@ Ext.define('smiley360.view.Home', {
 															}
 													    ]
 													},											
-													
-											    ]
-											},
+									                    
+                                                ]
+                                            },
 											{
 											    xtype: 'panel',
 											    html: '<div class="left-btn-mission"></div><div class="right-btn-mission"></div>'
-											},
-                                            {
+                                    },
+                                    {
                                                 xtype: 'spacer',
                                                 style: 'background-color: #efecea; border-bottom: 1px dashed #d7cfcd;',
                                             height: 20,
                                             },
                                             
                                             {
-                                                xtype: 'container',
+                                        xtype: 'container',
                                                 //margin: '20px 25px',
                                                 style: 'background-color: #F4F3F1; padding: 40px 25px;',
                                                 layout: { type: 'vbox' },
-                                                items: [
-                                                    {
+                                        items: [
+                                            {
                                                         xtype: 'button',
                                                         itemId: 'recievebtn',
                                                         cls: 'menu-list-btn-recieve',
@@ -630,8 +640,8 @@ Ext.define('smiley360.view.Home', {
                                                                 }
                                                             }
                                                             
-                                                    },
-                                                    {
+                                                },
+                                                        {
                                                         xtype: 'panel',   
                                                         layout: 'vbox',
                                                         style: 'border-radius: 0px 0px 5px 5px; background-color:white; margin-top: 50px; margin-bottom: -30px;',
@@ -642,8 +652,8 @@ Ext.define('smiley360.view.Home', {
                                                         },
                                                         items:
                                                             [
-                                                                {
-                                                                    xtype: 'label',
+                                            {
+                                                        xtype: 'label',
                                                                     height: '3px',                                                                    
                                                                     style: 'background-color:#fba00a; margin: 0px 0px 0px 0px; '
                                                                 }, {
@@ -651,51 +661,51 @@ Ext.define('smiley360.view.Home', {
                                                                     html: 'THESE ITEMS ARE ON THE WAY',
                                                                     style: 'font-family: din bold; font-size:1em;',
                                                                     padding: '10px 20px',
-                                                                },
-                                                                {
-                                                                    xtype: 'label',
+                                                    },
+									                {
+									                    xtype: 'label',
                                                                     style: 'font-family: franklin; font-size:1.1em;',
                                                                     cls:'mission-t',
                                                                     html: '1 Campbell\'s Slow Kettle Soup',
                                                                     padding: '10px 20px',
-                                                                },
-                                                                {
+									                },
+                                    {
                                                                     xtype: 'label',
                                                                     style: 'font-family: franklin; font-size:1.1em;',
                                                                     cls: 'mission-t',
                                                                     html: 'Coupons',
                                                                     padding: '10px 20px',
-                                                                },
-                                                                {
+                                                },
+                                                        {
                                                                     xtype: 'label',
                                                                     style: 'font-family: franklin; font-size:1.1em;',
                                                                     cls: 'mission-t',
                                                                     html: 'Sharing Guide',
                                                                     padding: '10px 20px',
-                                                                },
-                                                            ],
-                                                    },
+                                                        },
+                                                ],
+                                            },
                                                     
-                                                    {
+                                            {
                                                         xtype: 'button',
                                                         itemId: 'recievebtn',
                                                         style: 'padding: 30px 0px 50px 0px; margin: 60px 0px;',
                                                         cls: 'menu-list-btn-new',
                                                         text: 'TRY NEW THINGS',
                                                     },
-                                                    {
+									                {
                                                         xtype: 'button',
                                                         itemId: 'recievebtn',
                                                         style: 'padding: 30px 0px 50px 0px; margin: -45px 0px 0px 0px;',
                                                         cls: 'menu-list-btn-smiles',
                                                         text: 'MISSION SMILES',
-                                                    },
+									                },
                                                 ],
                                             },
 
                                         ]
                                     },
-                                    
+									
                                     
 
 
@@ -747,7 +757,7 @@ Ext.define('smiley360.view.Home', {
                                                 style: 'color: #333132; text-align: right; min-height: 60px; background-color:white;border-style: solid; border-color: white; border-radius: 3px; border-width: 2px;',
                                                 margin: '0px 20px 0px 20px',
                                                 cls: 'has-shadow',
-                                                dock: 'top',
+                                                docked: 'top',
                                                 items:
                                                     [
                                                             {
@@ -776,7 +786,7 @@ Ext.define('smiley360.view.Home', {
                                             {
                                                 xtype: 'container', layout: 'vbox',
                                                 //padding: '0px 20px',
-                                                dock: 'right',
+                                                docked: 'right',
                                                 style: 'color: white; font-family: franklin; font-size:1.4em; text-align: right;',
                                                 padding: '30px 10px',
                                                 items:
@@ -856,7 +866,7 @@ Ext.define('smiley360.view.Home', {
                         ],
                         id: 'missionslist-cont',
                     },//ens strange container
-                    {
+            {
                         xtype: 'container',
                         layout: 'hbox',
                         id: 'missions-cont',
@@ -907,16 +917,16 @@ Ext.define('smiley360.view.Home', {
                                         style: 'padding: 10px 15px; border-bottom: 1px dashed #d7cfcd; background-color: #efecea;',
                                         flex: 1,
                                         items: [
-                                            {
+											{
                                                 xtype: 'container',
                                                 style: 'background-color: #efecea; padding-top: 15px;',
                                                 layout: {
                                                     type:'vbox',
                                                     align: 'middle',
-                                                },
-                                            
-                                            items: [
-                                                    {
+											    },
+                                                
+											    items: [
+													{
                                                         xtype: 'image',
                                                         style: 'padding: 20px 0px 0px 15px;background-color: #efecea; border-radius: 5px;',
                                                         cls: 'has-shadow',
@@ -934,43 +944,43 @@ Ext.define('smiley360.view.Home', {
 											
                                             },
                                             {
-                                                xtype: 'container',
+													    xtype: 'container',
                                                 layout: { type: 'vbox' },
                                                 flex: 4,
                                                 style: 'padding-left: 10px;',
-                                                items: [
+													    items: [
                                                     {
                                                         xtype: 'label',
                                                         html: 'I Just Joined Smiley360',
                                                         style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
-                                                        
+															
                                                     },
-									                {
+															{
 									                    xtype: 'label',
 									                    html: 'Participate in this digital mission and spread the word about Smiley to your friends, followers, readers and more. Give them a chance to join this exiting community, too! You will be handsomely rewarded. This is the first step to quality foe products and brand experiences from our partners.',
 									                    style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
-									                    
+													
 									                },
-                                                ]
-                                            },
+											    ]
+											},
                                         ]
-                                    },
-                                    {
-                                        xtype: 'container',
+											},
+                                            {
+                                                xtype: 'container',
                                         layout: { type: 'hbox' },
                                         style: 'padding: 10px 15px; border-bottom: 1px dashed #d7cfcd; background-color: #efecea;',
                                         flex: 1,
-                                        items: [
-                                            {
+                                                items: [
+                                                    {
                                                 xtype: 'container',
                                                 style: 'background-color: #efecea; padding-top: 15px;',
                                                 layout: {
                                                     type: 'vbox',
                                                     align: 'middle',
                                                 },
-                                                
+                                                            
                                                 items: [
-                                                        {
+                                                    {
                                                             xtype: 'image',
                                                             style: 'padding: 20px 0px 0px 0px;background-color: #efecea; border-radius: 5px;',
                                                             cls: 'has-shadow',
@@ -981,29 +991,29 @@ Ext.define('smiley360.view.Home', {
                                                 ],
 
                                             },
-                                            {
+                                                                {
                                                 xtype: 'container',
                                                 layout: { type: 'vbox' },
                                                 flex: 4,
                                                 style: 'padding-left: 10px;',
                                                 items: [
                                                     {
-                                                        xtype: 'label',
+                                                                    xtype: 'label',
                                                         html: 'Classic Taste',
                                                         style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
 
-                                                    },
-									                {
-									                    xtype: 'label',
+                                                                },
+                                                                {
+                                                                    xtype: 'label',
 									                    html: 'Give them a chance to join this exciting community, too!',
 									                    style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
 
-									                },
+                                                                },
                                                 ]
                                             },
                                         ]
                                     },
-                                    {
+                                                                {
                                         xtype: 'container',
                                         layout: { type: 'hbox' },
                                         style: 'padding: 10px 15px; border-bottom: 1px dashed #d7cfcd; background-color: #efecea;',
@@ -1015,21 +1025,21 @@ Ext.define('smiley360.view.Home', {
                                                 layout: {
                                                     type: 'vbox',
                                                     align: 'middle',
-                                                },
+                                                                },
 
                                                 items: [
-                                                        {
+                                                                {
                                                             xtype: 'image',
                                                             style: 'padding: 20px 0px 0px 0px;background-color: #efecea; border-radius: 5px;',
                                                             cls: 'has-shadow',
                                                             width: 100,
                                                             height: 100,
                                                             src: 'resources/images/secret-logo.png',
-                                                        },
-                                                ],
+                                                                },
+                                                            ],
 
-                                            },
-                                            {
+                                                    },
+                                                    {
                                                 xtype: 'container',
                                                 layout: { type: 'vbox' },
                                                 flex: 4,
@@ -1041,17 +1051,17 @@ Ext.define('smiley360.view.Home', {
                                                         style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
 
                                                     },
-									                {
+                                                    {
 									                    xtype: 'label',
 									                    html: 'Give them a chance to join this exciting community, too!',
 									                    style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
 
-									                },
+                                                    },
                                                 ]
                                             },
                                         ]
                                     },
-									
+                                    
 
 									//{
 									//    xtype: 'spacer',
@@ -1101,7 +1111,7 @@ Ext.define('smiley360.view.Home', {
                                                 style: 'color: #333132; text-align: right; min-height: 60px; background-color:white;border-style: solid; border-color: white; border-radius: 3px; border-width: 2px;',
                                                 margin: '0px 20px 0px 20px',
                                                 cls: 'has-shadow',
-                                                dock: 'top',
+                                                docked: 'top',
                                                 items:
                                                     [
                                                             {
@@ -1130,7 +1140,7 @@ Ext.define('smiley360.view.Home', {
                                             {
                                                 xtype: 'container', layout: 'vbox',
                                                 //padding: '0px 20px',
-                                                dock: 'right',
+                                                docked: 'right',
                                                 style: 'color: white; font-family: franklin; font-size:1.4em; text-align: right;',
                                                 padding: '30px 10px',
                                                 items:

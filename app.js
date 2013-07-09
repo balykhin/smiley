@@ -32,12 +32,15 @@ Ext.application({
         'Signup',
         'Home',
         'ForgetPassword',
-        'ShareToFacebook',
         'ShareToTwitter',
+        'ShareToFacebook',
+        'ShareToYouTube',
         'EditProfile',
         'Survey',
         'Missions',
-        'MissionList',
+        'Details',
+        'Offers',
+        'OffersDetails',
     ],
 
     icon: {
@@ -70,14 +73,20 @@ Ext.application({
             xtype: 'loginview'
         }
 
+        var offersView = {
+            xtype: 'offersview'
+        }
+        var offersdetailsView = {
+            xtype: 'offersdetailsview '
+        }
         var homeView = {
             xtype: 'homeview'
         }
+        var detailsView = {
+            xtype: 'detailsview'
+        }
         var missionsView = {
             xtype: 'missionsview'
-        }
-        var missionlistView = {
-            xtype: 'missionlistview'
         }
 
         var signupView = {
@@ -92,7 +101,7 @@ Ext.application({
             xtype: 'surveyview'
         }
         // Initialize the main view
-        Ext.Viewport.add([loginView, homeView, signupView, editprView, surveyView, missionsView, missionlistView]);
+        Ext.Viewport.add([loginView, homeView, signupView, editprView, surveyView, missionsView, detailsView, offersView, offersdetailsView]);
     },
 
     onUpdated: function () {

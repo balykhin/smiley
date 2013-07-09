@@ -11,7 +11,9 @@ Ext.define('smiley360.controller.Index', {
             shareToTwitterView: 'sharetotwitterview',
             surveyView: 'surveyview',
             missionsView: 'missionsview',
-            missionlistView: 'missionlistview',
+            detailsView: 'detailsview',
+            offersView: 'offersview',
+            offersdetailsView: 'offersview',
         },
         control: {
             loginView: {
@@ -19,8 +21,10 @@ Ext.define('smiley360.controller.Index', {
                 ShowSignupViewCommand: 'ShowSignupViewCommand',
                 ShowEditProfileViewCommand: 'ShowEditProfileViewCommand',
                 ShowSurveyViewCommand: 'ShowSurveyViewCommand',
-                onMissionListTapCommand: 'onMissionListTapCommand',
                 onMissionTapCommand: 'onMissionTapCommand',
+                onMissionDetailsTapCommand: 'onMissionDetailsTapCommand',
+                onOffersTapCommand: 'onOffersTapCommand',
+                onOffersDetailsTapCommand: 'onOffersDetailsTapCommand',
             },
             signupView: {
                 // The commands fired by the signup view.
@@ -46,7 +50,15 @@ Ext.define('smiley360.controller.Index', {
             {
                 backButtonCommandMissions: 'backButtonCommandMissions'
             },
-           
+            detailsView: {
+                backButtonCommandDetails: 'backButtonCommandDetails'
+            },
+            offersView: {
+                backButtonCommandOffers: 'backButtonCommandOffers'                
+            },
+            offersdetailsView:{
+                backButtonCommandOffersDetails: 'backButtonCommandOffersDetails'                
+            }
         }
     },
     
@@ -54,6 +66,36 @@ Ext.define('smiley360.controller.Index', {
     slideLeftTransition: { type: 'slide', direction: 'left' },
     slideRightTransition: { type: 'slide', direction: 'right' },
     // Commands
+    backButtonCommandDetails: function () {
+        //================================
+        console.log("");
+        //================================
+        Ext.Viewport.animateActiveItem(this.getLoginView(), this.slideLeftTransition);
+
+        //this.activateForgetPassword();
+    },
+    onOffersDetailsTapCommand: function () {
+        Ext.Viewport.animateActiveItem(this.getOffersDetailsView(), this.slideLeftTransition);
+    },
+    onOffersTapCommand: function () {
+        Ext.Viewport.animateActiveItem(this.getOffersView(), this.slideLeftTransition);
+    },
+    backButtonCommandOffers: function () {
+        //================================
+        console.log("");
+        //================================
+        Ext.Viewport.animateActiveItem(this.getHomeView(), this.slideLeftTransition);
+
+        //this.activateForgetPassword();
+    },
+    backButtonCommandOffersDetails: function () {
+        //================================
+        console.log("");
+        //================================
+        Ext.Viewport.animateActiveItem(this.getHomeView(), this.slideLeftTransition);
+
+        //this.activateForgetPassword();
+    },
     backButtonCommandMissions: function () {
         //================================
         console.log("");
@@ -69,11 +111,11 @@ Ext.define('smiley360.controller.Index', {
         //================================
         Ext.Viewport.animateActiveItem(this.getEditProfileView(), this.slideLeftTransition);
     },
-    onMissionListTapCommand: function() {
-        Ext.Viewport.animateActiveItem(this.getMissionListView(), this.slideLeftTransition);
-        //Ext.getCmp('missionlist_menu').hide();
-        //Ext.getCmp('missions_menu').hide();
-        Ext.Msg.alert('Mis!');
+    //onOffersDetailsTapCommand: function () {
+    //    Ext.Viewport.animateActiveItem(this.getDetailsView(), this.slideLeftTransition);
+    //},
+    onMissionDetailsTapCommand: function () {
+        Ext.Viewport.animateActiveItem(this.getDetailsView(), this.slideLeftTransition);
     },
     onMissionTapCommand: function() {
         Ext.Viewport.animateActiveItem(this.getMissionsView(), this.slideLeftTransition);
@@ -89,6 +131,18 @@ Ext.define('smiley360.controller.Index', {
         //================================
         Ext.Viewport.animateActiveItem(this.getHomeView(), this.slideLeftTransition);
 
+        var command={data: { login: '', password: '' } };
+        smiley360.services.signIn(command.data.login, command.data.password, function (response)
+        {
+        	if (response.success)
+        	{
+        		//provess/close view
+        	}
+        	else
+        	{
+				//show error on view
+        	}
+        });
         //this.activateForgetPassword();
     },
 

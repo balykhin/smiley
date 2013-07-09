@@ -3,33 +3,12 @@
     margin: 30px 0px;
 }
 
-.popup-top-twitter-panel {
-    background: -webkit-linear-gradient(top, #33b5d7 0%, #1f7085 100%);
+.popup-top-panel {
     border-radius: 4px 4px 0px 0px;
     padding: 15px;
 }
 
-    .popup-top-twitter-panel .x-panel-inner {
-        background-color: transparent !important;
-    }
-
-.popup-top-facebook-panel {
-    background: -webkit-linear-gradient(top, #395693 0%, #24365d 100%);
-    border-radius: 4px 4px 0px 0px;
-    padding: 15px;
-}
-
-    .popup-top-facebook-panel .x-panel-inner {
-        background-color: transparent !important;
-    }
-
-.popup-top-forgetpwd-panel {
-    background: -webkit-linear-gradient(top, #0090cc 0%, #00587c 100%);
-    border-radius: 4px 4px 0px 0px;
-    padding: 15px;
-}
-
-    .popup-top-forgetpwd-panel .x-panel-inner {
+    .popup-top-panel .x-panel-inner {
         background-color: transparent !important;
     }
 
@@ -66,24 +45,77 @@
     background-position: right !important;
 }
 
-.popup-rate-text {
+.popup-top-text {
     font-size: 11pt;
     font-family: din medium;
+    margin-bottom: 10px;
 }
 
 .popup-post-textarea {
     margin: 5px 0px 5px 0px;
     color: black;
+    resize: none;
+    border: 1px;
     border-radius: 8px;
     border-style: inset;
     font-size: 11pt;
     font-family: din bold;
-    resize: none;
 }
 
 .popup-post-bottom-text {
     font-size: 8pt;
     font-family: din bold;
+}
+
+.popup-checkbox {
+    border: none;
+    background-color: transparent !important;
+}
+
+    .popup-checkbox .x-input-el {
+        width: 20px;
+        height: 20px;
+        min-height: 0px;
+        padding: 0px;
+        border: 1px;
+        border-style: inset;
+        background-color: white;
+    }
+
+        .popup-checkbox .x-input-el:after {
+            background-color: transparent;
+        }
+
+        .popup-checkbox .x-input-el:checked:after {
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            width: 20px;
+            height: 20px;
+            margin: 0px;
+            background-color: #858f99;
+            -webkit-mask-size: 80% 55%;
+            -webkit-mask-image: url(../images/checkmark.png);
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+        }
+
+.popup-checkbox-checked-label {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 0px 30px;
+    font-size: 10pt;
+    font-family: din bold;
+    background-color: transparent !important;
+    color: #58595B;
+}
+
+.popup-checkbox-unchecked-label {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 0px 30px;
+    font-size: 10pt;
+    font-family: din bold;
+    background-color: transparent !important;
+    color: red;
 }
 
 .popup-checkbox-text {
@@ -111,13 +143,14 @@
     font-size: 10pt;
     font-family: din bold;
     word-wrap: break-word;
-    color: #58595b;
+    color: #58595B;
 }
 
 .popup-close-button {
     width: 25px;
     height: 25px;
     margin: -23px 0px 0px 15px;
+    background-size: contain !important;
     background-image: url(../images/close.png);
 }
 
@@ -145,6 +178,7 @@
     background-color: white;
     border-radius: 4px;
 }
+
     .popup-survey-innerpanel .x-innerhtml {
         height: 100%;
     }
@@ -154,6 +188,23 @@
     height: 100%;
     overflow: hidden;
     -ms-overflow: hidden;
+}
+
+/********************************************************************************************/
+.forgetpwd-background {
+    background: -webkit-linear-gradient(top, #0090CC 0%, #00587C 100%);
+}
+
+.twitter-background {
+    background: -webkit-linear-gradient(top, #33B5D7 0%, #1F7085 100%);
+}
+
+.facebook-background {
+    background: -webkit-linear-gradient(top, #395693 0%, #24365d 100%);
+}
+
+.youtube-background {
+    background: -webkit-linear-gradient(top, #E5E5E5 0%, #8C8C8C 100%);
 }
 /********************************************************************************************/
 .cust-btn {
@@ -248,6 +299,7 @@
     padding-bottom: 10px;
     padding-top: 10px;
 }
+
 .menu-list-btn-recieve {
     background: url(../images/missions-box.png) no-repeat 98% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
     height: 50px;
@@ -256,56 +308,64 @@
     font-family: din medium;
     color: white;
 }
+
 .menu-list-btn-new {
-    background: url(../images/code.png) no-repeat 97.2% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39  100%);
+    background: url(../images/code.png) no-repeat 97.2% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
     height: 50px;
     margin: -10px;
     font-size: 14pt;
     font-family: din medium;
     color: white;
 }
+
 .menu-list-btn-smiles {
-    background: url(../images/bookmark-missions.png) no-repeat 96.8% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39  100%);
+    background: url(../images/bookmark-missions.png) no-repeat 96.8% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
     height: 50px;
     margin: -10px;
     font-size: 14pt;
     font-family: din medium;
     color: white;
 }
+
 .x-label.mission-t .x-innerhtml:before {
-            content: url("../images/bullet-13.png");
-            position: absolute;
-            left: 18px;
-        }
+    content: url("../images/bullet-13.png");
+    position: absolute;
+    left: 18px;
+}
+
 .x-label.mission-t .x-innerhtml {
-        padding-left: 20px;
-        text-align: justify;
-    }
-	.left-btn-mission{
-	width: 40px;
-	height: 100px;
-	float: left;
-	top: -92px;
-	position: relative;
-	background-image: url('../images/left-btn.png');
-	background-position: center center;
-	background-repeat: no-repeat;
+    padding-left: 20px;
+    text-align: justify;
 }
-.right-btn-mission{
-	width: 40px;
-	height: 100px;
-	float: right;
-	top: -92px;
-	position: relative;
-	background-image: url('../images/right-btn.png');
-	background-position: center center;
-	background-repeat: no-repeat;
+
+.left-btn-mission {
+    width: 40px;
+    height: 100px;
+    float: left;
+    top: -92px;
+    position: relative;
+    background-image: url('../images/left-btn.png');
+    background-position: center center;
+    background-repeat: no-repeat;
 }
-.after-menu-list-btn-recieve   { background: url(../images/missions-box.png) no-repeat 98% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
+
+.right-btn-mission {
+    width: 40px;
+    height: 100px;
+    float: right;
+    top: -92px;
+    position: relative;
+    background-image: url('../images/right-btn.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.after-menu-list-btn-recieve {
+    background: url(../images/missions-box.png) no-repeat 98% center, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
     height: 50px;
     margin: -10px;
     font-size: 14pt;
     font-family: din medium;
     color: white;
-	border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
 }
