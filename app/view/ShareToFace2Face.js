@@ -1,6 +1,6 @@
-﻿Ext.define('smiley360.view.ShareToFacebook', {
+﻿Ext.define('smiley360.view.ShareToFace2Face', {
     extend: 'Ext.Container',
-    alias: 'widget.sharetofacebookview',
+    alias: 'widget.sharetoface2faceview',
     requires: ['Ext.Rating', 'Ext.Anim'],
     config: {
         modal: true,
@@ -26,16 +26,16 @@
             }, {
                 xtype: 'panel',
                 layout: 'hbox',
-                cls: 'popup-top-panel facebook-background',
+                cls: 'popup-top-panel face2face-background',
                 items: [{
                     xtype: 'label',
                     cls: 'popup-title-text',
-                    html: 'Earn 5 Smiles Sharing on Facebook',
+                    html: 'Earn 5 Smiles Sharing on Face2Face',
                 }, {
                     xtype: 'image',
                     docked: 'right',
                     cls: 'popup-title-image',
-                    src: 'resources/images/fb.png',
+                    src: 'resources/images/share-f2f.png',
                 }],
             }, {
                 xtype: 'panel',
@@ -44,79 +44,65 @@
             }, {
                 xtype: 'panel',
                 cls: 'popup-middle-panel',
+                style: 'padding-bottom: 0px;',
                 items: [{
+                    xtype: 'selectfield',
+                    id: 'xPeoplesSelector',
+                    autoSelect: false,
+                    value: null,
+                    required: true,
+                    placeHolder: 'How many peolpe you talked to?',
+                    cls: 'popup-input popup-input-selector',
+                    options: [
+                        //{ text: '', value: '' },
+                        { text: '1', value: '1' },
+                        { text: '2', value: '2' },
+                        { text: '3', value: '3' }
+                    ]
+                }, {
+                    xtype: 'textareafield',
+                    id: 'xReviewText',
+                    maxRows: 5,
+                    //maxLength: 84,
+                    required: true,
+                    placeHolder: 'Write your review',
+                    cls: 'popup-input popup-input-text',
+                }, {
                     xtype: 'rating',
+                    id: 'xRateLabel',
                     label: 'Rate the product:',
                     labelWidth: 'auto',
                     itemsCount: 5,
                     itemCls: 'x-rating-star',
                     itemHoverCls: 'x-rating-star-hover',
-                }, {
-                    xtype: 'textareafield',
-                    maxRows: 5,
-                    minLength: 70,
-                    id: 'xPostText',
-                    cls: 'popup-input popup-input-text',
                     listeners: {
-                        keyup: function () {
-                            var postLenght = this.getValue().length;
+                        change: function (rate, value, currentValue) {
+                            var logMessage = Ext.String.format(
+                                'Rating changed: { value: {0}, currentValue: {1} }', value, currentValue);
 
-                            Ext.getCmp('xPostCountLabel').setHtml(postLenght.toString());
+                            console.log(logMessage);
+
+                            if (value < 0) {
+                                this.addCls('x-rating-field-required');
+
+                                Ext.getCmp('xReviewText').addCls('popup-input-required');
+                                Ext.getCmp('xPeoplesSelector').addCls('popup-input-required');
+                            }
+                            else {
+                                this.removeCls('x-rating-field-required');
+
+                                Ext.getCmp('xReviewText').removeCls('popup-input-required');
+                                Ext.getCmp('xPeoplesSelector').removeCls('popup-input-required');
+                            }
                         }
                     }
-                }, {
-                    xtype: 'panel',
-                    layout: 'hbox',
-                    items: [{
-                        xtype: 'label',
-                        cls: 'popup-post-bottom-text',
-                        style: 'color: #878789;',
-                        html: 'Post must contain at least 70 characters.',
-                    }, {
-                        xtype: 'label',
-                        id: 'xPostCountLabel',
-                        docked: 'right',
-                        cls: 'popup-post-bottom-text',
-                        html: '0',
-                    }],
-                }],
-            }, {
-                xtype: 'panel',
-                cls: 'popup-bottom-panel',
-                items: [{
-                    xtype: 'panel',
-                    layout: 'hbox',
-                    defaults: {
-                        width: '50%',
-                        labelAlign: 'right',
-                        labelWidth: '100%',
-                    },
-                    items: [{
-                        xtype: 'checkboxfield',
-                        label: 'Post to Profile Wall.',
-                        labelCls: 'popup-checkbox-grey-label',
-                        cls: 'popup-checkbox',
-                    }, {
-                        xtype: 'checkboxfield',
-                        label: 'Post to Brand Page.',
-                        labelCls: 'popup-checkbox-grey-label',
-                        cls: 'popup-checkbox',
-                    }],
-                }, {
-                    xtype: 'label',
-                    cls: 'popup-post-comment',
-                    html: 'The following text will automatically be added to your post:',
-                }, {
-                    xtype: 'label',
-                    cls: 'popup-post-comment-text',
-                    html: 'Try Campbell\'s Slow Kettle Style Soups and be sure to use this $1.00 off coupon! http://bit.ly/YxVW1D',
                 }],
             }, {
                 xtype: 'panel',
                 cls: 'popup-button-panel',
                 items: [{
                     xtype: 'button',
-                    text: 'POST',
+                    text: 'SUBMIT',
                     icon: 'resources/images/share-initial.png',
                     iconAlign: 'right',
                     iconCls: 'popup-post-icon',
@@ -124,7 +110,7 @@
                     cls: 'popup-post-button',
                     listeners: {
                         tap: function () {
-                            Ext.getCmp('xView').doShare();
+                            //Ext.getCmp('xView').doShare();
                         }
                     },
                 }],

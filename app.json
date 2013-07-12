@@ -66,16 +66,16 @@
      *
      *      }
      */
-    "css": [
-        {
+    "css": [{
             "path": "resources/css/app.css",
             "update": "delta"
-        },
-		{
+        }, {
+            "path": "resources/css/rating.css",
+            "update": "delta"
+        }, {
             "path": "resources/css/smiley.css",
             "update": "delta"
-        }
-    ],
+        }],
 
     /**
      * Used to automatically generate cache.manifest (HTML 5 application cache manifest) file when you build

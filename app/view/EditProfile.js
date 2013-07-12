@@ -4,6 +4,8 @@ Ext.define('smiley360.view.EditProfile', {
     alias: 'widget.editprofileview',
     cls: 'normal-page-bg',
     requires: [
+        'Ext.field.DatePicker',
+        'Ext.field.Select',
         'Ext.TitleBar',
         'Ext.Video'
     ],
@@ -90,7 +92,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                {
                                                    xtype: 'image',
                                                    //src: '',
-                                                   style: 'border-style: solid; border-color: white; border-radius: 3px; border-width: 2px;',
+                                                   style: 'min-width: 60px;border-style: solid; border-color: white; border-radius: 3px; border-width: 2px;',
                                                    flex: 1,
                                                    cls: 'has-shadow',
                                                },
@@ -143,6 +145,9 @@ Ext.define('smiley360.view.EditProfile', {
 					                                        itemId: 'calDob',
 					                                        name: 'calDob',
 					                                        ui: 'light',
+					                                        picker: {
+					                                            yearFrom: 1900,
+					                                        },
 					                                        placeHolder: 'Date of birth',
 					                                        required: true
 					                                    },
@@ -153,7 +158,6 @@ Ext.define('smiley360.view.EditProfile', {
 					                                        cls: 'cust-input cust-input-ddl',
 					                                        placeHolder: 'Gender',
 					                                        options: [
-			                                                    { text: '', value: '' },
 			                                                    { text: 'Male', value: 'male' },
 			                                                    { text: 'Female', value: 'female' }
 					                                        ]
@@ -324,7 +328,6 @@ Ext.define('smiley360.view.EditProfile', {
                                               					    cls: 'cust-input cust-input-ddl',
                                               					    placeHolder: 'Single',
                                               					    options: [
-                                                                        { text: '', value: '' },
                                                                         { text: 'Single', value: 'Single' },
                                                                         { text: 'Married', value: 'Married' }
                                               					    ]
@@ -357,7 +360,6 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                    
                                                                                },
                                                                     options: [
-			                                                            { text: '', value: '' },
 			                                                            { text: 'Yes, I have children.', value: 'yes' },
 			                                                            { text: 'No, I haven\'t children.', value: 'no' }
                                                                     ]
@@ -398,6 +400,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                     //style: 'my-ddl-color',
                                                                     cls: 'cust-input cust-input-ddl',
                                                                     placeHolder: 'Race / Ethnicity',
+                                                                    id:'race_etn',
                                                                     listeners:
                                                                                 {
                                                                                     element: 'element',
@@ -406,6 +409,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                     },
                                                                                     mousedown: function () {
                                                                                         this.setValue('Race / Ethnicity');
+                                                                                        this.setReadOnly(true);
                                                                                         //this.setCls('cust-input cust-input-ddl my-ddl-color');
                                                                                         first_time = false;
                                                                                         if (make_hide == false) {
@@ -463,7 +467,38 @@ Ext.define('smiley360.view.EditProfile', {
                                                                             cls: 'my-checkbox-label',
                                                                             style: 'font-family: \'franklin\';font-size: 0.8em; color: black; background-color:transparent; padding-left: 120px;',
                                                                             margin: '-19px 0px 0px 0px',
-                                                                            
+                                                                            listeners: {
+                                                                                element: 'element',
+                                                                                tap: function () {
+                                                                                        Ext.getCmp('race_etn').setValue('Race / Ethnicity');
+                                                                                        Ext.getCmp('race_etn').setReadOnly(true);
+                                                                                        //this.setCls('cust-input cust-input-ddl my-ddl-color');
+                                                                                        first_time = false;
+                                                                                        if (make_hide == false) {
+                                                                                            s_hide.show();
+                                                                                            make_hide = true;
+                                                                                            field_about.setValue(' ');
+                                                                                            field_url.setValue(' ');
+                                                                                            field_about.setReadOnly(true);                                                                                            
+                                                                                            field_url.setReadOnly(true);
+                                                                                            field_about.setPadding('0px 20px');
+                                                                                            field_url.setPadding('0px 20px');
+                                                                                        }
+                                                                                        else {
+                                                                                            s_hide.hide();
+                                                                                            //Ext.Msg.alert('dfvgd');
+                                                                                            make_hide = false;
+                                                                                            field_about.setValue('');
+                                                                                            field_url.setValue('');
+                                                                                            field_url.setReadOnly(false);
+                                                                                            field_url.setReadOnly(false);
+                                                                                            field_about.setPadding('0px 0px');
+                                                                                            field_url.setPadding('0px 0px');
+                                                                                        };
+                                                                                        //Ext.Msg.alert('Hidden!');
+                                                                                            
+                                                                                },
+                                                                            }
                                                                         },
                                                                         {
                                                                             xtype: 'panel',
@@ -475,6 +510,8 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                     {
                                                                                         xtype: 'checkboxfield',
                                                                                         name: 'afr-american-ch',
+                                                                                        //labelCls: 'popup-checkbox-grey-label',
+                                                                                        cls: 'popup-checkbox',
                                                                                         height: 23,
                                                                                         width: 23,
                                                                                     },
@@ -499,6 +536,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                     {
                                                                                         xtype: 'checkboxfield',
                                                                                         name: 'asian-ch',
+                                                                                        cls: 'popup-checkbox',
                                                                                         height: 23,
                                                                                         width: 23,
                                                                                     },
@@ -522,6 +560,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                 [
                                                                                     {
                                                                                         xtype: 'checkboxfield',
+                                                                                        cls: 'popup-checkbox',
                                                                                         name: 'white-caucasian-ch',
                                                                                         height: 23,
                                                                                         width: 23,
@@ -546,6 +585,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                     {
                                                                                         xtype: 'checkboxfield',
                                                                                         name: 'hispanic-ch',
+                                                                                        cls: 'popup-checkbox',
                                                                                         height: 23,
                                                                                         width: 23,
                                                                                     },
@@ -568,6 +608,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                 [
                                                                                     {
                                                                                         xtype: 'checkboxfield',
+                                                                                        cls: 'popup-checkbox',
                                                                                         name: 'navite-amer-alaska-ch',
                                                                                         height: 23,
                                                                                         width: 23,
@@ -591,6 +632,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                 [
                                                                                     {
                                                                                         xtype: 'checkboxfield',
+                                                                                        cls: 'popup-checkbox',
                                                                                         name: 'not-specified-ch',
                                                                                         height: 23,
                                                                                         width: 23,

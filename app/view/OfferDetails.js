@@ -1,7 +1,7 @@
 var hide_panel, first_time, dock_panel;
-Ext.define('smiley360.view.Details', {
+Ext.define('smiley360.view.OfferDetails', {
     extend: 'Ext.tab.Panel',
-    alias: 'widget.detailsview',
+    alias: 'widget.offerdetailsview',
     cls: 'normal-page-bg',
     requires: [
         'Ext.carousel.Carousel',
@@ -21,7 +21,7 @@ Ext.define('smiley360.view.Details', {
                 items: [
                 	{
                 	    xtype: 'toolbar',
-                	    title: 'MISSIONS',
+                	    title: 'OFFERS',
                 	    cls: 'home-title',
                 	    docked: 'top',
                 	    ui: 'light',
@@ -126,13 +126,13 @@ items: [
                         },
                         width: '100%',
                         height: 160,
-
+                                            
                         items: [
                                 {
                                     xtype: 'container',
                                     layout: 'vbox',
                                     items: [
-
+                                                        
                                         {
                                             xtype: 'image',
                                             //margin: '0px -20px 0px -50px',
@@ -141,8 +141,8 @@ items: [
                                             height: 160
                                         }
                                     ]
-                                },
-
+                                },											
+									                    
                         ]
                     },
                     {
@@ -158,22 +158,26 @@ items: [
                     {
                         xtype: 'container',
                         //margin: '20px 25px',
-                        style: 'background-color: #F4F3F1; padding: 40px 25px;',
+                        cls: 'has-shadow',
+                        style: 'background-color: #efecea; padding: 40px 25px 15px 25px;',
                         layout: { type: 'vbox' },
                         items: [
                             {
                                 xtype: 'button',
-                                itemId: 'recievebtn',
-                                cls: 'menu-list-btn-recieve',
+                                //itemId: 'recievebtn',
+                                cls: 'offers-offer-btn',
                                 style: 'padding: 30px 0px 50px 0px; margin: -50px 0px; margin-top: -15px 0px;',
-                                text: 'WHAT YOU\'LL RECIEVE',
+                                text: 'OFFER',
+                                //icon: 'resources/images/missions-box.png',
+                                //iconAlign: 'right',
+                                //iconCls: 'icon-recieve', 
                                 listeners:
                                     {
                                         tap: function ()
                                         {
-                                            if (Ext.getCmp('recieve_panel').getHidden() == true)
-                                            { Ext.getCmp('recieve_panel').show(); this.setCls('after-menu-list-btn-recieve'); }
-                                            else { Ext.getCmp('recieve_panel').hide(); this.setCls('menu-list-btn-recieve'); }
+                                            if (Ext.getCmp('offer_offer_panel').getHidden() == true)
+                                            { Ext.getCmp('offer_offer_panel').show(); this.setCls('after-offers-offer-btn'); }
+                                            else { Ext.getCmp('offer_offer_panel').hide(); this.setCls('offers-offer-btn'); }
                                         }
                                     }
                                                             
@@ -182,70 +186,162 @@ items: [
                                             xtype: 'panel',   
                                             layout: 'vbox',
                                             cls: 'has-shadow',
-                                            style: 'border-radius: 0px 0px 5px 5px; background-color: #e2ddda; margin-top: 50px; margin-bottom: -30px;',
-                                            id: 'recieve_panel',
+                                            style: 'background-color:#e2ddda; border-radius: 0px 0px 5px 5px; background-color:white; margin-top: 50px; margin-bottom: -30px;',
+                                            id: 'offer_offer_panel',
                                             listeners: {
                                                 initialize: function()
                                                 {this.hide();}
                                             },
                                             items:
                                                 [
-                                {
-                                    xtype: 'label',
-                                    height: '3px',                                                                    
-                                    style: 'background-color:#fba00a; margin: 0px 0px 0px 0px; '
-                                }, {
-                                    xtype: 'label',
-                                    html: 'THESE ITEMS ARE ON THE WAY:',
-                                    style: 'background-color: #e2ddda;font-family: din bold; font-size:1em;',
-                                    padding: '10px 20px',
-                                },
+                                                {
+                                                    xtype: 'label',
+                                                    height: '3px',                                                                    
+                                                    style: 'background-color:#fba00a; margin: 0px 0px 0px 0px; '
+                                                }, 
                                         {
                                             xtype: 'label',
-                                            style: 'font-family: franklin; font-size:1.1em;',
-                                            cls:'mission-t',
-                                            html: '1 Campbell\'s Slow Kettle Soup',
+                                            style: 'background-color:#e2ddda; font-family: din medium; font-size:1.1em;',
+                                            html: 'You will recieve one Campbell\'s Go&trade; soup of your choice, fun items to use when sharing your thoughts about Campbell\'s Go&trade; soup and 10 coupons to share with your friends and family for $2 off Campbell\'s Go&trade; soup.',
                                             padding: '10px 20px',
                                         },
-                        {
-                            xtype: 'label',
-                            style: 'font-family: franklin; font-size:1.1em;',
-                            cls: 'mission-t',
-                            html: 'Coupons',
-                            padding: '10px 20px',
-                        },
-                                            {
-                                                xtype: 'label',
-                                                style: 'font-family: franklin; font-size:1.1em;',
-                                                cls: 'mission-t',
-                                                html: 'Sharing Guide',
-                                                padding: '10px 20px',
-                                            },
                                                 ],
                                         },
                                                     
                             {
                                 xtype: 'button',
-                                itemId: 'recievebtn',
+                                //itemId: 'recievebtn',
                                 style: 'padding: 30px 0px 50px 0px; margin: 60px 0px;',
-                                cls: 'menu-list-btn-new',
-                                text: 'TRY NEW THINGS',
+                                cls: 'offers-mission-btn',
+                                text: 'MISSION',
+                                listeners:
+                                    {
+                                        tap: function () {
+                                            if (Ext.getCmp('offer_mission_panel').getHidden() == true)
+                                            { Ext.getCmp('offer_mission_panel').show(); this.setCls('after-offers-mission-btn'); }
+                                            else { Ext.getCmp('offer_mission_panel').hide(); this.setCls('offers-mission-btn'); }
+                                        }
+                                    }
+                            },
+                            {
+                                xtype: 'panel',
+                                layout: 'vbox',
+                                cls: 'has-shadow',
+                                style: 'background-color:#e2ddda; border-radius: 0px 0px 5px 5px; background-color:white; margin-top: -60px; margin-bottom: 60px;',
+                                id: 'offer_mission_panel',
+                                listeners: {
+                                    initialize: function ()
+                                    { this.hide(); }
+                                },
+                                items:
+                                    [
+                                    {
+                                        xtype: 'label',
+                                        height: '3px',
+                                        style: 'background-color:#fba00a; margin: 0px 0px 0px 0px; '
+                                    },
+                            {
+                                xtype: 'label',
+                                style: 'background-color:#e2ddda; font-family: din medium; font-size:1.1em;',
+                                html: 'Try Campbell\'s Go&trade; soup once and you\'ll be hooked! Once you\'ve tried it, share your experience with your social circle both on and offline using your talk bubble and disguise accessories that are in your Smiley kit. Let your inner foodie shine bright and all about Campbell\'s Go&trade; soup. ',
+                                padding: '10px 20px',
+                            },
+                                    ],
                             },
                                     {
                                         xtype: 'button',
-                                        itemId: 'recievebtn',
+                                        //itemId: 'recievebtn',
                                         style: 'padding: 30px 0px 50px 0px; margin: -45px 0px 0px 0px;',
-                                        cls: 'menu-list-btn-smiles',
-                                        text: 'MISSION SMILES',
+                                        cls: 'offers-recieve-btn',
+                                        text: 'WHAT YOU\'LL RECIEVE',
+                                        listeners:
+                                    {
+                                        tap: function () {
+                                            if (Ext.getCmp('offer_recieve_panel').getHidden() == true)
+                                            { Ext.getCmp('offer_recieve_panel').show(); this.setCls('after-offers-recieve-btn'); }
+                                            else { Ext.getCmp('offer_recieve_panel').hide(); this.setCls('offers-recieve-btn'); }
+                                        }
+                                    }
                                     },
-                        ],
+                                    {
+                                        xtype: 'panel',
+                                        layout: 'vbox',
+                                        cls: 'has-shadow',
+                                        style: 'background-color:#e2ddda; border-radius: 0px 0px 5px 5px; background-color:white;',
+                                        id: 'offer_recieve_panel',
+                                        listeners: {
+                                            initialize: function ()
+                                            { this.hide(); }
+                                        },
+                                        items:
+                                            [
+                            {
+                                xtype: 'label',
+                                height: '3px',
+                                style: 'background-color:#fba00a; margin: 0px 0px 0px 0px; '
+                            }, {
+                                xtype: 'label',
+                                html: 'JOIN THIS MISSION AND RECIEVE:',
+                                style: 'background-color:#e2ddda; font-family: din bold; font-size:1em;',
+                                padding: '10px 20px',
+                            },
+                                    {
+                                        xtype: 'label',
+                                        style: 'background-color:#e2ddda;font-family: franklin; font-size:1.1em;',
+                                        cls: 'mission-t',
+                                        html: '1 Campbell\'s Go&trade; soup in the bold flavour that you chose',
+                                        padding: '10px 20px',
+                                    },
+                    {
+                        xtype: 'label',
+                        style: 'background-color:#e2ddda;font-family: franklin; font-size:1.1em;',
+                        cls: 'mission-t',
+                        html: 'Fun items to use when sharing about your Campbell\'s GO&trade; experience',
+                        padding: '10px 20px',
                     },
-
+                                        {
+                                            xtype: 'label',
+                                            style: 'background-color:#e2ddda;font-family: franklin; font-size:1.1em;',
+                                            cls: 'mission-t',
+                                            html: '10 coupons to share with your friends for $2 off GoCampbell\'s Go&trade; soup',
+                                            padding: '10px 20px',
+                                        },
+                                        {
+                                            xtype: 'label',
+                                            style: 'background-color:#e2ddda;font-family: franklin; font-size:1.1em;',
+                                            cls: 'mission-t',
+                                            html: '$1 off Digital Coupon to share',
+                                            padding: '10px 20px',
+                                        },
+                                        {
+                                            xtype: 'label',
+                                            style: 'background-color:#e2ddda;font-family: franklin; font-size:1.1em;',
+                                            cls: 'mission-t',
+                                            html: 'Smiley360 Sharing Guide',
+                                            padding: '10px 20px',
+                                        },
+                                            ],
+                                    },
+                              {
+                                  xtype: 'label',
+                                  html: 'NO THANKS, REMOVE THIS OFFER.',
+                                  style: 'text-decoration:underline; background-color:#efecea; font-family: din bold; font-size:1em;',
+                                  padding: '20px 30px',
+                              },
+                        ],
+                    
+                    },
+                    
+            {
+                xtype: 'button',
+                style: 'margin: 10px 10px 0px 10px;',
+                cls: 'accept-btn',
+                text: 'ACCEPT THIS OFFER',
+            },
                 ]
             },
 									
-                                    
-
+            
 
             //{
             //    xtype: 'spacer',
@@ -377,7 +473,7 @@ items: [
     },
     onBackButtonTap: function () {
         console.log('back button tapped');
-        this.fireEvent('backButtonCommandDetails', this);
+        this.fireEvent('backButtonCommandOfferDetails', this);
     },
     onGoToProfileTap: function () {
         console.log('GoToProfile button tapped');

@@ -4,6 +4,7 @@ Ext.define('smiley360.view.Missions', {
     alias: 'widget.missionsview',
     cls: 'normal-page-bg',
     requires: [
+        'Ext.carousel.Carousel',
         'Ext.TitleBar',
         'Ext.Video'
     ],
@@ -291,7 +292,7 @@ Ext.define('smiley360.view.Missions', {
                                                 style: 'color: #333132; text-align: right; min-height: 60px; background-color:white;border-style: solid; border-color: white; border-radius: 3px; border-width: 2px;',
                                                 margin: '0px 20px 0px 20px',
                                                 cls: 'has-shadow',
-                                                dock: 'top',
+                                                docked: 'top',
                                                 items:
                                                     [
                                                             {
@@ -316,7 +317,7 @@ Ext.define('smiley360.view.Missions', {
                                             {
                                                 xtype: 'container', layout: 'vbox',
                                                 //padding: '0px 20px',
-                                                dock: 'right',
+                                                docked: 'right',
                                                 style: 'color: white; font-family: franklin; font-size:1.4em; text-align: right;',
                                                 padding: '30px 10px',
                                                 items:

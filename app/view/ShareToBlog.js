@@ -1,6 +1,6 @@
-﻿Ext.define('smiley360.view.ShareToYouTube', {
+﻿Ext.define('smiley360.view.ShareToBlog', {
     extend: 'Ext.Container',
-    alias: 'widget.sharetoyoutubeview',
+    alias: 'widget.sharetoblogview',
     config: {
         modal: true,
         centered: true,
@@ -25,33 +25,36 @@
             }, {
                 xtype: 'panel',
                 layout: 'hbox',
-                cls: 'popup-top-panel youtube-background',
+                cls: 'popup-top-panel blog-background',
                 items: [
                     {
                         xtype: 'label',
                         cls: 'popup-title-text',
-                        html: 'Earn 5 Smiles Sharing on YouTube',
+                        html: 'Earn 5 Smiles Sharing on your Blog',
                     }, {
                         xtype: 'image',
                         docked: 'right',
                         cls: 'popup-title-image',
-                        src: 'resources/images/youtube_share.png',
+                        src: 'resources/images/share-blog.png',
                     }],
             }, {
                 xtype: 'panel',
+                id: 'xMiddlePanel',
                 cls: 'popup-middle-panel',
                 items: [{
                     xtype: 'label',
                     cls: 'popup-top-text',
-                    html: 'Submit a YouTube video URL',
+                    html: 'Submit a share-blog URL',
                 }, {
                     xtype: 'textfield',
                     required: true,
+                    id: 'xBlogUrlField',
                     cls: 'cust-input',
-                    value: 'www.youttube.com/',
+                    value: 'www.wordpress.com/sampleblog',
                 }]
             }, {
                 xtype: 'panel',
+                id: 'xBottomPanel',
                 cls: 'popup-bottom-panel',
                 items: [{
                     xtype: 'checkboxfield',
@@ -59,24 +62,26 @@
                     labelAlign: 'right',
                     labelWidth: '100%',
                     labelWrap: true,
-                    labelCls: 'popup-checkbox-red-label',
+                    labelCls: 'popup-checkbox-grey-label',
                     //inputCls: 'popup-checkbox-input',
                     cls: 'popup-checkbox',
-                    listeners: {
-                        check: function () {
-                            this.setLabelCls('popup-checkbox-grey-label');
-                        },
-                        uncheck: function () {
-                            this.setLabelCls('popup-checkbox-red-label');
-                        }
-                    }
+                    //listeners: {
+                    //    check: function () {
+                    //        console.log('check');
+                    //        this.setLabelCls('popup-checkbox-grey-label');
+                    //    },
+                    //    uncheck: function () {
+                    //        console.log('uncheck');
+                    //        this.setLabelCls('popup-checkbox-red-label');
+                    //    }
+                    //}
                 }],
             }, {
                 xtype: 'panel',
                 cls: 'popup-button-panel',
                 items: [{
                     xtype: 'button',
-                    text: 'POST',
+                    text: 'SUBMIT',
                     icon: 'resources/images/share-initial.png',
                     iconAlign: 'right',
                     iconCls: 'popup-post-icon',
@@ -103,10 +108,10 @@
     doShare: function () {
         var shareView = this;
         var shareData = {
-            post: Ext.getCmp('xPostText').getValue()
+            blogUrl: Ext.getCmp('xBlogUrlField').getValue()
         };
 
-        smiley360.setViewStatus(shareView, smiley360.viewStatus.progress);
+        //smiley360.setViewStatus(shareView, smiley360.viewStatus.progress);
         smiley360.services.shareToFacebook(shareData, function (response) {
             smiley360.setResponseStatus(shareView, response);
         });
@@ -114,7 +119,7 @@
 
     setStatus: function (status) {
         var xShareButton = Ext.getCmp('xShareButton');
-        var xShareStatus = Ext.getCmp('xShareStatus');
+        //var xShareStatus = Ext.getCmp('xShareStatus');
 
         switch (status) {
             case smiley360.viewStatus.progress: {

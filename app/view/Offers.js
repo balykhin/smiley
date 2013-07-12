@@ -148,9 +148,14 @@ Ext.define('smiley360.view.Offers', {
                                                         },
                                                         {
                                                             xtype: 'label',
+                                                            id:'offers_label_text',
                                                             html: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
                                                             style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
-
+                                                            listeners: {
+                                                                initialize: function () {
+                                                                    
+                                                                }
+                                                            }
                                                         },
                                                     ]
                                                 },
@@ -258,7 +263,7 @@ Ext.define('smiley360.view.Offers', {
                                                             cls: 'has-shadow',
                                                             width: 100,
                                                             height: 100,
-                                                            src: 'resources/images/secret-logo.png',
+                                                            src: 'resources/images/mc_img.png',
                                                         },
                                                 ],
 
@@ -271,7 +276,7 @@ Ext.define('smiley360.view.Offers', {
                                                 items: [
                                                     {
                                                         xtype: 'label',
-                                                        html: 'Another survey title',
+                                                        html: 'Another Survey title',
                                                         style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
 
                                                     },
@@ -429,7 +434,7 @@ Ext.define('smiley360.view.Offers', {
                                                             cls: 'has-shadow',
                                                             width: 100,
                                                             height: 100,
-                                                            src: 'resources/images/secret-logo.png',
+                                                            src: 'resources/images/offers_logo2.png',
                                                             listeners: {
                                                                 tap: function () {
                                                                     Ext.getCmp('missionslist-cont').show();
@@ -448,7 +453,61 @@ Ext.define('smiley360.view.Offers', {
                                                 items: [
                                                     {
                                                         xtype: 'label',
-                                                        html: 'Specific Mission Title',
+                                                        html: 'Another Survey Title',
+                                                        style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
+
+                                                    },
+                                                    {
+                                                        xtype: 'label',
+                                                        html: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+                                                        style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
+
+                                                    },
+                                                ]
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        xtype: 'container',
+                                        layout: { type: 'hbox' },
+                                        style: 'padding: 10px 15px; background-color: #efecea;',
+                                        flex: 1,
+                                        items: [
+                                            {
+                                                xtype: 'container',
+                                                style: 'background-color: #efecea; padding-top: 15px;',
+                                                layout: {
+                                                    type: 'vbox',
+                                                    align: 'middle',
+                                                },
+
+                                                items: [
+                                                        {
+                                                            xtype: 'image',
+                                                            style: 'padding: 20px 0px 0px 15px;background-color: #efecea; border-radius: 5px;',
+                                                            cls: 'has-shadow',
+                                                            width: 100,
+                                                            height: 100,
+                                                            src: 'resources/images/offers_logo3.png',
+                                                            listeners: {
+                                                                tap: function () {
+                                                                    Ext.getCmp('missionslist-cont').show();
+                                                                    Ext.getCmp('missions-cont').hide();
+                                                                }
+                                                            }
+                                                        },
+                                                ],
+
+                                            },
+                                            {
+                                                xtype: 'container',
+                                                layout: { type: 'vbox' },
+                                                flex: 4,
+                                                style: 'padding-left: 10px;',
+                                                items: [
+                                                    {
+                                                        xtype: 'label',
+                                                        html: 'Yet, Another Survey Title',
                                                         style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
 
                                                     },
@@ -504,7 +563,7 @@ Ext.define('smiley360.view.Offers', {
                                                 style: 'color: #333132; text-align: right; min-height: 60px; background-color:white;border-style: solid; border-color: white; border-radius: 3px; border-width: 2px;',
                                                 margin: '0px 20px 0px 20px',
                                                 cls: 'has-shadow',
-                                                dock: 'top',
+                                                docked: 'top',
                                                 items:
                                                     [
                                                             {
@@ -529,7 +588,7 @@ Ext.define('smiley360.view.Offers', {
                                             {
                                                 xtype: 'container', layout: 'vbox',
                                                 //padding: '0px 20px',
-                                                dock: 'right',
+                                                docked: 'right',
                                                 style: 'color: white; font-family: franklin; font-size:1.4em; text-align: right;',
                                                 padding: '30px 10px',
                                                 items:

@@ -113,8 +113,8 @@ Ext.define('smiley360.view.Signup', {
 					    xtype: 'selectfield',
 					    itemId: 'ddlGender',
 					    name: 'ddlGender',
-					    cls: 'cust-input cust-input-ddl',
 					    placeHolder: 'Gender',
+					    cls: 'cust-input cust-input-ddl',
 					    options: [
 			                { text: '', value: '' },
 			                { text: 'Male', value: 'male' },

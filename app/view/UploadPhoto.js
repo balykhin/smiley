@@ -1,6 +1,8 @@
-﻿Ext.define('smiley360.view.ShareToFacebook', {
+﻿var image_1, image_2, image_3, image_4, image_5, t_field;
+
+Ext.define('smiley360.view.UploadPhoto', {
     extend: 'Ext.Container',
-    alias: 'widget.sharetofacebookview',
+    alias: 'widget.uploadphotoview',
     requires: ['Ext.Rating', 'Ext.Anim'],
     config: {
         modal: true,
@@ -26,16 +28,16 @@
             }, {
                 xtype: 'panel',
                 layout: 'hbox',
-                cls: 'popup-top-panel facebook-background',
+                cls: 'popup-top-panel photo-background',
                 items: [{
                     xtype: 'label',
                     cls: 'popup-title-text',
-                    html: 'Earn 5 Smiles Sharing on Facebook',
+                    html: 'Earn 5 Smiles uploading a Photo',
                 }, {
                     xtype: 'image',
                     docked: 'right',
                     cls: 'popup-title-image',
-                    src: 'resources/images/fb.png',
+                    src: 'resources/images/photo.png',
                 }],
             }, {
                 xtype: 'panel',
@@ -45,25 +47,56 @@
                 xtype: 'panel',
                 cls: 'popup-middle-panel',
                 items: [{
-                    xtype: 'rating',
-                    label: 'Rate the product:',
-                    labelWidth: 'auto',
-                    itemsCount: 5,
-                    itemCls: 'x-rating-star',
-                    itemHoverCls: 'x-rating-star-hover',
-                }, {
-                    xtype: 'textareafield',
-                    maxRows: 5,
-                    minLength: 70,
-                    id: 'xPostText',
-                    cls: 'popup-input popup-input-text',
-                    listeners: {
-                        keyup: function () {
-                            var postLenght = this.getValue().length;
+                    xtype: 'panel',
+                    layout: 'hbox',
+                    items: [{
+                        xtype: 'panel',
+                        layout: 'vbox',
+                        style: 'padding-top: 15px;',
+                        items: [{
+                            xtype: 'button',
+                            text: 'TAKE PHOTO',
+                            id: 'xTakePhotoButton',
+                            cls: 'popup-photo-button',
+                            listeners: {
+                                tap: function () {
+                                    //Ext.getCmp('xView').doTakePhoto();
+                                }
+                            },
+                        }, {
+                            xtype: 'button',
+                            text: 'BROWSE PHOTO',
+                            id: 'xBrowsePhotoButton',
+                            cls: 'popup-photo-button',
+                            listeners: {
+                                tap: function () {
+                                    //Ext.getCmp('xView').doBrowsePhoto();
+                                }
+                            },
+                        }]
+                    }, {
+                        xtype: 'textareafield',
+                        id: 'xPostText',
+                        flex: 1,
+                        maxRows: 5,
+                        //maxLength: 84,
+                        cls: 'popup-input popup-input-text',
+                        listeners: {
+                            keyup: function () {
+                                var postLenght = this.getValue().length;
+                                var xPostCountLabel = Ext.getCmp('xPostCountLabel');
 
-                            Ext.getCmp('xPostCountLabel').setHtml(postLenght.toString());
+                                xPostCountLabel.setHtml(postLenght.toString());
+
+                                if (postLenght > 84) {
+                                    xPostCountLabel.setStyle('color: red;')
+                                }
+                                else {
+                                    xPostCountLabel.setStyle('color: #878789;')
+                                }
+                            }
                         }
-                    }
+                    }]
                 }, {
                     xtype: 'panel',
                     layout: 'hbox',
@@ -71,7 +104,7 @@
                         xtype: 'label',
                         cls: 'popup-post-bottom-text',
                         style: 'color: #878789;',
-                        html: 'Post must contain at least 70 characters.',
+                        html: 'Post must contain a maximum of 84 characters.',
                     }, {
                         xtype: 'label',
                         id: 'xPostCountLabel',
@@ -93,14 +126,33 @@
                     },
                     items: [{
                         xtype: 'checkboxfield',
-                        label: 'Post to Profile Wall.',
+                        id: 'xFacebookCheckbox',
+                        label: 'Post to Facebook',
                         labelCls: 'popup-checkbox-grey-label',
                         cls: 'popup-checkbox',
+                        checked: true,
+                        listeners: {
+                            check: function () {
+                                Ext.getCmp('xView').onCheck();
+                            },
+                            uncheck: function () {
+                                Ext.getCmp('xView').onUncheck();
+                            }
+                        }
                     }, {
                         xtype: 'checkboxfield',
-                        label: 'Post to Brand Page.',
+                        id: 'xTwitterCheckbox',
+                        label: 'Post to Twitter.',
                         labelCls: 'popup-checkbox-grey-label',
                         cls: 'popup-checkbox',
+                        listeners: {
+                            check: function () {
+                                Ext.getCmp('xView').onCheck();
+                            },
+                            uncheck: function () {
+                                Ext.getCmp('xView').onUncheck();
+                            }
+                        }
                     }],
                 }, {
                     xtype: 'label',
@@ -124,7 +176,7 @@
                     cls: 'popup-post-button',
                     listeners: {
                         tap: function () {
-                            Ext.getCmp('xView').doShare();
+                            //Ext.getCmp('xView').doUpload();
                         }
                     },
                 }],
@@ -138,6 +190,28 @@
                 this.destroy();
             }
         },
+    },
+
+    onCheck: function () {
+        Ext.getCmp('xTakePhotoButton').setCls('popup-photo-button');
+        Ext.getCmp('xBrowsePhotoButton').setCls('popup-photo-button');
+        Ext.getCmp('xFacebookCheckbox').setLabelCls('popup-checkbox-grey-label');
+        Ext.getCmp('xTwitterCheckbox').setLabelCls('popup-checkbox-grey-label');
+    },
+
+    onUncheck: function () {
+        var xTwitterCheckbox = Ext.getCmp('xTwitterCheckbox');
+        var xFacebookCheckbox = Ext.getCmp('xFacebookCheckbox');
+
+        if (!xTwitterCheckbox.getChecked() &&
+            !xFacebookCheckbox.getChecked()) {
+
+            xTwitterCheckbox.setLabelCls('popup-checkbox-red-label');
+            xFacebookCheckbox.setLabelCls('popup-checkbox-red-label');
+
+            Ext.getCmp('xTakePhotoButton').setCls('popup-photo-button-required');
+            Ext.getCmp('xBrowsePhotoButton').setCls('popup-photo-button-required');
+        }
     },
 
     doShare: function () {

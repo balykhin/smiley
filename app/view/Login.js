@@ -69,18 +69,78 @@ Ext.define('smiley360.view.Login', {
                 items: [{
                     xtype: 'button',
                     text: 'T',
-                    width: '50px',
+                    width: '40px',
                     ui: 'action',
-                    itemId: 'xShareToTwitter',
-                    tap: 'onShareToTwitterTap'
+                    listeners: {
+                        tap: function () {
+                            Ext.widget('sharetotwitterview').show();
+                        }
+                    }
                 }, {
                     xtype: 'button',
                     text: 'F',
-                    width: '50px',
+                    width: '40px',
                     ui: 'action',
-                    itemId: 'xShareToFacebook',
-                    tap: 'onShareToFacebookTap'
+                    listeners: {
+                        tap: function () {
+                            Ext.widget('sharetofacebookview').show();
+                        }
+                    }
                 }, {
+                    xtype: 'button',
+                    text: 'Y',
+                    width: '40px',
+                    ui: 'action',
+                    listeners: {
+                        tap: function () {
+                            Ext.widget('sharetoyoutubeview').show();
+                        }
+                    }
+                }, {
+                    xtype: 'button',
+                    text: 'L',
+                    width: '40px',
+                    ui: 'action',
+                    listeners: {
+                        tap: function () {
+                            Ext.widget('sharelinkview').show();
+                        }
+                    }
+                }, {
+                    xtype: 'button',
+                    text: 'B',
+                    width: '40px',
+                    ui: 'action',
+                    listeners: {
+                        tap: function () {
+                            Ext.widget('sharetoblogview').show();
+                        }
+                    }
+                }, {
+                    xtype: 'button',
+                    text: 'P',
+                    width: '40px',
+                    ui: 'action',
+                    listeners: {
+                        tap: function () {
+                            Ext.widget('uploadphotoview').show();
+                        }
+                    }
+                }, {
+                    xtype: 'button',
+                    text: '2',
+                    width: '40px',
+                    ui: 'action',
+                    listeners: {
+                        tap: function () {
+                            Ext.widget('sharetoface2faceview').show();
+                        }
+                    }
+                }],
+            }, {
+                xtype: 'panel',
+                layout: 'hbox',
+                items: [{
                     xtype: 'button',
                     style: 'background-color: #3f4b4e !important;',
                     itemId: 'xEditProfile',
@@ -96,7 +156,11 @@ Ext.define('smiley360.view.Login', {
                     width: '50px',
                     ui: 'action',
                     tap: 'onSurveyTap'
-                }, {
+                }],
+            }, {
+                xtype: 'panel',
+                layout: 'hbox',
+                items: [{
                     xtype: 'button',
                     style: 'background-color: #3f4b4e !important;',
                     itemId: 'xMission',
@@ -104,73 +168,88 @@ Ext.define('smiley360.view.Login', {
                     width: '50px',
                     ui: 'action',
                     tap: 'onMission'
-                    //}, {
-                    //    xtype: 'button',
-                    //    style: 'background-color: #3f4b4e !important;',
-                    //    itemId: 'xMissionDetails',
-                    //    text: 'M_L',
-                    //    width: '50px',
-                    //    ui: 'action',
-                    //    tap: 'onMission_List'
-                }],
-            }, {
-                xtype: 'panel',
-                layout: 'hbox',
-                items: [{
+                }, {
                     xtype: 'button',
-                    text: 'Y',
+                    style: 'background-color: #3f4b4e !important;',
+                    itemId: 'xMissionDetails',
+                    text: 'M_D',
+                    width: '70px',
+                    ui: 'action',
+                    tap: 'onMission_List'
+                },
+                {
+                    xtype: 'button',
+                    style: 'background-color: #3f4b4e !important;',
+                    itemId: 'xOffers',
+                    text: 'O',
                     width: '50px',
                     ui: 'action',
-                    itemId: 'xShareToYouTube',
-                    tap: 'onShareToYouTubeTap'
-                }],
+                    tap: 'onOffers'
+                },
+                {
+                    xtype: 'button',
+                    style: 'background-color: #3f4b4e !important;',
+                    itemId: 'xOffersDetails',
+                    text: 'O_D',
+                    width: '70px',
+                    ui: 'action',
+                    tap: 'onOffersDetails'
+                }, ],
             }],
         }],
-        listeners: [{
-            delegate: "#xMission",
-            fn: "onMissionTap",
-            event: "tap",
-        }, {
-            delegate: "#xMissionDetails",
-            fn: "onMissionDetailsTap",
-            event: "tap",
-        }, {
-            delegate: "#xLogin",
-            fn: "onLoginTap",
-            event: "tap",
-        }, {
-            delegate: 'div#xSignup',
-            fn: 'onSignupTap',
-            element: 'element',
-            event: 'tap',
-        }, {
-            delegate: 'div#xForgetPassword',
-            fn: 'onForgetPasswordTap',
-            event: 'tap',
-            element: 'element',
-        }, {
-            delegate: '#xShareToTwitter',
-            fn: 'onShareToTwitterTap',
-            event: 'tap',
-        }, {
-            delegate: '#xShareToFacebook',
-            fn: 'onShareToFacebookTap',
-            event: 'tap',
-        }, {
-            delegate: '#xShareToYouTube',
-            fn: 'onShareToYouTubeTap',
-            event: 'tap',
-        }, {
-            delegate: "#xEditProfile",
-            fn: "onEditProfileTap",
-            event: "tap",
-        }, {
-            delegate: "#xSurvey",
-            fn: "onSurveyTap",
-            event: "tap",
-        }]
+        listeners: [
+            {
+                delegate: "#xOffersDetails",
+                fn: "onOffersDetailsTap",
+                event: "tap",
+            }, {
+                delegate: "#xOffers",
+                fn: "onOffersTap",
+                event: "tap",
+            }, {
+                delegate: "#xMission",
+                fn: "onMissionTap",
+                event: "tap",
+            }, {
+                delegate: "#xMissionDetails",
+                fn: "onMissionDetailsTap",
+                event: "tap",
+            }, {
+                delegate: "#xLogin",
+                fn: "onLoginTap",
+                event: "tap",
+            }, {
+                delegate: 'div#xSignup',
+                fn: 'onSignupTap',
+                element: 'element',
+                event: 'tap',
+            }, {
+                delegate: 'div#xForgetPassword',
+                fn: 'onForgetPasswordTap',
+                event: 'tap',
+                element: 'element',
+            }, {
+                delegate: "#xEditProfile",
+                fn: "onEditProfileTap",
+                event: "tap",
+            }, {
+                delegate: "#xSurvey",
+                fn: "onSurveyTap",
+                event: "tap",
+            }]
     },
-
+    onOffersDetailsTap: function () {
+        //================================
+        console.log("onLoginTap");
+        //================================
+        this.fireEvent('onOffersDetailsTapCommand', this);
+    },
+    onOffersTap: function () {
+        //================================
+        console.log("onLoginTap");
+        //================================
+        this.fireEvent('onOffersTapCommand', this);
+    },
     onMissionDetailsTap: function () {
         //================================
         console.log("onLoginTap");
@@ -201,18 +280,6 @@ Ext.define('smiley360.view.Login', {
 
     onForgetPasswordTap: function () {
         Ext.widget('forgetpasswordview').show();
-    },
-
-    onShareToTwitterTap: function () {
-        Ext.widget('sharetotwitterview').show();
-    },
-
-    onShareToFacebookTap: function () {
-        Ext.widget('sharetofacebookview').show();
-    },
-
-    onShareToYouTubeTap: function () {
-        Ext.widget('sharetoyoutubeview').show();
     },
 
     onEditProfileTap: function () {

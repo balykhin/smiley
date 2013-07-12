@@ -4115,7 +4115,7 @@ input {
     }
 
         .x-label.simple-text.bullet .x-innerhtml:before {
-            content: url("../images/smile-bullet.png");
+            content: url("../images/rating-smile.png");
             position: absolute;
             left: 18px;
         }

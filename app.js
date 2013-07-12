@@ -22,7 +22,6 @@ Ext.Loader.setPath({
 
 Ext.application({
     name: 'smiley360',
-
     requires: [
         'Ext.MessageBox'
     ],
@@ -32,16 +31,24 @@ Ext.application({
         'Signup',
         'Home',
         'ForgetPassword',
+        'ShareLink',
+        'ShareToBlog',
         'ShareToTwitter',
         'ShareToFacebook',
+        'ShareToFace2Face',
         'ShareToYouTube',
+        'UploadPhoto',
         'EditProfile',
         'Survey',
         'Missions',
         'Details',
         'Offers',
-        'OffersDetails',
+        'OfferDetails',
     ],
+    //models:
+    //    ['UserProfile', 'UserProfileOffline', ],
+    //stores:
+    //    ['Profile',],
 
     icon: {
         '36': 'resources/icons/Icon_Android36.png',
@@ -76,9 +83,10 @@ Ext.application({
         var offersView = {
             xtype: 'offersview'
         }
-        var offersdetailsView = {
-            xtype: 'offersdetailsview '
+        var offerDetailsView = {
+            xtype: 'offerdetailsview'
         }
+        
         var homeView = {
             xtype: 'homeview'
         }
@@ -101,7 +109,7 @@ Ext.application({
             xtype: 'surveyview'
         }
         // Initialize the main view
-        Ext.Viewport.add([loginView, homeView, signupView, editprView, surveyView, missionsView, detailsView, offersView, offersdetailsView]);
+        Ext.Viewport.add([loginView, homeView, signupView, editprView, surveyView, missionsView, detailsView, offersView, offerDetailsView]);
     },
 
     onUpdated: function () {
