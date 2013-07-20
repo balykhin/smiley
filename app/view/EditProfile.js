@@ -1,8 +1,7 @@
-var save_size,s_hide, first_time=true, first_time_children=true,field_about, field_url,child_field_hide, make_hide=false;
+var save_size, s_hide, first_time = true, first_time_children = true, field_about, field_url, child_field_hide, make_hide = false;
 Ext.define('smiley360.view.EditProfile', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.editprofileview',
-    cls: 'normal-page-bg',
     requires: [
         'Ext.field.DatePicker',
         'Ext.field.Select',
@@ -10,8 +9,9 @@ Ext.define('smiley360.view.EditProfile', {
         'Ext.Video'
     ],
     config: {
+        id: 'EditProfile',
         tabBarPosition: 'bottom',
-        cls: 'cust-tabbar',
+        cls: 'cust-tabbar normal-page-bg',
         items: [
             {
                 title: 'Edit Profile',
@@ -33,7 +33,13 @@ Ext.define('smiley360.view.EditProfile', {
 							    ui: 'plain',
 							    iconCls: 'back-btn',
 							    iconMask: true,
-							    itemId: 'backBtnProfile'
+							    id: 'backBtnProfile',
+							    itemId: 'backBtnProfile',
+							    handler: function () {
+							        console.log('buttontap');
+							        this.up('#EditProfile').fireEvent('backButtonCommandProfile', this);
+							    }
+
 							},
 							{ xtype: 'spacer' },
 							{
@@ -85,7 +91,7 @@ Ext.define('smiley360.view.EditProfile', {
 									      items: [
 
                                               {
-                                                  xtype: 'container',                                                  
+                                                  xtype: 'container',
                                                   layout: { type: 'hbox' },
                                                   style: 'background-color: #efecea; padding-bottom: 5px;',
                                                   items: [
@@ -106,6 +112,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                           xtype: 'textfield',
                                                                           placeHolder: 'First Name',
                                                                           itemId: 'txtFirstName',
+                                                                          id: 'fName',
                                                                           name: 'txtFirstName',
                                                                           cls: 'cust-input',
                                                                           required: true
@@ -114,15 +121,16 @@ Ext.define('smiley360.view.EditProfile', {
                                                                           xtype: 'textfield',
                                                                           placeHolder: 'Last Name',
                                                                           itemId: 'txtLastName',
+                                                                          id: 'lName',
                                                                           name: 'txtLastName',
                                                                           cls: 'cust-input',
                                                                           required: true
                                                                       },
-                                                                      
+
                                                           ]
                                                       },
                                                       ///end innervbox
-                                                       
+
 
 
                                                   ],
@@ -133,6 +141,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                   xtype: 'textfield',
                                                   placeHolder: 'Email',
                                                   itemId: 'txtEmail',
+                                                  id: 'email',
                                                   name: 'txtEmail',
                                                   cls: 'cust-input',
                                                   required: true
@@ -143,6 +152,7 @@ Ext.define('smiley360.view.EditProfile', {
 					                                        cls: 'cust-input cust-input-ddl',
 					                                        name: 'birthday',
 					                                        itemId: 'calDob',
+					                                        id: 'birthdate',
 					                                        name: 'calDob',
 					                                        ui: 'light',
 					                                        picker: {
@@ -155,11 +165,12 @@ Ext.define('smiley360.view.EditProfile', {
 					                                        xtype: 'selectfield',
 					                                        itemId: 'ddlGender',
 					                                        name: 'ddlGender',
+					                                        id: 'gender',
 					                                        cls: 'cust-input cust-input-ddl',
 					                                        placeHolder: 'Gender',
 					                                        options: [
-			                                                    { text: 'Male', value: 'male' },
-			                                                    { text: 'Female', value: 'female' }
+			                                                    { text: 'Male', value: '1' },
+			                                                    { text: 'Female', value: '0' }
 					                                        ]
 					                                    },
 
@@ -204,7 +215,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                   xtype: 'container',
                                                   layout: { type: 'hbox' },
                                                   items: [
-                                               
+
                                                       {
                                                           xtype: 'container',
                                                           layout: { type: 'vbox' },
@@ -213,6 +224,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                       {
                                                                           xtype: 'textfield',
                                                                           placeHolder: 'Address1',
+                                                                          id: 'address1',
                                                                           itemId: 'txtAddress1',
                                                                           name: 'txtAddress1',
                                                                           cls: 'cust-input',
@@ -221,6 +233,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                     {
                                                                         xtype: 'textfield',
                                                                         placeHolder: 'Address2',
+                                                                        id: 'address2',
                                                                         itemId: 'txtAddress2',
                                                                         name: 'txtAddress2',
                                                                         cls: 'cust-input',
@@ -245,6 +258,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                   xtype: 'textfield',
                                                                   flex: 20,
                                                                   placeHolder: 'City',
+                                                                  id: 'city',
                                                                   itemId: 'txtCity',
                                                                   name: 'txtCity',
                                                                   cls: 'cust-input',
@@ -256,6 +270,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                   xtype: 'selectfield',
                                                                   flex: 20,
                                                                   itemId: 'ddlState',
+                                                                  id: 'stateID',
                                                                   name: 'ddlState',
                                                                   cls: 'cust-input cust-input-ddl',
                                                                   placeHolder: 'State',
@@ -267,12 +282,13 @@ Ext.define('smiley360.view.EditProfile', {
                                               },//end second hbox
 
                                             {
-                                              	xtype: 'textfield',
-                                              	placeHolder: 'CityStateZip',
-                                              	itemId: 'txtCityStateZip',
-                                              	name: 'txtCityStateZip',
-                                              	cls: 'cust-input',
-                                              	required: false
+                                                xtype: 'textfield',
+                                                placeHolder: 'CityStateZip',
+                                                itemId: 'txtCityStateZip',
+                                                id: 'zip',
+                                                name: 'txtCityStateZip',
+                                                cls: 'cust-input',
+                                                required: false
                                             },
 					                        {
 					                            xtype: 'selectfield',
@@ -325,6 +341,7 @@ Ext.define('smiley360.view.EditProfile', {
                                               					    xtype: 'selectfield',
                                               					    itemId: 'ddlStatus',
                                               					    name: 'ddlStatus',
+                                              					    id: 'marital',
                                               					    cls: 'cust-input cust-input-ddl',
                                               					    placeHolder: 'Single',
                                               					    options: [
@@ -336,38 +353,38 @@ Ext.define('smiley360.view.EditProfile', {
                                                                     xtype: 'selectfield',
                                                                     itemId: 'ddlChildren',
                                                                     name: 'ddlChildren',
+                                                                    id: 'children',
                                                                     cls: 'cust-input cust-input-ddl',
                                                                     placeHolder: 'Do you have children?',
                                                                     listeners:
                                                                                {
 
-                                                                                   change: function(selectbox,newValue,oldValue)
-                                                                                   {
+                                                                                   change: function (selectbox, newValue, oldValue) {
                                                                                        first_time_children = false;
                                                                                        //first_time = false;//check if custom variable has been set to false
-                                                                                       if(newValue=='yes')
-                                                                                       {
-                                                                                           child_field_hide.show();                                  
+                                                                                       if (newValue == 'yes') {
+                                                                                           child_field_hide.show();
                                                                                        }
                                                                                        if (newValue != 'yes') {
                                                                                            child_field_hide.hide();
                                                                                            child_field_hide.setValue('');
                                                                                        }
                                                                                    },
-                                                                                      
-                                                                                       
-                                                                                       
-                                                                                   
+
+
+
+
                                                                                },
                                                                     options: [
-			                                                            { text: 'Yes, I have children.', value: 'yes' },
-			                                                            { text: 'No, I haven\'t children.', value: 'no' }
+                                                                        { text: 'No, I haven\'t children.', value: 'no' },
+			                                                            { text: 'Yes, I have children.', value: 'yes' }
                                                                     ]
                                                                 },
                                                                 {
                                                                     xtype: 'selectfield',
                                                                     itemId: 'ddlHaveChildren',
                                                                     name: 'ddlHaveChildren',
+                                                                    id: 'howmanychildren',
                                                                     //style: 'my-ddl-color',
                                                                     cls: 'cust-input cust-input-ddl',
                                                                     placeHolder: 'How many children do you have?',
@@ -376,7 +393,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                     element: 'element',
                                                                                     painted: function () {
                                                                                         child_field_hide = this;
-                                                                                        if (first_time_children == true) { child_field_hide.hide(); };                                          
+                                                                                        if (first_time_children == true) { child_field_hide.hide(); };
                                                                                     },
                                                                                 },
                                                                     options: [
@@ -387,6 +404,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                     xtype: 'selectfield',
                                                                     itemId: 'ddlHousehold',
                                                                     name: 'ddlHousehold',
+                                                                    id: 'income',
                                                                     cls: 'cust-input cust-input-ddl',
                                                                     placeHolder: 'Household Income',
                                                                     options: [
@@ -400,7 +418,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                     //style: 'my-ddl-color',
                                                                     cls: 'cust-input cust-input-ddl',
                                                                     placeHolder: 'Race / Ethnicity',
-                                                                    id:'race_etn',
+                                                                    id: 'race_etn',
                                                                     listeners:
                                                                                 {
                                                                                     element: 'element',
@@ -417,7 +435,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                             make_hide = true;
                                                                                             field_about.setValue(' ');
                                                                                             field_url.setValue(' ');
-                                                                                            field_about.setReadOnly(true);                                                                                            
+                                                                                            field_about.setReadOnly(true);
                                                                                             field_url.setReadOnly(true);
                                                                                             field_about.setPadding('0px 20px');
                                                                                             field_url.setPadding('0px 20px');
@@ -434,7 +452,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                             field_url.setPadding('0px 0px');
                                                                                         };
                                                                                         //Ext.Msg.alert('Hidden!');
-                                                                                    },          
+                                                                                    },
                                                                                 },
                                                                     options: [
 			                                                            { text: '', value: '' },
@@ -456,8 +474,8 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                         s_hide = this;
                                                                                         if (first_time == true) { s_hide.hide(); };
                                                                                     },
-                                                                                    
-                                                                                    
+
+
                                                                                 },
                                                                     //padding: 5,
                                                                     items: [
@@ -470,33 +488,33 @@ Ext.define('smiley360.view.EditProfile', {
                                                                             listeners: {
                                                                                 element: 'element',
                                                                                 tap: function () {
-                                                                                        Ext.getCmp('race_etn').setValue('Race / Ethnicity');
-                                                                                        Ext.getCmp('race_etn').setReadOnly(true);
-                                                                                        //this.setCls('cust-input cust-input-ddl my-ddl-color');
-                                                                                        first_time = false;
-                                                                                        if (make_hide == false) {
-                                                                                            s_hide.show();
-                                                                                            make_hide = true;
-                                                                                            field_about.setValue(' ');
-                                                                                            field_url.setValue(' ');
-                                                                                            field_about.setReadOnly(true);                                                                                            
-                                                                                            field_url.setReadOnly(true);
-                                                                                            field_about.setPadding('0px 20px');
-                                                                                            field_url.setPadding('0px 20px');
-                                                                                        }
-                                                                                        else {
-                                                                                            s_hide.hide();
-                                                                                            //Ext.Msg.alert('dfvgd');
-                                                                                            make_hide = false;
-                                                                                            field_about.setValue('');
-                                                                                            field_url.setValue('');
-                                                                                            field_url.setReadOnly(false);
-                                                                                            field_url.setReadOnly(false);
-                                                                                            field_about.setPadding('0px 0px');
-                                                                                            field_url.setPadding('0px 0px');
-                                                                                        };
-                                                                                        //Ext.Msg.alert('Hidden!');
-                                                                                            
+                                                                                    Ext.getCmp('race_etn').setValue('Race / Ethnicity');
+                                                                                    Ext.getCmp('race_etn').setReadOnly(true);
+                                                                                    //this.setCls('cust-input cust-input-ddl my-ddl-color');
+                                                                                    first_time = false;
+                                                                                    if (make_hide == false) {
+                                                                                        s_hide.show();
+                                                                                        make_hide = true;
+                                                                                        field_about.setValue(' ');
+                                                                                        field_url.setValue(' ');
+                                                                                        field_about.setReadOnly(true);
+                                                                                        field_url.setReadOnly(true);
+                                                                                        field_about.setPadding('0px 20px');
+                                                                                        field_url.setPadding('0px 20px');
+                                                                                    }
+                                                                                    else {
+                                                                                        s_hide.hide();
+                                                                                        //Ext.Msg.alert('dfvgd');
+                                                                                        make_hide = false;
+                                                                                        field_about.setValue('');
+                                                                                        field_url.setValue('');
+                                                                                        field_url.setReadOnly(false);
+                                                                                        field_url.setReadOnly(false);
+                                                                                        field_about.setPadding('0px 0px');
+                                                                                        field_url.setPadding('0px 0px');
+                                                                                    };
+                                                                                    //Ext.Msg.alert('Hidden!');
+
                                                                                 },
                                                                             }
                                                                         },
@@ -523,7 +541,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                         style: 'background-color:white;',
                                                                                         height: 23,
                                                                                     },
-                                                                               ],
+                                                                                ],
                                                                         },
                                                                         {
                                                                             xtype: 'panel',
@@ -647,7 +665,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                                     },
                                                                                 ],
                                                                         },
-                                                                        
+
                                                                     ],//end chackbox items
                                                                 },
                                                                 {
@@ -655,21 +673,22 @@ Ext.define('smiley360.view.EditProfile', {
                                                                     height: 80,
                                                                     placeHolder: 'Tell us about yourself',
                                                                     itemId: 'txtAboutYourself',
+                                                                    id: 'aboutself',
                                                                     name: 'txtAboutYourself',
                                                                     cls: 'cust-input',
                                                                     required: false,
                                                                     listeners:
                                                                         {
-                                                                            initialize: function ()
-                                                                                {
-                                                                                    field_about=this;
-                                                                                }
+                                                                            initialize: function () {
+                                                                                field_about = this;
+                                                                            }
                                                                         }
                                                                 },
                                                                 {
                                                                     xtype: 'textfield',
                                                                     placeHolder: 'Blog URL',
                                                                     itemId: 'txtBlogURL',
+                                                                    id: 'blogURL',
                                                                     name: 'txtBlogURL',
                                                                     cls: 'cust-input',
                                                                     required: false,
@@ -682,7 +701,7 @@ Ext.define('smiley360.view.EditProfile', {
                                                                 },
 
 
-                                              
+
 									      ],//end items top vbox
 									  },
 
@@ -695,13 +714,17 @@ Ext.define('smiley360.view.EditProfile', {
                                           items: [
                                               {
                                                   xtype: 'button',
-                                                  itemId: 'cmdSignup',
+                                                  itemId: 'btnSavechanges',
                                                   cls: 'cust-btn signup-btn save-changes-btn',
-                                                  //cls: '',
                                                   text: 'SAVE CHANGES',
-
+                                                  listeners: {
+                                                      tap: function () {
+                                                          this.up('#EditProfile').fireEvent('onbtnSavechangesCommandProfile', this);
+                                                          console.log('editprofiletap');
+                                                      }
+                                                  }
                                               },
-                                              ],
+                                          ],
                                       },
 
 									{
@@ -709,7 +732,7 @@ Ext.define('smiley360.view.EditProfile', {
 									    height: '10px',
 									    style: 'background-color: #f4f3f1; margin: 0px 2px;'
 									},
-									
+
 									{
 									    xtype: 'spacer',
 									    height: '7px',
@@ -849,16 +872,26 @@ Ext.define('smiley360.view.EditProfile', {
                 ]
             }
         ],
-        listeners: [
-			{
-			    delegate: "#backBtnProfile",
-			    event: "tap",
-			    fn: "onBackButtonProfileTap"
-			}
-        ]
+        listeners: {
+            show: function () {
+                console.log('EditProfile view showed!');
+
+                var profile = smiley360.userData.Profile;
+
+                for (var field in profile) {
+                    var element = (field == 'address')
+                        ? Ext.getCmp(field + '1')
+                        : Ext.getCmp(field);
+
+                    if (element) {
+                        element.setValue(profile[field]);
+                    }
+                }
+            },
+
+            activate: function () {
+                console.log('EditProfile view activated!');
+            }
+        },
     },
-    onBackButtonProfileTap: function () {
-        console.log('back button tapped');
-        this.fireEvent('backButtonCommandProfile', this);
-    }
 });

@@ -14,7 +14,6 @@
 .popup-middle-panel {
     background-color: #E2DDDA;
     padding: 15px;
-    margin-top: -5px; /* for status indicator */
 }
 
 .popup-bottom-panel {
@@ -47,11 +46,15 @@
     margin-bottom: 10px;
 }
 
+.popup-status-container {
+    margin-top: -5px; /* for status indicator */
+}
+
 .popup-status-indicator {
     height: 5px;
     width: 100%;
-    background-color: #E2DDDA;
-    z-index: 1; /* bring to front on of middle-panel */
+    /*background-color: #E2DDDA;*/
+    z-index: 1; /* bring to front on of popup-status-container */
 }
 
 .popup-input {
@@ -95,17 +98,6 @@
     .popup-input-selector input {
         background: url(../images/corner-img.png) no-repeat 100.15% 85%;
     }
-
-/*.popup-post-textarea {
-    margin: 5px 0px 5px 0px;
-    color: black;
-    resize: none;
-    border: 1px;
-    border-radius: 8px;
-    border-style: inset;
-    font-size: 11pt;
-    font-family: din bold;
-}*/
 
 .popup-post-bottom-text {
     font-size: 8pt;
@@ -176,6 +168,34 @@
     margin-left: 5px;
 }
 
+.popup-checkbox-link {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 3px;
+    font-size: 8pt;
+    font-family: din medium;
+    text-decoration: underline;
+    color: #58595B;
+}
+
+.popup-guidelines-text {
+    font-size: 10pt;
+    font-family: din medium;
+    color: #58595B;
+}
+
+.popup-address-comment {
+    padding-left: 50px;
+    font-size: 10pt;
+    font-family: din medium;
+    background-image: url(../images/cross.png);
+    background-size: contain;
+    background-position: left center;
+    background-repeat: no-repeat;
+    word-spacing: normal;
+    word-wrap: break-word;
+    color: #58595B;
+}
+
 .popup-post-comment {
     font-size: 8pt;
     font-family: din bold;
@@ -189,8 +209,13 @@
     word-wrap: break-word;
 }
 
+.popup-message-title {
+    font-size: 11pt;
+    font-weight: bold;
+}
+
 .popup-message-text {
-    font-size: 10pt;
+    font-size: 11pt;
     font-family: din bold;
     word-wrap: break-word;
     color: #58595B;
@@ -217,6 +242,15 @@
 
 .popup-post-icon {
     background-size: contain;
+}
+
+.popup-help-button {
+    font-size: 10pt;
+    font-family: din medium;
+    text-decoration: underline;
+    background: none;
+    margin-top: 5px;
+    color: #58595B;
 }
 
 .popup-submit-button {
@@ -296,6 +330,68 @@
 .youtube-background {
     background: -webkit-linear-gradient(top, #E5E5E5 0%, #8C8C8C 100%);
 }
+/********************************************************************************************/
+.underline-label {
+    text-decoration: underline;
+}
+/********************************************************************************************/
+.whatshappening-image {
+    background-size: 50% !important;
+    background-color: #EFECEA;
+    border-bottom: 1px dashed #D7CFCD;
+}
+
+.whatshappening-label {
+    padding: 10px 10px 10px 0px;
+    color: #413f40;
+    background-color: #EFECEA;
+    border-bottom: 1px dashed #D7CFCD;
+    font-size: 0.95em;
+    font-family: 'din medium';
+}
+
+.specialoffers-image {
+    padding: 10px 50px 10px 10px;
+    background-size: 50% !important;
+    background-color: #EFECEA;
+    border-bottom: 1px dashed #D7CFCD;
+}
+
+.specialoffers-label {
+    padding: 10px 10px 10px 50px;
+    color: #413f40;
+    background-color: #EFECEA;
+    border-bottom: 1px dashed #D7CFCD;
+    font-size: 0.95em;
+    font-family: 'din medium';
+}
+
+.specialoffers-left-btn {
+    width: 40px;
+    height: 100px;
+    float: left;
+    top: -92px;
+    position: relative;
+    background-image: url("../images/left-btn.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: none;
+    border-right: 1px dashed #d7cfcd;
+}
+
+.specialoffers-right-btn {
+    width: 40px;
+    height: 100px;
+    float: right;
+    top: -92px;
+    position: relative;
+    background-image: url("../images/right-btn.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: none;
+    border-left: 1px dashed #d7cfcd;
+}
+
 /********************************************************************************************/
 .cust-btn {
     font-family: din bold;
@@ -534,4 +630,94 @@
     font-size: 14pt;
     font-family: din medium;
     color: white;
+}
+
+.browse_container {
+	background: #e2ddda;
+	border-radius: 5px;
+	margin-right: 20px;
+}
+.after_browse_container {
+	background: #534b48;
+	border-radius: 5px;
+	margin-right: 20px;
+}
+.browse_text {
+	text-align: center;
+	font-size: 1.25em;
+	padding: 10px;
+	word-wrap: break-word;
+	color: #413f40;
+	font-family: 'din medium';
+}
+.after_browse_text {
+	text-align: center;
+	font-size: 1.25em;
+	padding: 10px;
+	word-wrap: break-word;
+	color: #e1dcd9;
+	font-family: 'din medium';
+}
+.x-label.rew_comment .x-innerhtml:before {
+	content: url("../images/bullet-13.png");
+	position: absolute;
+	left: 18px;
+}
+
+.x-label.rew_comment .x-innerhtml {
+	padding-left: 8px;
+	text-align: justify;
+	background-color: #efecea;
+}
+.follow-btn {
+	background: -webkit-linear-gradient(top, #009dde 0%, #0077a7 100%);
+	height: 20px;
+	font-size: 12pt;
+	font-family: din medium;
+	color: #343337;
+}
+.add-review-btn {
+	background: -webkit-linear-gradient(top, #f8ab1b 0%, #c47e13 100%);
+	height: 20px;
+	font-size: 12pt;
+	font-family: din medium;
+	color: #343337;
+	
+}
+.left-btn-brandimage {
+	width: 40px;
+	height: 100px;
+	float: left;
+	top: -172px;
+	position: relative;
+	background-image: url('../images/left-btn.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.right-btn-brandimage {
+	width: 40px;
+	height: 100px;
+	float: right;
+	top: -172px;
+	position: relative;
+	background-image: url('../images/right-btn.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.share-fb-btn {
+	background: url(../images/share_all.png) no-repeat left top, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
+	
+}
+.share-tw-btn  {
+	background: url(../images/twi_share.png) no-repeat left top, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
+	
+}
+.share-pin-btn  {
+	background: url(../images/pin_share.png) no-repeat left top, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
+	
+}
+.share-badge-btn{
+	background: url(../images/bookmark-missions.png) no-repeat 10% top, -webkit-linear-gradient(top, #9f9a98 0%, #423c39 100%);
+	
 }

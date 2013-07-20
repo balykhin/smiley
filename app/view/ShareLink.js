@@ -73,7 +73,7 @@
         }],
         listeners: {
             initialize: function () {
-                this.setHeight(Ext.getCmp('xRootPanel').element.getHeight() + 4);
+                this.setHeight(Ext.getCmp('xRootPanel').element.getHeight());
             },
             hide: function () {
                 this.destroy();

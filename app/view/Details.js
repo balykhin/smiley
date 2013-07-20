@@ -2,7 +2,6 @@ var hide_panel, first_time, dock_panel;
 Ext.define('smiley360.view.Details', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.detailsview',
-    cls: 'normal-page-bg',
     requires: [
         'Ext.carousel.Carousel',
         'Ext.TitleBar',
@@ -11,7 +10,7 @@ Ext.define('smiley360.view.Details', {
     config: {
 
         tabBarPosition: 'bottom',
-        cls: 'cust-tabbar',
+        cls: 'cust-tabbar normal-page-bg',
         items: [
             {
                 title: 'HOME',

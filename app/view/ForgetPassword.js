@@ -77,7 +77,7 @@ Ext.define('smiley360.view.ForgetPassword', {
         }],
         listeners: {
             initialize: function () {
-                this.setHeight(Ext.getCmp('xRootPanel').element.getHeight() + 4);
+                this.setHeight(Ext.getCmp('xRootPanel').element.getHeight());
             },
             hide: function () {
                 this.destroy();
@@ -92,7 +92,7 @@ Ext.define('smiley360.view.ForgetPassword', {
         };
 
         //smiley360.setViewStatus(submitView, smiley360.viewStatus.progress);
-        smiley360.services.restorePassword(submitData, function (response) {
+        smiley360.services.recoverPassword(submitData, function (response) {
             smiley360.setResponseStatus(submitView, response);
         });
     },
@@ -105,23 +105,23 @@ Ext.define('smiley360.view.ForgetPassword', {
         //var xSubmitStatus = Ext.getCmp('xSubmitStatus');
 
         switch (status) {
-            case smiley360.viewStatus.progress: {
-                xSubmitButton.setText('POSTING...');
-                xSubmitButton.setIcon('resources/images/share-initial.png');
-                xSubmitStatus.setStyle('background-color: #F9A419;');
+            //case smiley360.viewStatus.progress: {
+            //    xSubmitButton.setText('POSTING...');
+            //    xSubmitButton.setIcon('resources/images/share-initial.png');
+            //    xSubmitStatus.setStyle('background-color: #F9A419;');
 
-                var statusAnimation = new Ext.Anim({
-                    autoClear: false,
-                    duration: 2000,
-                    easing: 'ease-in',
-                    from: { width: 0 },
-                    to: { width: this.getWidth() },
-                });
+            //    var statusAnimation = new Ext.Anim({
+            //        autoClear: false,
+            //        duration: 2000,
+            //        easing: 'ease-in',
+            //        from: { width: 0 },
+            //        to: { width: this.getWidth() },
+            //    });
 
-                statusAnimation.run(xSubmitStatus.element, 'slide');
+            //    statusAnimation.run(xSubmitStatus.element, 'slide');
 
-                break;
-            }
+            //    break;
+            //}
             case smiley360.viewStatus.successful: {
                 xEmailField.hide();
                 xSubmitButton.setHtml('CLOSE')
@@ -141,6 +141,6 @@ Ext.define('smiley360.view.ForgetPassword', {
             default:
         }
         // resize container after state has been changed
-        this.setHeight(Ext.getCmp('xRootPanel').element.getHeight() + 4);
+        this.setHeight(Ext.getCmp('xRootPanel').element.getHeight());
     }
 });

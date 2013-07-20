@@ -1,7 +1,9 @@
 ﻿Ext.define('smiley360.view.ShareToFacebook', {
     extend: 'Ext.Container',
     alias: 'widget.sharetofacebookview',
-    requires: ['Ext.Rating', 'Ext.Anim'],
+    requires: [
+        'Ext.Rating',
+        'Ext.Anim'],
     config: {
         modal: true,
         centered: true,
@@ -39,11 +41,11 @@
                 }],
             }, {
                 xtype: 'panel',
-                id: 'xShareStatus',
+                id: 'xStatusIndicator',
                 cls: 'popup-status-indicator',
             }, {
                 xtype: 'panel',
-                cls: 'popup-middle-panel',
+                cls: 'popup-middle-panel popup-status-container',
                 items: [{
                     xtype: 'rating',
                     label: 'Rate the product:',
@@ -132,7 +134,7 @@
         }],
         listeners: {
             initialize: function () {
-                this.setHeight(Ext.getCmp('xRootPanel').element.getHeight() + 4);
+                this.setHeight(Ext.getCmp('xRootPanel').element.getHeight());
             },
             hide: function () {
                 this.destroy();
@@ -154,13 +156,13 @@
 
     setStatus: function (status) {
         var xShareButton = Ext.getCmp('xShareButton');
-        var xShareStatus = Ext.getCmp('xShareStatus');
+        var xStatusIndicator = Ext.getCmp('xStatusIndicator');
 
         switch (status) {
             case smiley360.viewStatus.progress: {
                 xShareButton.setText('POSTING...');
                 xShareButton.setIcon('resources/images/share-initial.png');
-                xShareStatus.setStyle('background-color: #F9A419;');
+                xStatusIndicator.setStyle('background-color: #F9A419;');
 
                 var statusAnimation = new Ext.Anim({
                     autoClear: false,
@@ -170,21 +172,21 @@
                     to: { width: this.getWidth() },
                 });
 
-                statusAnimation.run(xShareStatus.element, 'slide');
+                statusAnimation.run(xStatusIndicator.element, 'slide');
 
                 break;
             }
             case smiley360.viewStatus.successful: {
                 xShareButton.setText('POST SUCCESSFUL');
                 xShareButton.setIcon('resources/images/share-successful.png');
-                xShareStatus.setStyle('background-color: #5F9E45;');
+                xStatusIndicator.setStyle('background-color: #5F9E45;');
 
                 break;
             }
             case smiley360.viewStatus.unsuccessful: {
                 xShareButton.setText('POST UNSUCCESSFUL');
                 xShareButton.setIcon('resources/images/share-unsuccessful.png');
-                xShareStatus.setStyle('background-color: #ED1C24;');
+                xStatusIndicator.setStyle('background-color: #ED1C24;');
 
                 break;
             }

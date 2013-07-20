@@ -18,9 +18,9 @@ this file in most cases.
     <!--
     Init-Local
     -->
-    <target name="-before-init-local"/>
+    <target name="-before-init-local" />
     <target name="-init-local">
-        <property file="${basedir}/../../local.properties"/>
+        <property file="${basedir}/../../local.properties" />
 
         <script language="javascript">
             var f = new java.io.File(project.getProperty("basedir"));
@@ -48,12 +48,11 @@ this file in most cases.
         this one will be overridden by the new default located in .sencha/app/sencha.cfg
         if present
         -->
-        <property name="app.build.dir" location="${workspace.build.dir}"/>
-
+        <property name="app.build.dir" location="${workspace.build.dir}" />
     </target>
-    <target name="-after-init-local"/>
+    <target name="-after-init-local" />
     <target name="init-local"
-            depends="-before-init-local,-init-local,-after-init-local"/>
+            depends="-before-init-local,-init-local,-after-init-local" />
 
     <!--
     Find Sencha Cmd
@@ -65,12 +64,12 @@ this file in most cases.
         are running for an application.
         -->
         <exec executable="sencha" dir="${basedir}">
-            <arg value="which"/><arg value="-o=$cmddir$"/>
+            <arg value="which" /><arg value="-o=$cmddir$" />
         </exec>
 
         <!-- Now read the generated properties file and delete it -->
-        <property file="$cmddir$"/>
-        <delete file="$cmddir$"/>
+        <property file="$cmddir$" />
+        <delete file="$cmddir$" />
 
         <echo>Using Sencha Cmd from ${cmd.dir}</echo>
     </target>
@@ -78,111 +77,111 @@ this file in most cases.
     <!--
     Init
     -->
-    <target name="-before-init"/>
+    <target name="-before-init" />
     <target name="-init">
-        <taskdef resource="com/sencha/ant/antlib.xml" classpath="${cmd.dir}/sencha.jar"/>
-        <x-sencha-init prefix=""/>
-        
+        <taskdef resource="com/sencha/ant/antlib.xml" classpath="${cmd.dir}/sencha.jar" />
+        <x-sencha-init prefix="" />
+
         <!-- Some operations require sencha.jar in the Ant classpath -->
         <x-extend-classpath>
-            <jar path="${cmd.dir}/sencha.jar"/>
+            <jar path="${cmd.dir}/sencha.jar" />
         </x-extend-classpath>
 
-        <x-verify-app-cmd-ver/>
-        
-        <property name="args.archive" value=""/>
-        
+        <x-verify-app-cmd-ver />
+
+        <property name="args.archive" value="" />
+
         <!--
             These properties can be modified to change general build options
             such as excluding files from the set.  The format expects newlines
             for each argument, for example:
-            
+
             build.operations.production=exclude\n \
                                         -namespace\n \
                                         Ext
         -->
-        <property name="build.operations.production" value=""/>
-        <property name="build.operations.testing" value=""/>
-        <property name="build.operations.package" value=""/>
-        <property name="build.operations.native" value=""/>
-        
+        <property name="build.operations.production" value="" />
+        <property name="build.operations.testing" value="" />
+        <property name="build.operations.package" value="" />
+        <property name="build.operations.native" value="" />
+
         <!-- Specify preprocessor options -->
-        <property name="build.options.production.debug" value="debug:false"/>
-        <property name="build.options.production.logger" value="logger:no"/>
-        <property name="build.options.production.minVersion" value="minVersion:3"/>
-        <property name="build.options.production.product" value="product:touch"/>
-        
-        <property name="build.options.testing.debug" value="debug:false"/>
-        <property name="build.options.testing.logger" value="logger:no"/>
-        <property name="build.options.testing.minVersion" value="minVersion:3"/>
-        <property name="build.options.testing.product" value="product:touch"/>
-        
-        <property name="build.options.package.debug" value="debug:false"/>
-        <property name="build.options.package.logger" value="logger:no"/>
-        <property name="build.options.package.minVersion" value="minVersion:3"/>
-        <property name="build.options.package.product" value="product:touch"/>
-        
-        <property name="build.options.native.debug" value="debug:false"/>
-        <property name="build.options.native.logger" value="logger:no"/>
-        <property name="build.options.native.minVersion" value="minVersion:3"/>
-        <property name="build.options.native.product" value="product:touch"/>
-        
+        <property name="build.options.production.debug" value="debug:false" />
+        <property name="build.options.production.logger" value="logger:no" />
+        <property name="build.options.production.minVersion" value="minVersion:3" />
+        <property name="build.options.production.product" value="product:touch" />
+
+        <property name="build.options.testing.debug" value="debug:false" />
+        <property name="build.options.testing.logger" value="logger:no" />
+        <property name="build.options.testing.minVersion" value="minVersion:3" />
+        <property name="build.options.testing.product" value="product:touch" />
+
+        <property name="build.options.package.debug" value="debug:false" />
+        <property name="build.options.package.logger" value="logger:no" />
+        <property name="build.options.package.minVersion" value="minVersion:3" />
+        <property name="build.options.package.product" value="product:touch" />
+
+        <property name="build.options.native.debug" value="debug:false" />
+        <property name="build.options.native.logger" value="logger:no" />
+        <property name="build.options.native.minVersion" value="minVersion:3" />
+        <property name="build.options.native.product" value="product:touch" />
+
         <property name="build.options.testing"
-                  value="${build.options.testing.debug},${build.options.testing.logger},${build.options.testing.minVersion},${build.options.testing.product}"/>
+                  value="${build.options.testing.debug},${build.options.testing.logger},${build.options.testing.minVersion},${build.options.testing.product}" />
 
         <property name="build.options.production"
-                  value="${build.options.production.debug},${build.options.production.logger},${build.options.production.minVersion},${build.options.production.product}"/>
-        
+                  value="${build.options.production.debug},${build.options.production.logger},${build.options.production.minVersion},${build.options.production.product}" />
+
         <property name="build.options.package"
-                  value="${build.options.package.debug},${build.options.package.logger},${build.options.package.minVersion},${build.options.package.product}"/>
-        
+                  value="${build.options.package.debug},${build.options.package.logger},${build.options.package.minVersion},${build.options.package.product}" />
+
         <property name="build.options.native"
-                  value="${build.options.native.debug},${build.options.native.logger},${build.options.native.minVersion},${build.options.native.product}"/>
-        
+                  value="${build.options.native.debug},${build.options.native.logger},${build.options.native.minVersion},${build.options.native.product}" />
+
         <!-- default the build environment to production if it is unset by this point -->
-        <property name="args.environment" value="production"/>
-        
+        <property name="args.environment" value="production" />
+
         <!-- initialize the build.dir property from the workspace config after we've loaded it -->
-        <property name="build.dir" location="${app.build.dir}"/>
-        
+        <property name="build.dir" location="${app.build.dir}" />
+
         <!-- Specify the name for the individual resource dirs in the app -->
-        <property name="app.sass.name" value="sass"/>
-        
+        <property name="app.sass.name" value="sass" />
+
         <!-- Specify the resources path in the app -->
-        <property name="app.resources.dir" location="${app.dir}/resources"/>
-        
+        <property name="app.resources.dir" location="${app.dir}/resources" />
+
         <!-- Specify the sass path in the app -->
-        <property name="app.sass.dir" location="${app.resources.dir}/${app.sass.name}"/>
-        
+        <property name="app.sass.dir" location="${app.resources.dir}/${app.sass.name}" />
+
         <!-- Specify packaging info -->
-        <property name="app.packager.file" location="${app.dir}/packager.temp.json"/>
-        
+        <property name="app.packager.file" location="${app.dir}/packager.temp.json" />
+
         <if>
-            <equals arg1="${args.environment}" arg2="production"/>
+            <equals arg1="${args.environment}" arg2="production" />
             <then>
-                <property name="build.operations" value="${build.operations.production}"/>
-                <property name="build.options" value="${build.options.production}"/>
+                <property name="build.operations" value="${build.operations.production}" />
+                <property name="build.options" value="${build.options.production}" />
             </then>
             <else>
                 <if>
-                    <equals arg1="${args.environment}" arg2="testing"/>
+                    <equals arg1="${args.environment}" arg2="testing" />
                     <then>
-                        <property name="build.operations" value="${build.operations.testing}"/>
-                        <property name="build.options" value="${build.options.testing}"/>
+                        <property name="build.operations" value="${build.operations.testing}" />
+                        <property name="build.options" value="${build.options.testing}" />
                     </then>
                     <else>
                         <if>
-                            <equals arg1="${args.environment}" arg2="package"/>
+                            <equals arg1="${args.environment}" arg2="package" />
                             <then>
-                                <property name="build.operations" value="${build.operations.package}"/>
-                                <property name="build.options" value="${build.options.package}"/>
+                                <property name="build.operations" value="${build.operations.package}" />
+                                <property name="build.options" value="${build.options.package}" />
                             </then>
                             <else>
                                 <if>
-                                    <equals arg1="${args.environment}" arg2="native"/>
+                                    <equals arg1="${args.environment}" arg2="native" />
                                     <then>
-                                        <property name="build.operations" value="${build.operations.native}"/>
-                                        <property name="build.options" value="${build.options.native}"/>
+                                        <property name="build.operations" value="${build.operations.native}" />
+                                        <property name="build.options" value="${build.options.native}" />
                                     </then>
                                     <else>
                                         <fail>The Touch SDK currently supports 'production', 'testing', 'package', and 'native' builds not ${args.environment}</fail>
@@ -195,69 +194,68 @@ this file in most cases.
             </else>
         </if>
     </target>
-    <target name="-after-init"/>
+    <target name="-after-init" />
     <target name="init"
-            depends="init-local,find-cmd,-before-init,-init,-after-init"/>
+            depends="init-local,find-cmd,-before-init,-init,-after-init" />
 
     <!--
     Clean
     -->
-    <target name="-before-clean"/>
+    <target name="-before-clean" />
     <target name="-clean">
-        <delete dir="${build.dir}"/>
+        <delete dir="${build.dir}" />
     </target>
-    <target name="-after-clean"/>
+    <target name="-after-clean" />
     <target name="clean"
             depends="init,-before-clean,-clean,-after-clean"
-            description="Removes all build output produced by the 'build' target"/>
+            description="Removes all build output produced by the 'build' target" />
 
     <!--
     Build SASS
     -->
-    <target name="-before-sass"/>
+    <target name="-before-sass" />
     <target name="-sass">
         <x-compass-compile
             trace="true"
             boring="true"
             force="true"
-            dir="${app.sass.dir}"/>
+            dir="${app.sass.dir}" />
     </target>
-    <target name="-after-sass"/>
+    <target name="-after-sass" />
     <target name="sass" depends="init" unless="skip.sass"
             description="Builds only the SASS files using Compass">
-        <antcall target="-before-sass"/>
-        <antcall target="-sass"/>
-        <antcall target="-after-sass"/>
+        <antcall target="-before-sass" />
+        <antcall target="-sass" />
+        <antcall target="-after-sass" />
     </target>
-    
+
     <!--
     Build Page
     -->
-    <target name="-before-page"/>
+    <target name="-before-page" />
     <target name="-page">
-        <property name="v2deps" value="false"/>
-        <property name="args.path" location="."/>
-        <property name="args.destination" location="${app.build.dir}"/>
-        <property name="args.environment" value="production"/>
-        
-        <x-script-def name="x-app-build" 
+        <property name="v2deps" value="false" />
+        <property name="args.path" location="." />
+        <property name="args.destination" location="${app.build.dir}" />
+        <property name="args.environment" value="production" />
+
+        <x-script-def name="x-app-build"
                       src="${framework.config.dir}/app-build.js">
-            <script src="${cmd.config.dir}/ant/JSON.js"/>
-            <script src="${cmd.config.dir}/ant/ant-util.js"/>
+            <script src="${cmd.config.dir}/ant/JSON.js" />
+            <script src="${cmd.config.dir}/ant/ant-util.js" />
         </x-script-def>
-        
-        <x-app-build/>
-        
+
+        <x-app-build />
     </target>
-    <target name="-after-page"/>
+    <target name="-after-page" />
     <target name="page" depends="init" unless="skip.page"
             description="Builds only the application's HTML page">
-        <antcall target="-before-page"/>
-        <antcall target="-page"/>
-        <antcall target="-after-page"/>
+        <antcall target="-before-page" />
+        <antcall target="-page" />
+        <antcall target="-after-page" />
     </target>
 
-    <target name="-before-run"/>
+    <target name="-before-run" />
     <target name="-run">
         <x-sencha-command>
             app
@@ -266,23 +264,23 @@ this file in most cases.
             ${app.packager.file}
         </x-sencha-command>
     </target>
-    <target name="-after-run"/>
+    <target name="-after-run" />
     <target name="run" depends="init" unless="skip.run"
             description="Runs an application package using the native packager">
-        
-        <property name="args.autorun" value="false"/>
+
+        <property name="args.autorun" value="false" />
         <if>
             <and>
-                <equals arg1="${args.autorun}" arg2="true"/>
+                <equals arg1="${args.autorun}" arg2="true" />
                 <or>
-                    <equals arg1="${args.environment}" arg2="native"/>
-                    <equals arg1="${args.environment}" arg2="package"/>
+                    <equals arg1="${args.environment}" arg2="native" />
+                    <equals arg1="${args.environment}" arg2="package" />
                 </or>
             </and>
             <then>
-                <antcall target="-before-run"/>
-                <antcall target="-run"/>
-                <antcall target="-after-run"/>
+                <antcall target="-before-run" />
+                <antcall target="-run" />
+                <antcall target="-after-run" />
             </then>
         </if>
     </target>
@@ -290,31 +288,31 @@ this file in most cases.
     <!--
     Build
     -->
-    <target name="-before-build"/>
-    <target name="-build" depends="sass,page,run"/>
-    <target name="-after-build"/>
+    <target name="-before-build" />
+    <target name="-build" depends="sass,page,run" />
+    <target name="-after-build" />
     <target name="build"
             depends="init,-before-build,-build,-after-build"
-            description="Builds the application"/>
+            description="Builds the application" />
 
     <!--
     environment setters
     -->
 
     <target name="production">
-        <property name="args.environment" value="production"/>
+        <property name="args.environment" value="production" />
     </target>
 
     <target name="testing">
-        <property name="args.environment" value="testing"/>
+        <property name="args.environment" value="testing" />
     </target>
 
     <target name="native">
-        <property name="args.environment" value="native"/>
+        <property name="args.environment" value="native" />
     </target>
 
     <target name="package">
-        <property name="args.environment" value="package"/>
+        <property name="args.environment" value="package" />
     </target>
 
     <!--
@@ -322,12 +320,12 @@ this file in most cases.
     -->
     <target name=".props" depends="init"
             description="Lists all properties defined for the build">
-        <echoproperties/>
+        <echoproperties />
     </target>
 
     <target name=".help" depends="init"
             description="Provides help on the build script">
-        <local name="-alltargets"/>
+        <local name="-alltargets" />
         <x-shell outputproperty="-alltargets">
             ant -f ${ant.file} -p
         </x-shell>
@@ -355,7 +353,7 @@ process.
 The following properties can be used to modify the build process.
 
  * build.operations.production          Insert commands into the compile command
-                                        for a production build. 
+                                        for a production build.
  * build.operations.testing             Insert commands into the compile command
                                         for a testing build.
  * build.operations.native              Insert commands into the compile command
@@ -368,12 +366,11 @@ The following properties can be used to modify the build process.
                                         or build.operations.testing
                                         or build.operations.native
                                         or build.operations.package)
-            
-            
+
 For details about how these options affect your build, see
 
     ${basedir}/.sencha/app/build-impl.xml
-                            
+
 These options can be stored in a local.properties file in this folder or in the
 local.properties file in the workspace.
 
@@ -386,5 +383,4 @@ To see all currently defined properties, do this:
     ant .props
         ]]></echo>
     </target>
-
 </project>

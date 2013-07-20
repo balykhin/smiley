@@ -194,11 +194,11 @@ Ext.define('Ext.Rating', {
     * @param {Number} value - index of item to select to
     */
     displayValue: function (value) {
-        if (!this.rendered) {
-            //TODO: replace event with ST2.0 equivalent            
-            this.on('painted', Ext.Function.bind(this.displayValue, this, [value]), this, { single: true });
-            return;
-        }
+        //if (!this.rendered) {
+        //    //TODO: replace event with ST2.0 equivalent            
+        //    this.on('painted', Ext.Function.bind(this.displayValue, this, [value]), this, { single: true });
+        //    return;
+        //}
         var items = this.items;
         var count = items.getCount();
         var itemCls = this.getItemCls();

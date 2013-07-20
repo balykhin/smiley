@@ -2,11 +2,10 @@ Ext.define('smiley360.view.Survey', {
     extend: 'Ext.Panel',
     requires: ['Ext.form.FieldSet', 'Ext.form.Password', 'Ext.Label', 'Ext.Img'],
     alias: 'widget.surveyview',
-    cls: 'signup-bg',
-    style: 'background-color: #363639;',
-
     config: {
-        title: 'Take This Survey',
+    	title: 'Take This Survey',
+    	cls: 'signup-bg',
+    	style: 'background-color: #363639;',
         laytout: { type: 'fit' },
         items: [
 			{
@@ -24,14 +23,6 @@ Ext.define('smiley360.view.Survey', {
 					    itemId: 'backBtn'
 					},
 					{ xtype: 'spacer' },
-					//{
-					//    xtype: 'button',
-					//    iconCls: 'menu-btn',
-					//    iconMask: true,
-					//    ui: 'plain',
-					//    text: '',
-					//    itemId: 'menuBtn'
-					//}
 			    ]
 			}, {
 			    xtype: 'spacer',
@@ -53,7 +44,7 @@ Ext.define('smiley360.view.Survey', {
                             {
                                 xtype: 'panel',
                                 margin: '0px -35px 0px 0px',
-                                html: '<iframe src="http://uat.smiley360.com/mobile_survey/pms000_1.html" frameborder="no" class="popup-survey-iframe" />'
+                                html: '<iframe src="http://uat.smiley360.com/mobile_survey/pms000_1.html" frameborder="no" class="popup-survey-iframe" ></iframe>'
                             }
 					    ]
 					},

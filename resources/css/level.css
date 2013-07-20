@@ -1,0 +1,45 @@
+/* User Level Rating Control styles */
+.x-level-field {
+    min-width: 0px;
+    min-height: 0px;
+    background-color: #e2dddb;
+}
+
+    .x-level-field .x-form-label {
+        margin: 0px 10px 0px 0px;
+        padding: 0px;
+        background-color: transparent;
+    }
+
+        .x-level-field .x-form-label span {
+            font-size: 11pt;
+            font-family: din medium;
+        }
+
+    .x-level-field .x-rating-item {
+        float: left;
+        background-size: 40% 30%;
+    }
+
+    .x-level-field .x-item-disabled .x-rating-clear,
+    .x-level-field .x-item-disabled .x-rating-item {
+        opacity: 1;
+    }
+
+/*  Level Rating */
+
+.x-level-star {
+    background-image: url(../images/rating-level.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 30px;
+}
+
+.x-level-star-hover {
+    background-image: url(../images/rating-level-hover.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 30px;
+}

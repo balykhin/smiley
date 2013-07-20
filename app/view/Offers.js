@@ -2,7 +2,6 @@ var hide_panel, first_time, dock_panel;
 Ext.define('smiley360.view.Offers', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.offersview',
-    cls: 'normal-page-bg',
     requires: [
         'Ext.TitleBar',
         'Ext.Video'
@@ -10,7 +9,7 @@ Ext.define('smiley360.view.Offers', {
     config: {
 
         tabBarPosition: 'bottom',
-        cls: 'cust-tabbar',
+        cls: 'cust-tabbar normal-page-bg',
         items: [
             {
                 title: 'HOME',
@@ -44,11 +43,11 @@ Ext.define('smiley360.view.Offers', {
 							    listeners:
                                 {
                                     tap: function () {
-                                        if (Ext.getCmp('missions_menu').getHidden() == false) {
-                                            Ext.getCmp('missions_menu').hide({ type: 'slide', direction: 'top', duration: 300 });
+                                        if (Ext.getCmp('offers_menu').getHidden() == false) {
+                                            Ext.getCmp('offers_menu').hide({ type: 'slide', direction: 'top', duration: 300 });
                                         }
                                         else {
-                                            Ext.getCmp('missions_menu').show({ type: 'slide', direction: 'left', duration: 300 });
+                                            Ext.getCmp('offers_menu').show({ type: 'slide', direction: 'left', duration: 300 });
                                         }
                                     },
 
@@ -70,7 +69,7 @@ Ext.define('smiley360.view.Offers', {
                     {
                         xtype: 'container',
                         layout: 'hbox',
-                        id: 'missions-cont',
+                        id: 'offers-cont',
                         style: 'box-shadow: 0px 1px 2px rgba(0,0,0,0.5);',
                         items: [{
                             xtype: 'container',
@@ -127,7 +126,7 @@ Ext.define('smiley360.view.Offers', {
                                                                 listeners: {
                                                                     tap: function () {
                                                                         Ext.getCmp('missionslist-cont').show();
-                                                                        Ext.getCmp('missions-cont').hide();
+                                                                        Ext.getCmp('offers-cont').hide();
                                                                     }
                                                                 }
                                                             },
@@ -438,7 +437,7 @@ Ext.define('smiley360.view.Offers', {
                                                             listeners: {
                                                                 tap: function () {
                                                                     Ext.getCmp('missionslist-cont').show();
-                                                                    Ext.getCmp('missions-cont').hide();
+                                                                    Ext.getCmp('offers-cont').hide();
                                                                 }
                                                             }
                                                         },
@@ -492,7 +491,7 @@ Ext.define('smiley360.view.Offers', {
                                                             listeners: {
                                                                 tap: function () {
                                                                     Ext.getCmp('missionslist-cont').show();
-                                                                    Ext.getCmp('missions-cont').hide();
+                                                                    Ext.getCmp('offers-cont').hide();
                                                                 }
                                                             }
                                                         },
@@ -652,7 +651,7 @@ Ext.define('smiley360.view.Offers', {
 
 
                             ],
-                        id: 'missions_menu',
+                        id: 'offers_menu',
                         listeners:
                             {
                                 initialize: function () {

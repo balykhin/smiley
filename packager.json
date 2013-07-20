@@ -166,6 +166,7 @@
 	 * This is orientations that this application can run.
 	 */
 	"orientations": [
-		"portrait"
+		"portrait",
+		"landscape"
 	]
 }
