@@ -55,6 +55,10 @@ Ext.application({
 		'Share',
         'ContactUs',
         'TermsOfUse',
+		'OfferAcceptAddress',
+		'MissionCompleted',
+		'MissingOffers',
+        'LoginWithFacebook',
     ],
 
     icon: {

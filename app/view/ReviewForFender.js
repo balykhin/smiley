@@ -28,7 +28,7 @@ Ext.define('smiley360.view.ReviewForFender', {
             }, {
                 xtype: 'panel',
                 layout: 'hbox',
-                cls: 'popup-top-panel facebook-background',
+                cls: 'popup-top-panel forgetpwd-background',
                 items: [{
                     xtype: 'label',
                     id: 'xTitleLabel',

@@ -11,6 +11,7 @@ Ext.define('smiley360.view.Share', {
 
 		tabBarPosition: 'bottom',
 		cls: 'cust-tabbar normal-page-bg',
+		id: 'xShare',
 		items: [
             {
             	title: 'HOME',
@@ -31,7 +32,12 @@ Ext.define('smiley360.view.Share', {
 								ui: 'plain',
 								iconCls: 'back-btn',
 								iconMask: true,
-								itemId: 'backBtn'
+								itemId: 'backBtn',
+								listeners: {
+									tap: function () {
+										this.up('#xShare').fireEvent('backButtonCommandShare', this);
+									}
+								}
 							},
 							{ xtype: 'spacer' },
 							{
@@ -103,7 +109,7 @@ Ext.define('smiley360.view.Share', {
 									{
 										xtype: 'container',
 										style: 'background-color: #efecea; ',
-
+										cls: 'has-shadow',
 										items: [
 											{
 												xtype: 'carousel',
@@ -148,22 +154,22 @@ Ext.define('smiley360.view.Share', {
 												style: 'background-color: #F4F3F1; padding: 40px 25px;',
 												layout: { type: 'vbox' },
 												items: [
-													 
+
 													 {
 													 	xtype: 'container',
 													 	style: 'background-color: #F4F3F1; padding: 40px 25px;',
-													 	layout: { type: 'hbox' },
+													 	layout: { type: 'hbox', align: 'left' },
 													 	items: [{
-													 				xtype: 'image',
-													 				cls: 'share-fb-btn',
-													 				style: 'padding: 50px 0px 50px 0px; margin: -50px 10px;',
-													 				flex: 1,
-													 				listeners:
-																		{
-																			tap: function ()
-																			{ }
-																		}
-													 			},
+													 		xtype: 'image',
+													 		cls: 'share-fb-btn',
+													 		style: 'padding: 50px 0px 50px 0px; margin: -50px 10px;',
+													 		flex: 1,
+													 		listeners:
+																{
+																	tap: function ()
+																	{ }
+																}
+													 	},
 																{
 																	xtype: 'image',
 																	cls: 'share-tw-btn',
@@ -186,15 +192,42 @@ Ext.define('smiley360.view.Share', {
 																		}
 																}, ]
 													 },
+													 //1st subrow buttons
 													 {
 													 	xtype: 'container',
 													 	style: 'background-color: #F4F3F1; padding: 40px 25px; margin-top: -130px;',
-													 	layout: { type: 'hbox', align: 'center'},
+													 	layout: { type: 'hbox', align: 'center' },
 													 	items: [{
 													 		xtype: 'panel',
 													 		cls: 'share-badge-btn',
-													 		style: 'padding: 4px 3px 4px 0px; margin: 0px 10px;',
+													 		style: 'padding: 5px 3px 8px 8px; margin: -1px 10px;',
 													 		flex: 1,
+													 		items: [{
+													 			xtype: 'container',
+													 			layout: 'vbox',
+													 			style: 'padding: 2px',
+													 			items: [{
+													 				xtype: 'container',
+													 				layout: 'hbox',
+													 				cls: 'top-badge-label',
+													 				style: 'font-family: franklin; font-size: 0.6em; margin-left:2px;',
+													 				items: [{
+													 					xtype: 'label',
+													 					html: '5',
+													 				}, {
+													 					xtype: 'label',
+													 					html: '/',
+													 				}, {
+													 					xtype: 'label',
+													 					html: '10',
+													 				}],
+													 			}, {
+													 				xtype: 'label',
+													 				html: '5',
+													 				cls: 'new-badge-label',
+													 				style: 'font-family: din bold; font-size: 1em; margin-left:-2px;'
+													 			}, ],
+													 		}],
 													 		listeners:
 																{
 																	tap: function ()
@@ -206,7 +239,7 @@ Ext.define('smiley360.view.Share', {
 																{
 																	xtype: 'panel',
 																	cls: 'share-badge-btn',
-																	style: 'padding: 4px 3px 4px 0px; margin: 0px 10px;',
+																	style: 'padding: 5px 3px 8px 8px; margin: -1px 10px;',
 																	flex: 1,
 																	items: [{
 																		xtype: 'container',
@@ -215,21 +248,23 @@ Ext.define('smiley360.view.Share', {
 																		items: [{
 																			xtype: 'container',
 																			layout: 'hbox',
-																			style: 'font-family: franklin; font-size: 0.8em;',
+																			cls: 'top-badge-label',
+																			style: 'font-family: franklin; font-size: 0.6em; margin-left:2px;',
 																			items: [{
 																				xtype: 'label',
-																				html:'5',
+																				html: '0',
 																			}, {
 																				xtype: 'label',
 																				html: '/',
 																			}, {
 																				xtype: 'label',
 																				html: '10',
-																			}], 
+																			}],
 																		}, {
 																			xtype: 'label',
 																			html: '5',
-																			style: 'font-family: din bold; font-size: 1em; padding-left: 9px; padding-bottom: 4px; margin-top: -6px;'
+																			cls: 'new-badge-label',
+																			style: 'font-family: din bold; font-size: 1em; margin-left:-2px;'
 																		}, ],
 																	}],
 																	listeners:
@@ -243,8 +278,34 @@ Ext.define('smiley360.view.Share', {
 																}, {
 																	xtype: 'panel',
 																	cls: 'share-badge-btn',
-																	style: 'padding: 4px 3px 4px 0px; margin: 0px 10px;',
+																	style: 'padding: 5px 3px 8px 8px; margin: -1px 10px;',
 																	flex: 1,
+																	items: [{
+																		xtype: 'container',
+																		layout: 'vbox',
+																		style: 'padding: 2px',
+																		items: [{
+																			xtype: 'container',
+																			layout: 'hbox',
+																			cls: 'top-badge-label',
+																			style: 'font-family: franklin; font-size: 0.6em; margin-left:4px;',
+																			items: [{
+																				xtype: 'label',
+																				html: '0',
+																			}, {
+																				xtype: 'label',
+																				html: '/',
+																			}, {
+																				xtype: 'label',
+																				html: '20',
+																			}],
+																		}, {
+																			xtype: 'label',
+																			html: '10',
+																			cls: 'new-badge-label',
+																			style: 'font-family: din bold; font-size: 1em; margin-left:-4px;'
+																		}, ],
+																	}],
 																	listeners:
 																		{
 																			tap: function ()
@@ -254,48 +315,328 @@ Ext.define('smiley360.view.Share', {
 																	xtype: 'spacer',
 																}, ]
 													 },
+													 //1st subrow badges
 													  {
 													  	xtype: 'container',
-													  	style: 'background-color: #F4F3F1; padding: 40px 25px;',
+													  	style: 'background-color: #F4F3F1; padding: 40px 25px; margin-top: 40px;',
 													  	layout: { type: 'hbox' },
 													  	items: [{
-													  		xtype: 'button',
-													  		style: 'padding: 30px 0px 50px 0px; margin: 60px 0px;',
-													  		cls: 'menu-list-btn-new',
-													  		text: 'TRY',
-													  	}, {
-													  		xtype: 'button',
-													  		style: 'padding: 30px 0px 50px 0px; margin: 60px 0px;',
-													  		cls: 'menu-list-btn-new',
-													  		text: 'TRY',
-													  	}, {
-													  		xtype: 'button',
-													  		style: 'padding: 30px 0px 50px 0px; margin: 60px 0px;',
-													  		cls: 'menu-list-btn-new',
-													  		text: 'TRY',
-													  	}, ]
+													  		xtype: 'image',
+													  		cls: 'share-yt-btn',
+													  		style: 'padding: 50px 0px 50px 0px; margin: -50px 10px;',
+													  		flex: 1,
+													  		listeners:
+																{
+																	tap: function ()
+																	{ }
+																}
+													  	},
+																{
+																	xtype: 'image',
+																	cls: 'share-f2f-btn',
+																	style: 'padding: 50px 0px 50px 0px; margin: -50px 10px;',
+																	flex: 1,
+																	listeners:
+																		{
+																			tap: function ()
+																			{ }
+																		}
+																}, {
+																	xtype: 'image',
+																	cls: 'share-photo-btn',
+																	style: 'padding: 50px 0px 50px 0px; margin: -50px 10px;',
+																	flex: 1,
+																	listeners:
+																		{
+																			tap: function ()
+																			{ }
+																		}
+																}, ]
 													  },
+													  //2nd subrow buttons
 													  {
 													  	xtype: 'container',
-													  	style: 'background-color: #F4F3F1; padding: 40px 25px;',
-													  	layout: { type: 'hbox' },
+													  	style: 'background-color: #F4F3F1; padding: 40px 25px; margin-top: -130px;',
+													  	layout: { type: 'hbox', align: 'center' },
 													  	items: [{
-													  		xtype: 'button',
-													  		style: 'padding: 30px 0px 50px 0px; margin: -45px 0px 0px 0px;',
-													  		cls: 'menu-list-btn-smiles',
-													  		text: 'MIS',
+													  		xtype: 'panel',
+													  		cls: 'share-badge-btn',
+													  		style: 'padding: 5px 3px 8px 8px; margin: -1px 10px;',
+													  		flex: 1,
+													  		items: [{
+													  			xtype: 'container',
+													  			layout: 'vbox',
+													  			style: 'padding: 2px',
+													  			items: [{
+													  				xtype: 'container',
+													  				layout: 'hbox',
+													  				cls: 'top-badge-label',
+													  				style: 'font-family: franklin; font-size: 0.6em; margin-left:4px;',
+													  				items: [{
+													  					xtype: 'label',
+													  					html: '4',
+													  				}, {
+													  					xtype: 'label',
+													  					html: '/',
+													  				}, {
+													  					xtype: 'label',
+													  					html: '8',
+													  				}],
+													  			}, {
+													  				xtype: 'label',
+													  				html: '2',
+													  				cls: 'new-badge-label',
+													  				style: 'font-family: din bold; font-size: 1em; margin-left:-2px;'
+													  			}, ],
+													  		}],
+													  		listeners:
+																{
+																	tap: function ()
+																	{ }
+																}
 													  	}, {
-													  		xtype: 'button',
-													  		style: 'padding: 30px 0px 50px 0px; margin: -45px 0px 0px 0px;',
-													  		cls: 'menu-list-btn-smiles',
-													  		text: 'MIS',
-													  	}, {
-													  		xtype: 'button',
-													  		style: 'padding: 30px 0px 50px 0px; margin: -45px 0px 0px 0px;',
-													  		cls: 'menu-list-btn-smiles',
-													  		text: 'MIS',
-													  	}, ]
+													  		xtype: 'spacer',
+													  	},
+																{
+																	xtype: 'panel',
+																	cls: 'share-badge-btn',
+																	style: 'padding: 5px 3px 8px 8px; margin: -1px 10px;',
+																	flex: 1,
+																	items: [{
+																		xtype: 'container',
+																		layout: 'vbox',
+																		style: 'padding: 2px',
+																		items: [{
+																			xtype: 'container',
+																			layout: 'hbox',
+																			cls: 'top-badge-label',
+																			style: 'font-family: franklin; font-size: 0.6em; margin-left:4px;',
+																			items: [{
+																				xtype: 'label',
+																				html: '0',
+																			}, {
+																				xtype: 'label',
+																				html: '/',
+																			}, {
+																				xtype: 'label',
+																				html: '8',
+																			}],
+																		}, {
+																			xtype: 'label',
+																			html: '4',
+																			cls: 'new-badge-label',
+																			style: 'font-family: din bold; font-size: 1em; margin-left:-2px;'
+																		}, ],
+																	}],
+																	listeners:
+																		{
+																			tap: function ()
+																			{ }
+																		}
+																},
+																{
+																	xtype: 'spacer',
+																}, {
+																	xtype: 'panel',
+																	cls: 'share-badge-photo-btn',
+																	style: 'padding: 5px 3px 8px 8px; margin: -1px 10px;',
+																	flex: 1,
+																	items: [{
+																		xtype: 'container',
+																		layout: 'vbox',
+																		style: 'padding: 2px',
+																		items: [{
+																			xtype: 'container',
+																			layout: 'hbox',
+																			cls: 'photo-badge-label',
+																			height: '50%',
+																			style: 'font-family: franklin; font-size: 0.6em; margin-left:-4px; margin-top: -12px; padding: 10px 10px 10px 10px;',
+																			items: [{
+																				xtype: 'label',
+																				html: '4',
+																			}, {
+																				xtype: 'label',
+																				html: '/',
+																			}, {
+																				xtype: 'label',
+																				html: '4',
+																			}, {
+																				xtype: 'label',
+																				html: ' ',
+																			}, ],
+																		},],
+																	}],
+																	listeners:
+																		{
+																			tap: function ()
+																			{ }
+																		}
+																}, {
+																	xtype: 'spacer',
+																}, ]
 													  },
+													  //2nd subrow badges
+													   {
+													   	xtype: 'container',
+													   	style: 'background-color: #F4F3F1; padding: 40px 25px; margin-top: 40px;',
+													   	layout: { type: 'hbox' },
+													   	items: [{
+													   		xtype: 'image',
+													   		cls: 'share-link-btn',
+													   		style: 'padding: 50px 0px 50px 0px; margin: -50px 10px;',
+													   		flex: 1,
+													   		listeners:
+																{
+																	tap: function ()
+																	{ }
+																}
+													   	},
+																{
+																	xtype: 'image',
+																	cls: 'share-blog-btn',
+																	style: 'padding: 50px 0px 50px 0px; margin: -50px 10px;',
+																	flex: 1,
+																	listeners:
+																		{
+																			tap: function ()
+																			{ }
+																		}
+																}, {
+																	xtype: 'image',
+																	cls: 'share-sm_conn-btn',
+																	style: 'padding: 50px 0px 50px 0px; margin: -50px 10px;',
+																	flex: 1,
+																	listeners:
+																		{
+																			tap: function ()
+																			{ }
+																		}
+																}, ]
+													   },
+													  //3rd subrow buttons
+													  {
+													  	xtype: 'container',
+													  	style: 'background-color: #F4F3F1; padding: 40px 25px; margin-top: -130px;',
+													  	layout: { type: 'hbox', align: 'center' },
+													  	items: [{
+													  		xtype: 'panel',
+													  		cls: 'share-badge-btn',
+													  		style: 'padding: 5px 3px 8px 8px; margin: -1px 10px;',
+													  		flex: 1,
+													  		items: [{
+													  			xtype: 'container',
+													  			layout: 'vbox',
+													  			style: 'padding: 2px',
+													  			items: [{
+													  				xtype: 'container',
+													  				layout: 'hbox',
+													  				cls: 'top-badge-label',
+													  				style: 'font-family: franklin; font-size: 0.6em; margin-left:2px;',
+													  				items: [{
+													  					xtype: 'label',
+													  					html: '5',
+													  				}, {
+													  					xtype: 'label',
+													  					html: '/',
+													  				}, {
+													  					xtype: 'label',
+													  					html: '10',
+													  				}],
+													  			}, {
+													  				xtype: 'label',
+													  				html: '5',
+													  				cls: 'new-badge-label',
+													  				style: 'font-family: din bold; font-size: 1em; margin-left:-2px;'
+													  			}, ],
+													  		}],
+													  		listeners:
+																{
+																	tap: function ()
+																	{ }
+																}
+													  	}, {
+													  		xtype: 'spacer',
+													  	},
+																{
+																	xtype: 'panel',
+																	cls: 'share-badge-btn',
+																	style: 'padding: 5px 3px 8px 8px; margin: -1px 10px;',
+																	flex: 1,
+																	items: [{
+																		xtype: 'container',
+																		layout: 'vbox',
+																		style: 'padding: 2px',
+																		items: [{
+																			xtype: 'container',
+																			layout: 'hbox',
+																			cls: 'top-badge-label',
+																			style: 'font-family: franklin; font-size: 0.6em; margin-left:2px;',
+																			items: [{
+																				xtype: 'label',
+																				html: '0',
+																			}, {
+																				xtype: 'label',
+																				html: '/',
+																			}, {
+																				xtype: 'label',
+																				html: '10',
+																			}],
+																		}, {
+																			xtype: 'label',
+																			html: '5',
+																			cls: 'new-badge-label',
+																			style: 'font-family: din bold; font-size: 1em; margin-left:-2px;'
+																		}, ],
+																	}],
+																	listeners:
+																		{
+																			tap: function ()
+																			{ }
+																		}
+																},
+																{
+																	xtype: 'spacer',
+																}, {
+																	xtype: 'panel',
+																	cls: 'share-badge-btn',
+																	style: 'padding: 5px 3px 8px 8px; margin: -1px 10px;',
+																	flex: 1,
+																	items: [{
+																		xtype: 'container',
+																		layout: 'vbox',
+																		style: 'padding: 2px',
+																		items: [{
+																			xtype: 'container',
+																			layout: 'hbox',
+																			cls: 'top-badge-label',
+																			style: 'font-family: franklin; font-size: 0.6em; margin-left:4px;',
+																			items: [{
+																				xtype: 'label',
+																				html: '0',
+																			}, {
+																				xtype: 'label',
+																				html: '/',
+																			}, {
+																				xtype: 'label',
+																				html: '20',
+																			}],
+																		}, {
+																			xtype: 'label',
+																			html: '10',
+																			cls: 'new-badge-label',
+																			style: 'font-family: din bold; font-size: 1em; margin-left:-4px;'
+																		}, ],
+																	}],
+																	listeners:
+																		{
+																			tap: function ()
+																			{ }
+																		}
+																}, {
+																	xtype: 'spacer',
+																}, ]
+													  },
+													  //3rd subrow badges
 												],
 											},
 
@@ -313,8 +654,7 @@ Ext.define('smiley360.view.Share', {
 									{
 										xtype: 'spacer',
 										height: '7px',
-										style: 'background-color: #efecea;',
-										cls: 'has-shadow',
+										style: 'background-color:#f4f3f1;',
 									},
 
 

@@ -75,7 +75,8 @@ Ext.define('smiley360.view.Login', {
                 ui: 'action',
                 listeners: {
                     tap: function () {
-                        this.up('#xLoginView').doLoginWithFacebook();
+                        Ext.widget('loginwithfacebookview').show();
+                        //this.up('#xLoginView').doLoginWithFacebook();
                     }
                 }
             }, {
@@ -215,7 +216,17 @@ Ext.define('smiley360.view.Login', {
                             Ext.widget('offerremoveview').show();
                         }
                     }
-                }]
+                }, {
+                	xtype: 'button',
+                	text: 'OA_A',
+                	width: '80px',
+                	ui: 'action',
+                	listeners: {
+                		tap: function () {
+                			Ext.widget('offeracceptaddressview').show();
+                		}
+                	}
+                }, ]
             }, {
                 xtype: 'panel',
                 layout: 'hbox',
@@ -257,6 +268,16 @@ Ext.define('smiley360.view.Login', {
                     tap: 'onMission_List'
                 }, {
                     xtype: 'button',
+					text: 'M_C',
+					width: '80px',
+					ui: 'action',
+					listeners: {
+						tap: function () {
+							Ext.widget('missioncomletedview').show();
+						}
+					}
+				}, {
+					xtype: 'button',
                     style: 'background-color: #3f4b4e !important;',
                     itemId: 'xOffers',
                     text: 'O',
@@ -271,8 +292,18 @@ Ext.define('smiley360.view.Login', {
                     width: '70px',
                     ui: 'action',
                     tap: 'onOffersDetails'
-                }],
             }, {
+					xtype: 'button',
+					text: 'M_O',
+					width: '80px',
+					ui: 'action',
+					listeners: {
+						tap: function () {
+							Ext.widget('missingoffersview').show();
+						}
+					}
+				}, ],
+			}, {
                 xtype: 'panel',
                 layout: 'hbox',
                 items: [
@@ -308,7 +339,6 @@ Ext.define('smiley360.view.Login', {
                 }, {
                 	xtype: 'button',
                 	itemId: 'xShare',
-                	hidden: true,
                 	text: 'Sh',
                 	width: '70px',
                 	ui: 'confirm',
@@ -476,62 +506,5 @@ Ext.define('smiley360.view.Login', {
             passwordData: Ext.getCmp('txtPassword').getValue()
         };
         //smiley360.authenticate(getView, getData.loginData, getData.passwordData);
-    },
-
-    doLoginWithFacebook: function () {
-        console.log('doLoginWithFacebook');
-        // run once with current status and whenever the status changes
-        FB.getLoginStatus(this.checkFacebookStatus);
-        FB.Event.subscribe('auth.statusChange', this.checkFacebookStatus);
-    },
-
-    checkFacebookStatus: function (response) {
-        //button = document.getElementById('fb-auth');
-        //userInfo = document.getElementById('user-info');
-        console.log('checkFacebookStatus:' + response);
-
-        function showUserInfo(response, info) {
-            if (response.authResponse) {
-                var accessToken = response.authResponse.accessToken;
-                var userInfoHtml = '<img src="https://graph.facebook.com/' + info.id + '/picture"><br />';
-
-                for (var oneField in info) {
-                    userInfoHtml += oneField + ': ' + info[oneField] + '<br />';
-                }
-
-                Ext.getCmp('xFacebookInfo').setHtml(userInfoHtml);
-                // Your Access Token: " + accessToken);
-            }
-        }
-
-        if (response.authResponse) {
-            //user is already logged in and connected
-            FB.api('/me', function (info) {
-                showUserInfo(response, info);
-            });
-
-            //button.onclick = function () {
-            //    FB.logout(function (response) {
-            //        logout(response);
-            //    });
-            //};
-        } else {
-            //user is not connected to your app or logged out
-            //button.innerHTML = 'Login';
-            //button.onclick = function () {
-            //    showLoader(true);
-            FB.login(function (response) {
-                if (response.authResponse) {
-                    FB.api('/me', function (info) {
-                        showUserInfo(response, info);
-                    });
-                } else {
-                    //user cancelled login or did not grant authorization
-                    //showLoader(false);
-                }
-            }, {
-                scope: 'email,user_birthday,user_location,user_hometown'
-            });
-        }
     },
 });

@@ -88,7 +88,9 @@ Ext.define('smiley360.controller.Index', {
 			brandView: {
 				backButtonCommandBrand: 'backButtonCommandSignup'
 			},
-			
+			shareView: {
+				backButtonCommandShare: 'backButtonCommandSignup'
+			},
 		}
 	},
 
@@ -116,7 +118,7 @@ Ext.define('smiley360.controller.Index', {
 	},
 	onConnectTapCommand: function () {
 		console.log("onConnectTapCommand");
-		 Ext.Viewport.animateActiveItem(this.getConnectView(), this.slideLeftTransition); 
+		Ext.Viewport.animateActiveItem(this.getConnectView(), this.slideLeftTransition);
 	},
 	onBrowseInstrumentsTapCommand: function () {
 		console.log("onConnectTapCommand");
@@ -124,7 +126,7 @@ Ext.define('smiley360.controller.Index', {
 	},
 	onBrowseTapCommand: function () {
 		console.log("onConnectTapCommand");
-		 Ext.Viewport.animateActiveItem(this.getBrowseView(), this.slideLeftTransition); 
+		Ext.Viewport.animateActiveItem(this.getBrowseView(), this.slideLeftTransition);
 	},
 
 	onLocalstoragetestTapCommand: function () {
@@ -132,13 +134,13 @@ Ext.define('smiley360.controller.Index', {
 	},
 
 	onOffersDetailsTapCommand: function () {
-		if (isLogined) { Ext.Viewport.animateActiveItem(this.getOfferDetailsView(), this.slideLeftTransition); }
+		Ext.Viewport.animateActiveItem(this.getOfferDetailsView(), this.slideLeftTransition);
 	},
 
 	onOffersTapCommand: function () {
-		if (isLogined) {
+		
 			Ext.Viewport.animateActiveItem(this.getOffersView(), this.slideLeftTransition);
-		}
+		
 
 		smiley360.services.getOffers(function (response) {
 			if (response.success) {
@@ -191,16 +193,16 @@ Ext.define('smiley360.controller.Index', {
 	//    if (isLogined) { Ext.Viewport.animateActiveItem(this.getEditProfileView(), this.slideLeftTransition); }
 	//},
 	onMissionDetailsTapCommand: function () {
-		if (isLogined) { Ext.Viewport.animateActiveItem(this.getDetailsView(), this.slideLeftTransition); }
+		 Ext.Viewport.animateActiveItem(this.getDetailsView(), this.slideLeftTransition); 
 	},
 
 	onMissionTapCommand: function () {
-		if (isLogined) { Ext.Viewport.animateActiveItem(this.getMissionsView(), this.slideLeftTransition); }
+		 Ext.Viewport.animateActiveItem(this.getMissionsView(), this.slideLeftTransition); 
 	},
 
 	oneditLabelCommand: function () {
 		console.log("oneditLabelCommand");
-		if (isLogined) { Ext.Viewport.animateActiveItem(this.getEditProfileView(), this.slideLeftTransition); }
+		Ext.Viewport.animateActiveItem(this.getEditProfileView(), this.slideLeftTransition); 
 
 	},
 
@@ -347,7 +349,7 @@ Ext.define('smiley360.controller.Index', {
 		var profArray = {};
 
 		for (var field in fields) {
-			if ((fields[field] != 'username')&&(fields[field] != 'birthdate'))
+			if ((fields[field] != 'username') && (fields[field] != 'birthdate'))
 				profArray[fields[field]] = Ext.ComponentQuery.query('#' + fields[field] + '_signup')[0].getValue(fields[field]);
 			if (fields[field] == 'birthdate')
 				profArray[fields[field]] = Ext.ComponentQuery.query('#' + fields[field] + '_signup')[0].getFormattedValue(fields[field]);

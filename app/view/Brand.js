@@ -194,6 +194,19 @@ Ext.define('smiley360.view.Brand', {
 																width: 120,
 																height: 30,
 																text: 'FOLLOW',
+																listeners: {
+																	tap: function () {
+																		if (this.getCls() == 'has-shadow follow-btn')
+																		{ 
+																			this.setCls('has-shadow after-follow-btn');
+																			this.setText('FOLLOWING');
+																		}
+																		else {
+																			this.setCls('has-shadow follow-btn');
+																			this.setText('FOLLOW');
+																		}
+																	}
+																}
 															},
 															{
 																xtype: 'button',
@@ -202,6 +215,11 @@ Ext.define('smiley360.view.Brand', {
 																width: 120,
 																height: 30,
 																text: 'ADD REVIEW',
+																listeners: {
+																	tap: function(){
+																		Ext.widget('reviewforfenderview').show();
+																	}
+																}
 															},
 
                                                 	],
