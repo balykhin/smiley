@@ -348,7 +348,7 @@
 }
 /********************************************************************************************/
 .whatshappening-image {
-	background-size: 50% !important;
+	/*background-size: 50% !important;*/
 	background-color: #EFECEA;
 	border-bottom: 1px dashed #D7CFCD;
 }

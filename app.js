@@ -25,7 +25,11 @@ Ext.application({
     requires: [
         'Ext.MessageBox', 'Ext.data.Validations', 'smiley360.model.SignupModel'
     ],
+	stores: ['Members'],
+    models: ['Member'],
+
     controllers: ['Index'],
+
     views: [
         'Login',
         'Signup',
