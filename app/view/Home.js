@@ -406,16 +406,13 @@ Ext.define('smiley360.view.Home', {
 
         for (var key in smiley360.userData.WhatsHappening) {
             var oneItem = smiley360.userData.WhatsHappening[key];
-            var oneElement = new Ext.Container({ layout: 'hbox', cls: 'whatshappening-image'});
+            var oneElement = new Ext.Container({ layout: 'hbox' });
 
             oneElement.add(new Ext.Img(
             {
                 flex: 2,
                 src: oneItem.iconURL,
-                height: 20,
-                width: 20,
-				margin: '20px 0px',
-                //cls: 'whatshappening-image',
+                cls: 'whatshappening-image',
             }));
 
             oneElement.add(new Ext.Label(

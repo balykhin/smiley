@@ -7,7 +7,7 @@ Ext.define('smiley360.view.Offers', {
         'Ext.Video'
     ],
     config: {
-		id: 'xOfferView',
+
         tabBarPosition: 'bottom',
         cls: 'cust-tabbar normal-page-bg',
         items: [
@@ -30,12 +30,7 @@ Ext.define('smiley360.view.Offers', {
 							    ui: 'plain',
 							    iconCls: 'back-btn',
 							    iconMask: true,
-							    itemId: 'backBtn',
-							    listeners: {
-							    	tap: function () {
-							    		this.up('#xOfferView').fireEvent('backButtonCommandOffers', this);
-							    	}
-							    }
+							    itemId: 'backBtn'
 							},
 							{ xtype: 'spacer' },
 							{
@@ -106,71 +101,65 @@ Ext.define('smiley360.view.Offers', {
                                                 },
                                             ]
                                         },
-										{
-											xtype: 'container',
-											id: 'xOfferList',
-											layout: { type: 'vbox', },
-										},
+                                        {
+                                            xtype: 'container',
+                                            layout: { type: 'hbox' },
+                                            style: 'padding: 10px 15px; background-color: #efecea;',
+                                            flex: 1,
+                                            items: [
+                                                {
+                                                    xtype: 'container',
+                                                    style: 'background-color: #efecea; padding-top: 15px;',
+                                                    layout: {
+                                                        type: 'vbox',
+                                                        align: 'middle',
+                                                    },
 
-                                        //{
-                                        //    xtype: 'container',
-                                        //    layout: { type: 'hbox' },
-                                        //    style: 'padding: 10px 15px; background-color: #efecea;',
-                                        //    flex: 1,
-                                        //    items: [
-                                        //        {
-                                        //            xtype: 'container',
-                                        //            style: 'background-color: #efecea; padding-top: 15px;',
-                                        //            layout: {
-                                        //                type: 'vbox',
-                                        //                align: 'middle',
-                                        //            },
+                                                    items: [
+                                                            {
+                                                                xtype: 'image',
+                                                                style: 'padding: 20px 0px 0px 15px;background-color: #efecea; border-radius: 5px;',
+                                                                cls: 'has-shadow',
+                                                                width: 100,
+                                                                height: 100,
+                                                                src: 'resources/images/secret-logo.png',
+                                                                listeners: {
+                                                                    tap: function () {
+                                                                        Ext.getCmp('missionslist-cont').show();
+                                                                        Ext.getCmp('offers-cont').hide();
+                                                                    }
+                                                                }
+                                                            },
+                                                    ],
 
-                                        //            items: [
-                                        //                    {
-                                        //                        xtype: 'image',
-                                        //                        style: 'padding: 20px 0px 0px 15px;background-color: #efecea; border-radius: 5px;',
-                                        //                        cls: 'has-shadow',
-                                        //                        width: 100,
-                                        //                        height: 100,
-                                        //                        src: 'resources/images/secret-logo.png',
-                                        //                        listeners: {
-                                        //                            tap: function () {
-                                        //                                Ext.getCmp('missionslist-cont').show();
-                                        //                                Ext.getCmp('offers-cont').hide();
-                                        //                            }
-                                        //                        }
-                                        //                    },
-                                        //            ],
+                                                },
+                                                {
+                                                    xtype: 'container',
+                                                    layout: { type: 'vbox' },
+                                                    flex: 4,
+                                                    style: 'padding-left: 10px;',
+                                                    items: [
+                                                        {
+                                                            xtype: 'label',
+                                                            html: 'Specific Mission Title',
+                                                            style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
 
-                                        //        },
-                                        //        {
-                                        //            xtype: 'container',
-                                        //            layout: { type: 'vbox' },
-                                        //            flex: 4,
-                                        //            style: 'padding-left: 10px;',
-                                        //            items: [
-                                        //                {
-                                        //                    xtype: 'label',
-                                        //                    html: 'Specific Mission Title',
-                                        //                    style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
-
-                                        //                },
-                                        //                {
-                                        //                    xtype: 'label',
-                                        //                    id:'offers_label_text',
-                                        //                    html: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-                                        //                    style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
-                                        //                    listeners: {
-                                        //                        initialize: function () {
+                                                        },
+                                                        {
+                                                            xtype: 'label',
+                                                            id:'offers_label_text',
+                                                            html: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+                                                            style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
+                                                            listeners: {
+                                                                initialize: function () {
                                                                     
-                                        //                        }
-                                        //                    }
-                                        //                },
-                                        //            ]
-                                        //        },
-                                        //    ]
-                                        //},
+                                                                }
+                                                            }
+                                                        },
+                                                    ]
+                                                },
+                                            ]
+                                        },
                                         {
                                             xtype: 'spacer',
                                             height: '14px',
@@ -306,6 +295,10 @@ Ext.define('smiley360.view.Offers', {
 									    style: 'background-color: #efecea;',
 									    cls: 'has-shadow',
 									},
+
+
+									
+
                                 ]
                             },//end second
                             {
@@ -538,6 +531,11 @@ Ext.define('smiley360.view.Offers', {
 									    height: '10px',
 									    style: 'background: transparent;'
 									},
+                                    //{
+                                    //    xtype: 'spacer',
+                                    //    height: '14px',
+                                    //    style: 'background-color: #efecea; margin: 0px 2px;',
+                                    //},
                                 ],
                             },//end last
 
@@ -741,69 +739,36 @@ Ext.define('smiley360.view.Offers', {
                 ]
             }
         ],
-        listeners: {
-        	show: function () {
-        		console.log('Offer view showed!');
-        		this.setOffers();
-        		//this.setWhatsHappening();
-        		//this.setSpecialOffers();
-        	},
-        },
-		//place listeners there
+        listeners: [
+			{
+			    delegate: "#backBtn",
+			    event: "tap",
+			    fn: "onBackButtonTap"
+			},
+            //{
+            //    delegate: '#editprofileLabel',
+            //    fn: 'oneditLabel',
+            //    element: 'element',
+            //    event: 'painted',
+            //},
+            {
+                delegate: "#gotoeditprofileBtn",
+                event: "tap",
+                fn: "onGoToProfileTap",
+            },
+
+        ]
     },
-    setOffers: function () {
-    	var xOfferList = this.down('#xOfferList');
-    	xOfferList.removeAll(true, true);
-
-    	for (var key in smiley360.userData.Offers) {
-    		var oneItem = smiley360.userData.Offers[key];
-    		var allContainer = new Ext.Container({
-
-    			layout: { type: 'hbox' },
-    			style: 'padding: 0px 15px 120px 15px; background-color: #efecea;',
-    			flex: 1,
-    		});
-
-    		var includeContainerImage = new Ext.Container({
-
-    			style: 'background-color: #efecea; padding-top: 15px;',
-    			layout: {
-    				type: 'vbox',
-    				align: 'middle',
-    			},
-    		});
-    		includeContainerImage.add(new Ext.Img(
-            {
-            	style: 'padding: 20px 0px 0px 0px;background-color: #efecea; border-radius: 5px;',
-            	cls: 'has-shadow',
-            	width: 100,
-            	height: 100,
-            	src: oneItem.link,//'resources/images/lays.png',
-            }));
-    		var includeContainerLabels = new Ext.Container({
-
-    			layout: { type: 'vbox' },
-    			flex: 4,
-    			style: 'padding-left: 10px;',
-    		});
-    		includeContainerLabels.add(new Ext.Label(
-            {
-            	html: oneItem.title,
-            	//html: 'Survey Title',
-            	style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
-            }));
-
-    		includeContainerLabels.add(new Ext.Label(
-            {
-            	html: oneItem.descr,
-            	//html: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel malesuada odio. Phasellus aliquam dignissim scelerisque. Sed ullamcorper libero nec placerat posuere.',
-            	style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
-            }));
-
-    		allContainer.add(includeContainerImage);
-    		allContainer.add(includeContainerLabels);
-    		xOfferList.add(allContainer);
-    	}
+    onBackButtonTap: function () {
+        console.log('back button tapped');
+        this.fireEvent('backButtonCommandOffers', this);
     },
-	//place functions there
+    onGoToProfileTap: function () {
+        console.log('GoToProfile button tapped');
+        this.fireEvent('GoToProfileCommand', this);
+    },
+    oneditLabel: function () {
+        console.log("oneditLabel");
+        this.fireEvent('oneditLabelCommand', this);
+    },
 });

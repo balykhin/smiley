@@ -35,7 +35,7 @@ Ext.define('smiley360.view.Login', {
                 cls: 'cust-input cust-input-user',
                 clearIcon: false,
                 required: true,
-                value: 'mobiletest.smiley360@gmail.com',
+                value: '1234@outofchaos.com',
             }, {
                 xtype: 'passwordfield',
                 maxHeight: '20px',
@@ -46,7 +46,7 @@ Ext.define('smiley360.view.Login', {
                 cls: 'cust-input cust-input-pwd',
                 clearIcon: false,
                 required: true,
-                value: 'general1234',
+                value: '123456',
             }, {
                 xtype: 'spacer',
                 height: '12px'
@@ -77,14 +77,14 @@ Ext.define('smiley360.view.Login', {
                 listeners: {
                     tap: function () {
                         //Ext.widget('loginwithfacebookview').show();
-                        window.location = 'http://173.18.18.52/Index.html?uuid=' + (Ext.device ? Ext.device.Device.uuid : '11111');
+                        window.location = 'http://173.18.18.52/Index.html?uuid=' + Ext.device.Device.uuid;
                     }
                 }
             }, {
                 xtype: 'label',
                 listeners: {
                     initialize: function () {
-                        this.setHtml(Ext.device ? Ext.device.Device.uuid : '11111');
+                        this.setHtml('UUID=' + Ext.device.Device.uuid);
                     }
                 }
             }, {

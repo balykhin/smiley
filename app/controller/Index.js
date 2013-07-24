@@ -2,7 +2,6 @@ var isLogined = false;
 
 Ext.define('smiley360.controller.Index', {
 	extend: 'Ext.app.Controller',
-	requires: ['smiley360.store.Members', 'smiley360.model.Member'],
 	config: {
 		id: 'ParentController',
 		refs: {
@@ -209,11 +208,6 @@ Ext.define('smiley360.controller.Index', {
 
 	AuthentificateCommand: function (view, login, password) {
 		var me = this;
-		var members = Ext.getStore('Members');
-		console.log(members.data.all); // []
-		members.add({ email: login, password: password });
-		members.sync();
-		console.log(members.data.all);
 		smiley360.services.authenticateservice(login, password,
             function (response) {
             	isLogined = response.success;
