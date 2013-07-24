@@ -782,8 +782,13 @@ Ext.define('smiley360.view.Browse', {
                                     	layout: 'vbox',
                                     	id: 'xMusic_panel_browse',
                                     	width: '100%',
-                                    	style: ' padding-bottom: 120px; background: #f0eceb; border-top: 1px dashed #d7cfcd;border-bottom: 1px dashed #d7cfcd;',
-										//function ()
+                                    	style: 'background: #f0eceb; border-top: 1px dashed #d7cfcd;border-bottom: 1px dashed #d7cfcd;',
+                                    	listeners: {
+                                    		initialize: function () {
+                                    			var arr = ['ArtSupplies', 'Artists'];
+                                    			Ext.getCmp('xBrowse').doCreateItems(arr, this.id);
+                                    		}
+                                    	}//function ()
                                     	//items: function () {
                                     		
                                     		//	[{
@@ -1062,10 +1067,7 @@ Ext.define('smiley360.view.Browse', {
                             		this.hide();
                             		Ext.getCmp('xMusic_panel_browse').hide();
                             		Ext.getCmp('xMusicPict').setSrc('resources/images/music_c.png');
-                            		Ext.getCmp('xMusicLabel').setCls('browse_text');
-                            		var arr = ['ArtSupplies', 'Artists'];
-                            		Ext.getCmp('xBrowse').doCreateItems(arr,id);
-                            		
+                            		Ext.getCmp('xMusicLabel').setCls('browse_text');                            		
                             	},
                             	painted: function () {
                             	},
@@ -1171,14 +1173,12 @@ Ext.define('smiley360.view.Browse', {
 	},
 	doCreateItems: function (items_arr,id) {
 		
-		alert('create');
 		for (var key in items_arr)
-			Ext.getCmp('x' + id + '_panel_browse').add(new Ext.Label(
+			Ext.getCmp(id).add(new Ext.Label(
 				{
-					html: key.toString(),
+					html: items_arr[key].toString(),
 					style: 'text-align: left; font-size:1.25em; padding: 10px 0px 10px 175px ; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
 				}));
-		alert('create!');
 	},
 	doTap: function(id){
 		if (Ext.getCmp(id).getCls() == 'has-shadow browse_container') {
