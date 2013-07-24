@@ -98,8 +98,7 @@ Ext.define('smiley360.view.Offers', {
                                             layout: { type: 'hbox' },
                                             items: [
                                                 {
-                                                	xtype: 'label',
-                                                	id: 'xOfferListHeader1',
+                                                    xtype: 'label',
                                                     html: 'MISSION OFFERS',
                                                     cls: 'heading-text active-sign',
                                                     style: 'padding-left: 15px;',
@@ -109,7 +108,7 @@ Ext.define('smiley360.view.Offers', {
                                         },
 										{
 											xtype: 'container',
-											id: 'xOfferList1',
+											id: 'xOfferList',
 											layout: { type: 'vbox', },
 										},
 
@@ -197,20 +196,14 @@ Ext.define('smiley360.view.Offers', {
 									    layout: { type: 'hbox' },
 									    items: [
 											{
-												xtype: 'label',
-												id: 'xOfferListHeader2',
+											    xtype: 'label',
 											    html: 'QUALIFY FOR A NEW MISSION',
 											    cls: 'heading-text active-sign',
 											    style: 'padding-left: 15px;',
 											    flex: 1
 											},
 									    ]
-                                        },
-										{
-											xtype: 'container',
-											id: 'xOfferList2',
-											layout: { type: 'vbox', },
-										},
+									},
                                     {
                                         xtype: 'container',
                                         layout: { type: 'hbox' },
@@ -332,20 +325,14 @@ Ext.define('smiley360.view.Offers', {
                                         layout: { type: 'hbox' },
                                         items: [
                                             {
-                                            	xtype: 'label',
-                                            	id: 'xOfferListHeader3',
+                                                xtype: 'label',
                                                 html: 'POST-MISSION SURVEYS',
-                                                cls: 'heading-text active-sign-inactive',
-                                                style: 'padding-left: 15px;',
+                                                cls: 'heading-text active-sign',
+                                                style: 'padding-left: 15px; color: #939498;',
                                                 flex: 1
                                             },
                                         ]
                                     },
-									{
-										xtype: 'container',
-										id: 'xOfferList3',
-										layout: { type: 'vbox', },
-									},
                                     {
                                         xtype: 'container',
                                         layout: { type: 'hbox' },
@@ -424,8 +411,7 @@ Ext.define('smiley360.view.Offers', {
                                         layout: { type: 'hbox' },
                                         items: [
                                             {
-                                            	xtype: 'label',
-                                            	id: 'xOfferListHeader4',
+                                                xtype: 'label',
                                                 html: 'BONUS SURVEYS',
                                                 cls: 'heading-text active-sign',
                                                 style: 'padding-left: 15px;',
@@ -433,11 +419,6 @@ Ext.define('smiley360.view.Offers', {
                                             },
                                         ]
                                     },
-									{
-										xtype: 'container',
-										id: 'xOfferList4',
-										layout: { type: 'vbox', },
-									},
                                     {
                                         xtype: 'container',
                                         layout: { type: 'hbox' },
@@ -770,19 +751,16 @@ Ext.define('smiley360.view.Offers', {
         },
 		//place listeners there
     },
-    getParagraph: function myfunction(ctrl) {
-    	var TextInside = ctrl.getElementsByTagName('p')[0].innerHTML;
-    	return TextInside;
-    },
     setOffers: function () {
-    	
+    	var xOfferList = this.down('#xOfferList');
+    	xOfferList.removeAll(true, true);
 
     	for (var key in smiley360.userData.Offers) {
     		var oneItem = smiley360.userData.Offers[key];
     		var allContainer = new Ext.Container({
 
     			layout: { type: 'hbox' },
-    			style: 'padding: 0px 15px 260px 15px; background-color: #efecea;',
+    			style: 'padding: 0px 15px 120px 15px; background-color: #efecea;',
     			flex: 1,
     		});
 
@@ -800,7 +778,7 @@ Ext.define('smiley360.view.Offers', {
             	cls: 'has-shadow',
             	width: 100,
             	height: 100,
-            	src: smiley360.configuration.getOfferImagesUrl(oneItem.missionID,oneItem.link),//'resources/images/lays.png',
+            	src: oneItem.link,//'resources/images/lays.png',
             }));
     		var includeContainerLabels = new Ext.Container({
 
@@ -810,29 +788,21 @@ Ext.define('smiley360.view.Offers', {
     		});
     		includeContainerLabels.add(new Ext.Label(
             {
-            	html: oneItem.title, 
+            	html: oneItem.title,
             	//html: 'Survey Title',
             	style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
             }));
-    		
+
     		includeContainerLabels.add(new Ext.Label(
             {
             	html: oneItem.descr,
             	//html: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel malesuada odio. Phasellus aliquam dignissim scelerisque. Sed ullamcorper libero nec placerat posuere.',
             	style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
-			}));
+            }));
 
     		allContainer.add(includeContainerImage);
     		allContainer.add(includeContainerLabels);
-    		if (oneItem.mission_typeID != 1)
-    		{ oneItem.mission_typeID -= 1 };
-    		var xOfferList = this.down('#xOfferList' + oneItem.mission_typeID );
-    		if (xOfferList && smiley360.userData.isProfileComplete.complete) {
-    			//xOfferList.removeAll(true, true);
-    			xOfferList.add(allContainer);
-    			this.down('#xOfferListHeader' + oneItem.mission_typeID).setCls('heading-text active-sign');
-    		} 
-    		else Ext.widget('missingoffersview').show();
+    		xOfferList.add(allContainer);
     	}
     },
 	//place functions there
