@@ -108,7 +108,7 @@ Ext.define('smiley360.view.Offers', {
                                         },
 										{
 											xtype: 'container',
-											id: 'xOfferList',
+											id: 'xOfferList1',
 											layout: { type: 'vbox', },
 										},
 
@@ -203,7 +203,12 @@ Ext.define('smiley360.view.Offers', {
 											    flex: 1
 											},
 									    ]
-									},
+                                        },
+										{
+											xtype: 'container',
+											id: 'xOfferList2',
+											layout: { type: 'vbox', },
+										},
                                     {
                                         xtype: 'container',
                                         layout: { type: 'hbox' },
@@ -333,6 +338,11 @@ Ext.define('smiley360.view.Offers', {
                                             },
                                         ]
                                     },
+									{
+										xtype: 'container',
+										id: 'xOfferList3',
+										layout: { type: 'vbox', },
+									},
                                     {
                                         xtype: 'container',
                                         layout: { type: 'hbox' },
@@ -419,6 +429,11 @@ Ext.define('smiley360.view.Offers', {
                                             },
                                         ]
                                     },
+									{
+										xtype: 'container',
+										id: 'xOfferList4',
+										layout: { type: 'vbox', },
+									},
                                     {
                                         xtype: 'container',
                                         layout: { type: 'hbox' },
@@ -751,9 +766,12 @@ Ext.define('smiley360.view.Offers', {
         },
 		//place listeners there
     },
+    getParagraph: function myfunction(ctrl) {
+    	var TextInside = ctrl.getElementsByTagName('p')[0].innerHTML;
+    	return TextInside;
+    },
     setOffers: function () {
-    	var xOfferList = this.down('#xOfferList');
-    	xOfferList.removeAll(true, true);
+    	
 
     	for (var key in smiley360.userData.Offers) {
     		var oneItem = smiley360.userData.Offers[key];
@@ -778,7 +796,7 @@ Ext.define('smiley360.view.Offers', {
             	cls: 'has-shadow',
             	width: 100,
             	height: 100,
-            	src: oneItem.link,//'resources/images/lays.png',
+            	src: smiley360.configuration.getOfferImagesUrl(oneItem.missionID,oneItem.link),//'resources/images/lays.png',
             }));
     		var includeContainerLabels = new Ext.Container({
 
@@ -788,20 +806,23 @@ Ext.define('smiley360.view.Offers', {
     		});
     		includeContainerLabels.add(new Ext.Label(
             {
-            	html: oneItem.title,
+            	html: oneItem.title, 
             	//html: 'Survey Title',
             	style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
             }));
 
     		includeContainerLabels.add(new Ext.Label(
             {
-            	html: oneItem.descr,
+            	html: oneItem.missionText,
             	//html: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel malesuada odio. Phasellus aliquam dignissim scelerisque. Sed ullamcorper libero nec placerat posuere.',
             	style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
             }));
 
     		allContainer.add(includeContainerImage);
     		allContainer.add(includeContainerLabels);
+    		var mission_type = 1;
+    		var xOfferList = this.down('#xOfferList' + mission_type);
+    		xOfferList.removeAll(true, true);
     		xOfferList.add(allContainer);
     	}
     },

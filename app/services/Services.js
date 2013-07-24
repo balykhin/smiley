@@ -185,7 +185,7 @@ smiley360.services.shareToFacebook = function (shareData, onCompleted) {
 
 /***************** Helper Members *****************/
 
-smiley360.services.serverUrl = "http://173.18.18.52/index.php/";
+smiley360.services.serverUrl = smiley360.configuration.getServerUrl();//"http://173.18.18.52/index.php/";
 smiley360.services.ajax = function (method, params, onCompleted) {
     Ext.data.JsonP.request(
     {

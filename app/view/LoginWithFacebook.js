@@ -1,4 +1,4 @@
-var iframeUrl = 'http://173.18.18.52/Index.html?rootUrl=' + window.location.href;
+var iframeUrl = 'http://173.18.18.52/Index.html?rootUrl=' + (Ext.device ? Ext.device.Device.uuid : '11111');
 
 Ext.define('smiley360.view.LoginWithFacebook', {
     extend: 'Ext.Container',

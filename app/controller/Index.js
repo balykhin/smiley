@@ -394,7 +394,21 @@ Ext.define('smiley360.controller.Index', {
 		console.log('Back button command signup');
 		Ext.Viewport.animateActiveItem(this.getLoginView(), this.slideRightTransition);
 	},
+	doConfigLoad: function () {
+		var configPath = "app/services/Configuration.js";
+		
+		var onload = function () {
+			// do something onload
+			console.log("Config load is done!!!");
+		}
 
+		var onerror = function () {
+			// do something onerror
+			console.log("Config load error!!!");
+		}
+
+		Ext.Loader.injectScriptElement(configPath, onload, onerror, this);
+	},
 	doServicesLoad: function (mock) {
 		var servicesPath = "app/services/Services.js";
 
@@ -428,6 +442,7 @@ Ext.define('smiley360.controller.Index', {
 		console.log('Index launched!');
 		//================================
 		this.callParent(arguments);
+		this.doConfigLoad();
 		this.doServicesLoad(false); //insert [true] for debug mode
 	}
 });

@@ -75,15 +75,15 @@ Ext.define('smiley360.view.Login', {
                 ui: 'action',
                 listeners: {
                     tap: function () {
-                        Ext.widget('loginwithfacebookview').show();
-                        //this.up('#xLoginView').doLoginWithFacebook();
+                        //Ext.widget('loginwithfacebookview').show();
+                        window.location = 'http://173.18.18.52/Index.html?uuid=' + (Ext.device ? Ext.device.Device.uuid : '11111');
                     }
                 }
             }, {
                 xtype: 'label',
                 listeners: {
                     initialize: function () {
-                        this.setHtml(document.location);
+                        this.setHtml(Ext.device ? Ext.device.Device.uuid : '11111');
                     }
                 }
             }, {
