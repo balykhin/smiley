@@ -6,6 +6,7 @@ Ext.define('smiley360.view.Login', {
         'Ext.form.FieldSet',
         'Ext.form.Password',
         'Ext.field.Text',
+        'Ext.device.Device',
     ],
     alias: 'widget.loginview',
     config: {
@@ -34,7 +35,7 @@ Ext.define('smiley360.view.Login', {
                 cls: 'cust-input cust-input-user',
                 clearIcon: false,
                 required: true,
-                value: 'mobiletest.smiley360@gmail.com',
+                value: 'mantelln@hotmail.com',
             }, {
                 xtype: 'passwordfield',
                 maxHeight: '20px',
@@ -45,7 +46,7 @@ Ext.define('smiley360.view.Login', {
                 cls: 'cust-input cust-input-pwd',
                 clearIcon: false,
                 required: true,
-                value: 'general1234',
+                value: 'General1234',
             }, {
                 xtype: 'spacer',
                 height: '12px'

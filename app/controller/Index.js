@@ -139,21 +139,19 @@ Ext.define('smiley360.controller.Index', {
 	},
 
 	onOffersTapCommand: function () {
-		
-			Ext.Viewport.animateActiveItem(this.getOffersView(), this.slideLeftTransition);
-		
 
-		smiley360.services.getOffers(function (response) {
-			if (response.success) {
-				//alert('Get an offer: ' + response.userOffers[0].text);//provess/close view
-				Ext.getCmp('offers_label_text').setHtml(response.userOffers[0].text.toString());
-			}
-			else {
-				alert('smth wrong');//show error on view
-			}
-		});
+		//if (smiley360.userData.isProfileComplete.complete)
+			Ext.Viewport.animateActiveItem(this.getOffersView(), this.slideLeftTransition)
 
-
+			//smiley360.services.getOffers(function (response) {
+			//	if (response.success) {
+			//		//alert('Get an offer: ' + response.userOffers[0].text);//provess/close view
+			//		//Ext.getCmp('offers_label_text').setHtml(response.userOffers[0].text.toString());
+			//	}
+		//else {
+		//	Ext.widget('missingoffersview').show();//alert('smth wrong');//show error on view
+		//};
+		//});
 	},
 	backButtonCommandOffers: function () {
 		//================================
@@ -194,16 +192,16 @@ Ext.define('smiley360.controller.Index', {
 	//    if (isLogined) { Ext.Viewport.animateActiveItem(this.getEditProfileView(), this.slideLeftTransition); }
 	//},
 	onMissionDetailsTapCommand: function () {
-		 Ext.Viewport.animateActiveItem(this.getDetailsView(), this.slideLeftTransition); 
+		Ext.Viewport.animateActiveItem(this.getDetailsView(), this.slideLeftTransition);
 	},
 
 	onMissionTapCommand: function () {
-		 Ext.Viewport.animateActiveItem(this.getMissionsView(), this.slideLeftTransition); 
+		Ext.Viewport.animateActiveItem(this.getMissionsView(), this.slideLeftTransition);
 	},
 
 	oneditLabelCommand: function () {
 		console.log("oneditLabelCommand");
-		Ext.Viewport.animateActiveItem(this.getEditProfileView(), this.slideLeftTransition); 
+		Ext.Viewport.animateActiveItem(this.getEditProfileView(), this.slideLeftTransition);
 
 	},
 
@@ -396,7 +394,7 @@ Ext.define('smiley360.controller.Index', {
 	},
 	doConfigLoad: function () {
 		var configPath = "app/services/Configuration.js";
-		
+
 		var onload = function () {
 			// do something onload
 			console.log("Config load is done!!!");

@@ -1,4 +1,4 @@
-﻿var hide_panel, first_time, dock_panel;
+﻿var hide_panel, first_time, dock_panel, id_arr_browse = [];
 Ext.define('smiley360.view.Browse', {
 	extend: 'Ext.tab.Panel',
 	alias: 'widget.browseview',
@@ -728,24 +728,14 @@ Ext.define('smiley360.view.Browse', {
                                             {
                                             	xtype: 'container',
                                             	layout: 'vbox',
+                                            	id: 'Music',
                                             	cls: 'has-shadow browse_container',
                                             	height: 140,
                                             	width: 140,
                                             	listeners: {
                                             		element: 'element',
                                             		tap: function () {
-                                            			if (this.getCls() == 'has-shadow browse_container') {
-                                            				this.setCls('has-shadow after_browse_container');
-                                            				Ext.getCmp('xMusic_panel_browse').show();
-                                            				Ext.getCmp('xMusicPict').setSrc('resources/images/music_aft_c.png');
-                                            				Ext.getCmp('xMusicLabel').setCls('after_browse_text');
-                                            			}
-                                            			else {
-                                            				this.setCls('has-shadow browse_container');
-                                            				Ext.getCmp('xMusic_panel_browse').hide();
-                                            				Ext.getCmp('xMusicPict').setSrc('resources/images/music_c.png');
-                                            				Ext.getCmp('xMusicLabel').setCls('browse_text');
-                                            			}
+                                            			this.up('#xBrowse').doTap(this.id);
                                             		},
                                             	},
                                             	items: [
@@ -757,7 +747,7 @@ Ext.define('smiley360.view.Browse', {
 														margin: '15px 35px',
 													},
 													 {
-														id: 'xMusicLabel',
+													 	id: 'xMusicLabel',
 													 	xtype: 'label',
 													 	html: 'Music & Arts',
 													 	cls: 'browse_text',
@@ -792,31 +782,34 @@ Ext.define('smiley360.view.Browse', {
                                     	layout: 'vbox',
                                     	id: 'xMusic_panel_browse',
                                     	width: '100%',
-                                    	style: 'background: #f0eceb; border-top: 1px dashed #d7cfcd;border-bottom: 1px dashed #d7cfcd;',
-                                    	
-										items: [{
-                                    		xtype: 'label',
-                                    		html: 'Art Supplies',
-                                    		style: 'text-align: left; font-size:1.25em; padding: 10px 0px 10px 175px ; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
-                                    	}, {
-                                    		xtype: 'label',
-                                    		html: 'Artists',
-                                    		style: 'text-align: left;  font-size:1.25em; padding: 10px 0px 10px 175px; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
-                                    	}, {
-                                    		xtype: 'label',
-                                    		html: 'Instruments',
-                                    		style: 'text-align: left;  font-size:1.25em; padding: 10px 0px 10px 175px; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
-                                    	}, {
-                                    		xtype: 'label',
-                                    		html: 'Musical Gear',
-                                    		style: 'text-align: left; font-size:1.25em; padding: 10px 0px 10px 175px; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
-                                    	}, {
-                                    		xtype: 'label',
-                                    		html: 'Performers',
-                                    		style: 'text-align: left; font-size:1.25em; padding: 10px 0px 10px 175px; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
-                                    	}, ]
+                                    	style: ' padding-bottom: 120px; background: #f0eceb; border-top: 1px dashed #d7cfcd;border-bottom: 1px dashed #d7cfcd;',
+										//function ()
+                                    	//items: function () {
+                                    		
+                                    		//	[{
+                                    		//	xtype: 'label',
+                                    		//	html: 'Art Supplies',
+                                    		//	style: 'text-align: left; font-size:1.25em; padding: 10px 0px 10px 175px ; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
+                                    		//}, {
+                                    		//	xtype: 'label',
+                                    		//	html: 'Artists',
+                                    		//	style: 'text-align: left;  font-size:1.25em; padding: 10px 0px 10px 175px; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
+                                    		//}, {
+                                    		//	xtype: 'label',
+                                    		//	html: 'Instruments',
+                                    		//	style: 'text-align: left;  font-size:1.25em; padding: 10px 0px 10px 175px; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
+                                    		//}, {
+                                    		//	xtype: 'label',
+                                    		//	html: 'Musical Gear',
+                                    		//	style: 'text-align: left; font-size:1.25em; padding: 10px 0px 10px 175px; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
+                                    		//}, {
+                                    		//	xtype: 'label',
+                                    		//	html: 'Performers',
+                                    		//	style: 'text-align: left; font-size:1.25em; padding: 10px 0px 10px 175px; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
+                                    		//}, ]
+                                    	//},
                                     },
-                                    //people, pets, sports
+                                    	//people, pets, sports
                                     {
                                     	xtype: 'container',
                                     	layout: 'hbox',
@@ -1070,6 +1063,9 @@ Ext.define('smiley360.view.Browse', {
                             		Ext.getCmp('xMusic_panel_browse').hide();
                             		Ext.getCmp('xMusicPict').setSrc('resources/images/music_c.png');
                             		Ext.getCmp('xMusicLabel').setCls('browse_text');
+                            		var arr = ['ArtSupplies', 'Artists'];
+                            		Ext.getCmp('xBrowse').doCreateItems(arr,id);
+                            		
                             	},
                             	painted: function () {
                             	},
@@ -1172,6 +1168,31 @@ Ext.define('smiley360.view.Browse', {
             },
 
 		]
+	},
+	doCreateItems: function (items_arr,id) {
+		
+		alert('create');
+		for (var key in items_arr)
+			Ext.getCmp('x' + id + '_panel_browse').add(new Ext.Label(
+				{
+					html: key.toString(),
+					style: 'text-align: left; font-size:1.25em; padding: 10px 0px 10px 175px ; word-wrap: break-all; color:#413f40; font-family: \'din medium\';',
+				}));
+		alert('create!');
+	},
+	doTap: function(id){
+		if (Ext.getCmp(id).getCls() == 'has-shadow browse_container') {
+			Ext.getCmp(id).setCls('has-shadow after_browse_container');
+			Ext.getCmp('x' + id + '_panel_browse').show();
+			Ext.getCmp('x' + id + 'Pict').setSrc('resources/images/' + id.toLowerCase() + '_aft_c.png');
+			Ext.getCmp('x' + id + 'Label').setCls('after_browse_text');
+		}
+		else {
+			Ext.getCmp(id).setCls('has-shadow browse_container');
+			Ext.getCmp('x' + id + '_panel_browse').hide();
+			Ext.getCmp('x' + id + 'Pict').setSrc('resources/images/' + id.toLowerCase() + '_c.png');
+			Ext.getCmp('x' + id + 'Label').setCls('browse_text');
+		}
 	},
 	onBackButtonTap: function () {
 		console.log('back button tapped');

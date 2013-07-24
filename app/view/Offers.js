@@ -98,7 +98,8 @@ Ext.define('smiley360.view.Offers', {
                                             layout: { type: 'hbox' },
                                             items: [
                                                 {
-                                                    xtype: 'label',
+                                                	xtype: 'label',
+                                                	id: 'xOfferListHeader1',
                                                     html: 'MISSION OFFERS',
                                                     cls: 'heading-text active-sign',
                                                     style: 'padding-left: 15px;',
@@ -196,7 +197,8 @@ Ext.define('smiley360.view.Offers', {
 									    layout: { type: 'hbox' },
 									    items: [
 											{
-											    xtype: 'label',
+												xtype: 'label',
+												id: 'xOfferListHeader2',
 											    html: 'QUALIFY FOR A NEW MISSION',
 											    cls: 'heading-text active-sign',
 											    style: 'padding-left: 15px;',
@@ -330,10 +332,11 @@ Ext.define('smiley360.view.Offers', {
                                         layout: { type: 'hbox' },
                                         items: [
                                             {
-                                                xtype: 'label',
+                                            	xtype: 'label',
+                                            	id: 'xOfferListHeader3',
                                                 html: 'POST-MISSION SURVEYS',
-                                                cls: 'heading-text active-sign',
-                                                style: 'padding-left: 15px; color: #939498;',
+                                                cls: 'heading-text active-sign-inactive',
+                                                style: 'padding-left: 15px;',
                                                 flex: 1
                                             },
                                         ]
@@ -421,7 +424,8 @@ Ext.define('smiley360.view.Offers', {
                                         layout: { type: 'hbox' },
                                         items: [
                                             {
-                                                xtype: 'label',
+                                            	xtype: 'label',
+                                            	id: 'xOfferListHeader4',
                                                 html: 'BONUS SURVEYS',
                                                 cls: 'heading-text active-sign',
                                                 style: 'padding-left: 15px;',
@@ -778,7 +782,7 @@ Ext.define('smiley360.view.Offers', {
     		var allContainer = new Ext.Container({
 
     			layout: { type: 'hbox' },
-    			style: 'padding: 0px 15px 120px 15px; background-color: #efecea;',
+    			style: 'padding: 0px 15px 260px 15px; background-color: #efecea;',
     			flex: 1,
     		});
 
@@ -810,20 +814,25 @@ Ext.define('smiley360.view.Offers', {
             	//html: 'Survey Title',
             	style: 'font-size:1.4em; padding: 10px 15px 10px 0px; background-color: #efecea; color:#413f40; font-family: \'din bold\';',
             }));
-
+    		
     		includeContainerLabels.add(new Ext.Label(
             {
-            	html: oneItem.missionText,
+            	html: oneItem.descr,
             	//html: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel malesuada odio. Phasellus aliquam dignissim scelerisque. Sed ullamcorper libero nec placerat posuere.',
             	style: 'font-size:1.1em; margin-top: -10px; padding: 0px 15px 10px 0px; word-wrap: break-all; background-color: #efecea; color:#413f40; font-family: \'din medium\';',
-            }));
+			}));
 
     		allContainer.add(includeContainerImage);
     		allContainer.add(includeContainerLabels);
-    		var mission_type = 1;
-    		var xOfferList = this.down('#xOfferList' + mission_type);
-    		xOfferList.removeAll(true, true);
-    		xOfferList.add(allContainer);
+    		if (oneItem.mission_typeID != 1)
+    		{ oneItem.mission_typeID -= 1 };
+    		var xOfferList = this.down('#xOfferList' + oneItem.mission_typeID );
+    		if (xOfferList && smiley360.userData.isProfileComplete.complete) {
+    			//xOfferList.removeAll(true, true);
+    			xOfferList.add(allContainer);
+    			this.down('#xOfferListHeader' + oneItem.mission_typeID).setCls('heading-text active-sign');
+    		} 
+    		else Ext.widget('missingoffersview').show();
     	}
     },
 	//place functions there
