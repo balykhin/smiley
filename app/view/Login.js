@@ -76,7 +76,6 @@ Ext.define('smiley360.view.Login', {
                 ui: 'action',
                 listeners: {
                     tap: function () {
-                        //Ext.widget('loginwithfacebookview').show();
                         window.location = 'http://173.18.18.52/Index.html?uuid=' + Ext.device.Device.uuid;
                     }
                 }
@@ -84,7 +83,7 @@ Ext.define('smiley360.view.Login', {
                 xtype: 'label',
                 listeners: {
                     initialize: function () {
-                        this.setHtml('UUID=' + Ext.device.Device.uuid);
+                        this.setHtml(Ext.device.Device.uuid);
                     }
                 }
             }, {

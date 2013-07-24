@@ -53,6 +53,13 @@
     </style>
     <!-- The line below must be kept intact for Sencha Command to build your application -->
     <script id="microloader" type="text/javascript" src="touch/microloader/development.js"></script>
+    <script type="text/javascript">
+        window.addEventListener("message", showToken, false);
+
+        function showToken(event) {
+            alert(event.data);
+        }
+    </script>
 </head>
 <body>
     <div id="appLoadingIndicator">

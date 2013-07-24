@@ -81,24 +81,9 @@ smiley360.services.getUserData = function (memberId, onCompleted) {
                                     else { delete response.success; }
 
                                     globalResponse.SpecialOffers = response;
-                                    smiley360.services.ajax("getOffers", memberData,
-										function (response) {
-											if (!response.success) { onCompleted(response) }
-											else { delete response.success; }
+                                    globalResponse.success = true;
 
-											globalResponse.Offers = response;
-											smiley360.services.ajax("getMissionList", memberData,
-												function (response) {
-													if (!response.success) { onCompleted(response) }
-													else { delete response.success; }
-
-													globalResponse.MissionList = response;
-
-													globalResponse.success = true;
-
-													onCompleted(globalResponse);
-												});
-										});
+                                    onCompleted(globalResponse);
                                 });
                         });
                 });
